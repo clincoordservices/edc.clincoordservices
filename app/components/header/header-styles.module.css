@@ -1,0 +1,36 @@
+.header {
+     width: 80%;
+     height: 100px;
+     background-color: rgba(0, 0, 0, 0.1);
+     margin: 0 auto;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+}
+.logoImage {
+    width: 40%;
+}
+.navBar {
+    width: 60%;
+    display: flex;
+    justify-self: center;
+}
+.navBar ul {
+    display: flex;
+    flex-direction: row;
+
+}
+.navBar ul li {
+  margin-right: 5px;
+  text-decoration: none;
+}
+/* .navBar div {
+    width: 100%;
+    display: flex;
+    align-content: end;
+}
+*/
+/* 
+.navBar li {
+     margin-right: 5px;
+}  */
