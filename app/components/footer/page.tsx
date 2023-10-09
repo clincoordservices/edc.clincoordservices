@@ -1,12 +1,10 @@
-"use client"
 import React from "react";
 
-const Signup = () => {
-
+const Footer = () => {
     return (
          <div>
-             Signup
+             Footer
          </div>
     );
 }
-export default Signup;
+export default Footer; 

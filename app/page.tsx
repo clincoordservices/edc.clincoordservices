@@ -1,8 +1,7 @@
 // import Image from 'next/image'
+import LeadingPage from './leadingPage/page'
 import styles from './page.module.css'
-import Signup from '@/pages/signup/page'
-import Login from '@/pages/login/page'
-import LeadingPage from '@/pages/LeadingPage/page'
+
 
 
 export default function Home() {
@@ -13,3 +12,4 @@ export default function Home() {
     </main>
   )
 } 
+ 

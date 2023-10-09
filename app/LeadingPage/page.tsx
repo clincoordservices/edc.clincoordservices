@@ -8,7 +8,7 @@ const  LeadingPage = () => {
         <div className={styles.mainContent}> 
          land page
 
-          <Link href="/LeadingPage"> TESTE </Link>
+          <Link href="/leadingPage"> TESTE </Link>
         </div>
      );
 }
