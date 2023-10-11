@@ -1,4 +1,4 @@
-function fetchWithParams(
+export default async  function  fetchWithParams(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE",
     data?: any,
@@ -6,12 +6,13 @@ function fetchWithParams(
   ): Promise<Response> {
     const options = {
       method: method,
-      headers: headers,
+      headers:  headers,
     };
-      //@ts-ignore
+     
     if (data) {
+        //@ts-ignore
       options.body = data;
     }
   
-    return fetch(url, options);
+    return await fetch(url, options);
   }

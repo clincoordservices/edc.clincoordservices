@@ -1,0 +1,53 @@
+.main_container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin:  0 auto;
+    /* padding: 10rem; */
+
+    color: var(--thirth-color);
+
+    background: linear-gradient(to right, #111, #ccc);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.containerFormSignup{
+     padding: 5rem;
+     display: flex;
+     flex-direction: column;
+     margin-left: 10%;
+}
+.containerFormSignup_header{
+   margin-bottom: 3rem;
+}
+.containerFormSignup_body {
+   display: grid;
+   width: 100%;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   column-gap: 1.5rem;
+}
+.containerFormSignup_body div {
+     display: flex;
+     flex-direction: column;
+     width: 15rem;
+}
+.containerFormSignup_body div label {
+    margin: 3px 0 5px;
+}
+.containerFormSignup_body div input {
+    height: 25px;
+    border-radius: 2px;
+    border: 0;
+}
+.container_button {
+     margin-top: 5px;
+}
+
+.container_button button{
+   height: 27px;
+   font-size: 13pt; 
+   font-weight: 700;
+}
