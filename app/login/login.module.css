@@ -1,23 +1,80 @@
-.main_{
-    height: 89vh;
+.main_Content{
+    height: 95vh;
     width: 100%;
-     display: flex;
-
-     
-     /* height: 100%;
-
-     align-items: center; */
-     /* align-content: center;
-     justify-content: center;
-     margin-left: 50%; */
+    display: flex;
+    margin-top: 25px;
+}
+.containerEmail,
+.containerPassword {
+      display: flex;
+      flex-direction: column;
+}
+.containerFormLoginpBody label {
+     margin: 5px 0;
+     font-size: 11pt;
+}
+.containerFormLoginHeader h2 {
+     color: var(--secondary-color);
+}
+.containerEmail input,
+.containerPassword input,
+.containerButton button {
+     width: 400px;
+     height: 40px;
+     border-radius: 0.375rem;
+     border: 1px solid rgba(26,28,30,.2);
+     font-size: 12pt;
+     color: #111111;
+     outline: none;
 }
 
-.containerFormSignup {
+.containerEmail input:focus,
+.containerPassword input:focus {
+     border: 2px solid var(--primary-color);
+}
+.containerFormLogin {
      display: flex;
      flex-direction: column;
+     width: 60%;
+     align-items: center;
+     justify-content: center;
+     user-select: none;
 }
-.first_{
+.containerFormLogin div {
+     width: 25rem;
+     
+}
+.firstContent{
      width: 40%;
-     border-right: 1px solid #000;
+     border-right: 1px solid #000; 
+}
+.containerButton button {
+     background-color: var(--secondary-color);
+     font-weight: bold;
+     color: #ffffff;
+     margin-top: 5px;
 }
 
+.containerButton button:hover {
+     background-color: var(--secondary-color);
+     cursor: pointer;
+     opacity: .8;
+}
+
+.notificationLoginFormFieldTop {
+   display: flex;
+}
+.notificationLoginFormFieldTop span:nth-child(1),
+.notificationLoginFormField  {
+    color: #ff4500;
+    margin: 1px 3px  0 0;
+
+}
+/* .notificationLoginFormFieldTop span + span {
+} */
+.notificationLoginFormField,
+.notificationLoginFormFieldTop {
+      margin-top: 5px;
+      font-size: 10pt;
+      color: #ff4500;
+}
