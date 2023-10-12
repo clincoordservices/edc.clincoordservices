@@ -72,6 +72,11 @@
 
 .notificationLoginFormFieldTop {
    display: flex;
+   visibility: visible;
+}
+
+.hide {
+      visibility: hidden;
 }
 .notificationLoginFormFieldTop span:nth-child(1),
 .notificationLoginFormField  {
