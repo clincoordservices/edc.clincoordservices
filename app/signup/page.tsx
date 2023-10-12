@@ -8,10 +8,7 @@ const Signup = () => {
      const [formData, setFormData] = useState({});
 
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
-         e.preventDefault();
-
-  
-        
+         e.preventDefault();  
      } 
 
      const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
@@ -24,13 +21,13 @@ const Signup = () => {
      }
 
     return (
-    <div  className={styles.main_container}>
+    <div  className={styles.mainContainer}>
         <form  onSubmit={submitHandler} method="post" className={styles.containerFormSignup}>
                      <div className={styles.containerFormSignup_header}>
-                        <legend> <h2>Create your account </h2> </legend>
+                        <legend> <h2>Create user account </h2> </legend>
                         <p>Already Have An Acount? <strong> <Link href="/login"> Log In </Link></strong> </p>
                      </div>
-                     <div className={styles.containerFormSignup_body}>
+                     <div className={styles.containerFormSignupBody}>
                             <div className={styles.container_email} >
                                 <label htmlFor="email">E-mail</label>
                                 <input type="email" maxLength={20} name="email" id="email" onChange={getDataOnForm} required/>
@@ -51,18 +48,15 @@ const Signup = () => {
                                 <label htmlFor="password">Password</label>
                                 <input type="text" maxLength={20} name="password" id="password" onChange={getDataOnForm}  required/>
                             </div>
-                            <div className={styles.container_password}>
+                            {/* <div className={styles.container_password}>
                                 <label htmlFor="confirm-password">Confirm Password</label>
                                 <input type="text" maxLength={20} name="confirm-password" id="confirm-password" onChange={getDataOnForm}  required/>
-                            </div>
+                            </div> */}
                             <div className={styles.container_button}>
                                 <button  type="submit">Create Account</button>
                             </div>
                 </div>
         </form>
-        {/* <div className={styles.container_second}>
-                 SECOND 
-        </div> */}
     </div>
     );
 }
