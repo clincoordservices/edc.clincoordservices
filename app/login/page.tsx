@@ -5,10 +5,11 @@ import Link from "next/link";
 import {RiErrorWarningLine} from "react-icons/Ri"
 
 const Login = () => {
-    const [toggleElements, setToggleElements] = useState(true);
+    const [toggleElements, setToggleElements] = useState(false);
     const [formData, setFormData] = useState({password:"", email_username:""});
     const [nameAlertToggle, setnameAlertToggle] = useState(true);
-    const [emailAlertToggle, setEmailAlertToggle] = useState(true);
+    const [passwordAlertToggle, setPasswordlAlertToggle] = useState(true);
+    const [fieldAlertToggle, setFieldAlertToggle] = useState(true);
      
 
     
@@ -21,8 +22,10 @@ const Login = () => {
         
         const {email_username, password } = formData;
 
-        if(!email_username) setnameAlertToggle(prev=> !prev);
-        if(!emailAlertToggle) setEmailAlertToggle(prev=> !prev);
+        if(!password) setPasswordlAlertToggle(false);
+        if(!email_username) setnameAlertToggle(false);
+
+        if(!password && !email_username) setFieldAlertToggle(false);
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
@@ -37,28 +40,30 @@ const Login = () => {
         <div  className={styles.main_Content}>
             <div className={styles.firstContent} ></div>
             <form onSubmit={submitHandler}   method="post" className={styles.containerFormLogin}>
-                <div className={`${ (emailAlertToggle || nameAlertToggle ) ? styles.hide :styles.containerFormLoginHeader}`}>
+                <div className={styles.containerFormLoginHeader}>
                         <legend> <h2>Welcome, please sign in</h2> </legend>
                 </div>
                 <div className={styles.containerFormLoginpBody}>
-                    <div className={`${styles.notificationLoginFormFieldTop}`}>
-                        <span> <RiErrorWarningLine /> </span>
-                        <span> Authentication failed check your credencials</span> 
+                    <div className={styles.notificationLoginFormFieldTop}>
+                        <span className={`${fieldAlertToggle ? styles.hideListElement :styles.showListElement}`}>
+                            <span> <RiErrorWarningLine /> </span>
+                            <span> Authentication failed check your credencials</span>             
+                        </span>
                     </div>
                     <div className={styles.containerEmail}>
                         <label htmlFor="email_username">Username or E-mail</label>
-                        <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username" required/>
-                        <span className={`${nameAlertToggle ? styles.hide : styles.notificationLoginFormField}`}>
-                            <span> <RiErrorWarningLine /> </span> 
-                            <span>Please enter a username or e-mail </span> 
+                        <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
+                        <span className={styles.notificationLoginFormField}>
+                            <span className={`${nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> <RiErrorWarningLine />Please enter a username or e-mail </span> 
                         </span>
                     </div>
                     <div className={styles.containerPassword}>
                         <label htmlFor="password">Password</label>
-                        <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password" required/>
-                        <span className={`${emailAlertToggle ? styles.hide :styles.notificationLoginFormField}`}> 
-                            <span> <RiErrorWarningLine /> </span>
-                            <span>Please enter a password </span> 
+                        <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password"/>
+                        <span className={styles.notificationLoginFormField}>
+                            <span className={`${passwordAlertToggle ? styles.hideListElement :styles.showListElement}`}>
+                                 <RiErrorWarningLine />  Please enter a password
+                            </span> 
                         </span>
                     </div>
                     <div className={styles.containerButton}>

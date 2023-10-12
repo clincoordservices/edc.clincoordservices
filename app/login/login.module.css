@@ -1,10 +1,24 @@
 .main_Content{
-    height: 95vh;
+    height: 90vh;
     width: 100%;
     display: flex;
     margin-top: 25px;
 
-    background: linear-gradient(to right, var(--secondary-color), #ccc);
+    background: linear-gradient(to right, var(--secondary-color) 30%, #fff 60%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.containerFormLogin {  
+     display: flex;
+     flex-direction: column;
+     width: 50%;
+     align-items: center;
+     justify-content: center;
+     user-select: none;
+
+    background: linear-gradient(to right, #fff  30%, #f7f7ff 30%);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -36,26 +50,16 @@
      color: #111111;
      outline: none;
 }
-
 .containerEmail input:focus,
 .containerPassword input:focus {
      border: 2px solid var(--primary-color);
 }
-.containerFormLogin {
-     display: flex;
-     flex-direction: column;
-     width: 60%;
-     align-items: center;
-     justify-content: center;
-     user-select: none;
-}
 .containerFormLogin div {
-     width: 25rem;
-     
+     width: 25rem;     
 }
 .firstContent{
-     width: 40%;
-     border-right: 1px solid #000; 
+     width: 50%;
+     border-right: 1px solid #999; 
 }
 .containerButton button {
      background-color: var(--secondary-color);
@@ -63,40 +67,31 @@
      color: #ffffff;
      margin-top: 5px;
 }
-
 .containerButton button:hover {
      background-color: var(--secondary-color);
      cursor: pointer;
      opacity: .8;
 }
-
 .notificationLoginFormFieldTop {
    display: flex;
    visibility: visible;
-}
-
-.hide {
-      visibility: hidden;
 }
 .notificationLoginFormFieldTop span:nth-child(1),
 .notificationLoginFormField  {
     color: #ff4500;
     margin: 1px 3px  0 0;
-
+    padding: 5px;
 }
-/* .notificationLoginFormFieldTop span + span {
-} */
 .notificationLoginFormField,
 .notificationLoginFormFieldTop {
       margin-top: 5px;
       font-size: 10pt;
       color: #ff4500;
 }
-
 .opctionsBottomOfForm  {
       margin-top: 20px;
       font-size: 10pt;
-      font-weight: 400;
+      font-weight: 400; 
 }
 .opctionsBottomOfForm  p:hover,
 .opctionsBottomOfForm li:hover{
@@ -115,4 +110,36 @@
 }
   .showListElement{
     visibility: visible;   
+}
+
+/* RESPONSIBLE SIZE*/
+
+@media screen and (max-width: 849px) {
+     .firstContent {
+           display: none;
+     }
+     .main_Content{ 
+          background: unset;
+     }
+     .containerFormLogin {   
+          width: 100%;
+          background:  #f7f7ff;
+     }
+}
+@media screen and (max-width: 431px) {
+     .main_Content {
+         width: 100%;
+     }
+     .containerFormLogin {
+           width: 100%;
+     }
+     .containerFormLogin div,
+     .containerEmail input,
+     .containerPassword input,
+     .containerButton button { 
+          width: 18rem;
+     }
+     .containerFormLoginHeader h2 {
+           font-size: 15pt;
+     }
 }
