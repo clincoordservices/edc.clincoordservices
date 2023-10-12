@@ -8,7 +8,9 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
+.containerFormSignupHeader h2 {
+    color: var(--secondary-color);
+}
 .containerFormSignup {
     width: 100%; 
     display: flex;
@@ -27,14 +29,39 @@
      color: #111111;
      outline: none;
 }
-.containerFormSignupBody div {
-     display: flex;
-     flex-direction: column;
+.containerFormSignupBody input:focus,
+.containerFormSignupBody input:focus {
+     border: 2px solid var(--primary-color);
 }
 .containerFormSignupBody div input {
     text-indent: 10px;
 }
+.containerFormSignupBody label,
+.containerButton button {
+    margin: 5px 0;
+    font-size: 11pt;
+}
+.containerFormSignupBody div {
+     display: flex;
+     flex-direction: column;
+}
+.containerFormSignupBody button {
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 5px;
+}
+.containerFormSignupBody button:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    opacity: .8;
+}
 
+.notificationLoginFormField {
+    margin-top: 5px;
+    font-size: 10pt;
+    color: #ff4500;
+}
 
 
 
