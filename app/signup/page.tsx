@@ -10,14 +10,7 @@ const Signup = () => {
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
          e.preventDefault();
 
-         const data = {id:20}
-         if(!!formData){
-            const response = await fetchWithParams("http://localhost:3000/api/signup",  "POST", {
-                "Content-Type": "application/json",
-              })
-            
-             console.log(response);
-         }
+  
         
      } 
 

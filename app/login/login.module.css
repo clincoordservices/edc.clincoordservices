@@ -3,6 +3,11 @@
     width: 100%;
     display: flex;
     margin-top: 25px;
+
+    background: linear-gradient(to right, var(--secondary-color), #ccc);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .containerEmail,
 .containerPassword {
@@ -15,6 +20,10 @@
 }
 .containerFormLoginHeader h2 {
      color: var(--secondary-color);
+}
+.containerEmail input,
+.containerPassword input {
+      text-indent: 10px;
 }
 .containerEmail input,
 .containerPassword input,
@@ -77,4 +86,28 @@
       margin-top: 5px;
       font-size: 10pt;
       color: #ff4500;
+}
+
+.opctionsBottomOfForm  {
+      margin-top: 20px;
+      font-size: 10pt;
+      font-weight: 400;
+}
+.opctionsBottomOfForm  p:hover,
+.opctionsBottomOfForm li:hover{
+      cursor: pointer;
+      text-decoration: underline;
+}
+.opctionsBottomOfForm li {
+     margin-top: 5px;
+}
+.opctionsBottomOfForm ul {
+      list-style: none;
+      margin-left: 10px;
+}
+ .hideListElement{
+   visibility: hidden;
+}
+  .showListElement{
+    visibility: visible;   
 }
