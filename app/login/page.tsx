@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import Link from "next/link";
 import styles from "./login.module.css";
 import {RiErrorWarningLine} from "react-icons/Ri";
-import {safeParseFunction} from "../utils/form_validation/loginValidation";
+import {safeParseFunction, verifyDataType, verifyDataValue} from "../utils/form_validation/loginValidation";
 
 const Login = () => {
     const [toggleElements, setToggleElements] = useState(false);
@@ -20,15 +20,20 @@ const Login = () => {
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
         e.preventDefault();    
         
-        const {email_username, password } = formData;
-        // if(!password) setPasswordlAlertToggle(false);
+        const {password, email_username} = safeParseFunction(formData);
 
-        // if(!email_username) setnameAlertToggle(false);
 
-        // if(!password && !email_username) setFieldAlertToggle(false);
+        if(!verifyDataValue(password) && !(typeof password === "string")) 
+            setPasswordlAlertToggle(false);
 
-        
-        console.log(safeParseFunction(formData))
+        if(!(email_username === undefined) && !(typeof email_username === "string")) 
+            setnameAlertToggle(false);
+
+        if((!(password === undefined) && !(typeof password === "string")) && 
+            (!(email_username === undefined) && !(typeof email_username === "string")))
+             setFieldAlertToggle(false); 
+
+            //  console.log(password, email_username)
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;

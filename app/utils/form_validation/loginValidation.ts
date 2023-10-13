@@ -9,18 +9,21 @@ const LoginSchema = z.object({
     password: z.string().min(6).max(18),
 });
 
-
-
-export const safeParseFunction = function (LoginData: LoginData){
-    const result = LoginSchema.safeParse(LoginData);
+export const safeParseFunction = function (loginData: LoginData){
+    const result = LoginSchema.safeParse(loginData);
     if(!result.success){
-        console.log(result)
-        const [password, email_username] = result.error.issues.map((obj)=> obj.path);
-
+        const {password, email_username} = result.error.format();
         return {password, email_username};
     } else {
              const {data} = result;
              return data;
     }
+}
+
+export const verifyDataValue = function(data: any){
+    return ((data === undefined) && (typeof data === "string"));
+}
+export const verifyDataType = function(data: any){
+    return (typeof data === "string");
 }
 export default LoginSchema;
