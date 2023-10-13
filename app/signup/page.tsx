@@ -7,6 +7,11 @@ import styles from "./signup.module.css";
 
 const Signup = () => {
      const [formData, setFormData] = useState({});
+     const [passwordAlertToggle, setPasswordAlertToggle] = useState();
+     const [first_nameAlertToggle, setFirst_nameAlertToggle ] = useState();
+     const [last_nameAlertToggle, setLast_nameAlertToggle] = useState();
+     const [companyAlertToggle, setCompanyAlertToggle] = useState();
+     const [emailAlertToggle, setEmailAlertToggle] = useState();
 
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
          e.preventDefault();  
@@ -33,9 +38,9 @@ const Signup = () => {
                                 <label htmlFor="first-name">First name</label>
                                 <input type="text" maxLength={20} name="first-name" id="first-name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span> 
-                                        <RiErrorWarningLine />
-                                        Please enter a username or e-mail 
+                                    <span className={`${first_nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                        <span><RiErrorWarningLine /></span> 
+                                        <span>Please enter a username or First-name</span> 
                                     </span> 
                                 </span>
                             </div>
@@ -43,9 +48,9 @@ const Signup = () => {
                                 <label htmlFor="last-name">Last Name</label>
                                 <input type="text" maxLength={20} name="last-name" id="last-name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span> 
-                                        <RiErrorWarningLine />
-                                        Please enter a username or e-mail 
+                                    <span className={`${last_nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                        <span><RiErrorWarningLine /></span> 
+                                        <span>Please enter a username Last Name</span> 
                                     </span> 
                                 </span>
                             </div>
@@ -53,19 +58,19 @@ const Signup = () => {
                                 <label htmlFor="email">E-mail</label>
                                 <input type="email" maxLength={20} name="email" id="email" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span> 
-                                        <RiErrorWarningLine />
-                                        Please enter a username or e-mail 
+                                    <span className={`${emailAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                        <span><RiErrorWarningLine /></span> 
+                                        <span> Please enter a e-mail</span> 
                                     </span> 
                                 </span>
                             </div>
                             <div className={styles.container_company}>
-                                <label htmlFor="company">Company:</label>
+                                <label htmlFor="company">Company</label>
                                 <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm} />
                                 <span className={styles.notificationLoginFormField}>
-                                    <span> 
-                                        <RiErrorWarningLine />
-                                          Please enter a username or e-mail 
+                                    <span className={`${companyAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                        <span><RiErrorWarningLine /></span> 
+                                        <span> Please enter the Company</span> 
                                     </span> 
                                 </span>
                             </div>
@@ -73,9 +78,9 @@ const Signup = () => {
                                 <label htmlFor="password">Password</label>
                                 <input type="text" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span> 
-                                        <RiErrorWarningLine />
-                                        Please enter a username or e-mail 
+                                    <span className={`${passwordAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                        <span><RiErrorWarningLine /></span> 
+                                        <span> Please enter a Password</span> 
                                     </span> 
                                 </span>
                             </div>
