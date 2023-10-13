@@ -23,14 +23,14 @@ const Login = () => {
         const {password, email_username} = safeParseFunction(formData);
 
 
-        if(!verifyDataValue(password) && !(typeof password === "string")) 
+        if(!verifyDataValue(password) && !verifyDataType(password)) 
             setPasswordlAlertToggle(false);
 
-        if(!(email_username === undefined) && !(typeof email_username === "string")) 
+        if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
             setnameAlertToggle(false);
 
-        if((!(password === undefined) && !(typeof password === "string")) && 
-            (!(email_username === undefined) && !(typeof email_username === "string")))
+        if((!verifyDataValue(password) && !verifyDataType(password)) && 
+            (!verifyDataValue(email_username) && !verifyDataType(email_username)))
              setFieldAlertToggle(false); 
 
             //  console.log(password, email_username)

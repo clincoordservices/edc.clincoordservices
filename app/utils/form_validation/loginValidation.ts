@@ -21,7 +21,7 @@ export const safeParseFunction = function (loginData: LoginData){
 }
 
 export const verifyDataValue = function(data: any){
-    return ((data === undefined) && (typeof data === "string"));
+    return (data === undefined);
 }
 export const verifyDataType = function(data: any){
     return (typeof data === "string");
