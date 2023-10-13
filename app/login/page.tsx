@@ -42,17 +42,20 @@ const Login = () => {
                         <legend> <h2>Welcome, please sign in</h2> </legend>
                 </div>
                 <div className={styles.containerFormLoginpBody}>
-                    <div className={styles.notificationLoginFormFieldTop}>
+                    <div className={styles.notificationLoginFormField}>
                         <span className={`${fieldAlertToggle ? styles.hideListElement :styles.showListElement}`}>
-                            <span> <RiErrorWarningLine /> </span>
-                            <span> Authentication failed check your credencials</span>             
+                            <span><RiErrorWarningLine /> </span>
+                            <span>Authentication failed check your credencials</span>             
                         </span>
                     </div>
                     <div className={styles.containerEmail}>
                         <label htmlFor="email_username">Username or E-mail</label>
                         <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
                         <span className={styles.notificationLoginFormField}>
-                            <span className={`${nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> <RiErrorWarningLine />Please enter a username or e-mail </span> 
+                            <span className={`${nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                                <span><RiErrorWarningLine /> </span>
+                                <span>Please enter a username or e-mail</span>
+                            </span> 
                         </span>
                     </div>
                     <div className={styles.containerPassword}>
@@ -60,7 +63,8 @@ const Login = () => {
                         <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${passwordAlertToggle ? styles.hideListElement :styles.showListElement}`}>
-                                 <RiErrorWarningLine />  Please enter a password
+                                 <span><RiErrorWarningLine /> </span> 
+                                 <span>Please enter a password</span> 
                             </span> 
                         </span>
                     </div>

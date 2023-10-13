@@ -65,7 +65,7 @@ const Signup = () => {
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
-                                        Please enter a username or e-mail 
+                                          Please enter a username or e-mail 
                                     </span> 
                                 </span>
                             </div>
