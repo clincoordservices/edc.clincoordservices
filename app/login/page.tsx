@@ -1,8 +1,9 @@
 "use client"
 import React, {useState} from "react";
-import styles from "./login.module.css"
 import Link from "next/link";
-import {RiErrorWarningLine} from "react-icons/Ri"
+import styles from "./login.module.css";
+import {RiErrorWarningLine} from "react-icons/Ri";
+import {safeParseFunction} from "../utils/form_validation/loginValidation";
 
 const Login = () => {
     const [toggleElements, setToggleElements] = useState(false);
@@ -20,11 +21,14 @@ const Login = () => {
         e.preventDefault();    
         
         const {email_username, password } = formData;
-        if(!password) setPasswordlAlertToggle(false);
+        // if(!password) setPasswordlAlertToggle(false);
 
-        if(!email_username) setnameAlertToggle(false);
+        // if(!email_username) setnameAlertToggle(false);
 
-        if(!password && !email_username) setFieldAlertToggle(false);
+        // if(!password && !email_username) setFieldAlertToggle(false);
+
+        
+        console.log(safeParseFunction(formData))
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
