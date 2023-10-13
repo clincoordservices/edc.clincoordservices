@@ -11,7 +11,6 @@ const Login = () => {
     const [passwordAlertToggle, setPasswordlAlertToggle] = useState(true);
     const [fieldAlertToggle, setFieldAlertToggle] = useState(true);
      
-
     
     const handlerOnclickHideListElement = () => {
         setToggleElements(!toggleElements);
@@ -21,15 +20,14 @@ const Login = () => {
         e.preventDefault();    
         
         const {email_username, password } = formData;
-
         if(!password) setPasswordlAlertToggle(false);
+
         if(!email_username) setnameAlertToggle(false);
 
         if(!password && !email_username) setFieldAlertToggle(false);
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
-
         setFormData((prevState) => ({
           ...prevState,
           [element.name]: element.value
@@ -74,7 +72,6 @@ const Login = () => {
                 <p onClick={handlerOnclickHideListElement}>Password Manager and Addicional Options</p>
                 <ul className={toggleElements ? styles.showListElement : styles.hideListElement}>
                     <li><Link href="#">Password Manager</Link></li>
-                    <li><Link href="#">Signin with Jasen Identity</Link></li>
                     <li><Link href="#">Contact Us</Link></li>
                 </ul>
             </div>              

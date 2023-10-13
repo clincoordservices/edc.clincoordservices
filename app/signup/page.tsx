@@ -31,7 +31,7 @@ const Signup = () => {
                      <div className={styles.containerFormSignupBody}>
                             <div className={styles.container_firstname}>
                                 <label htmlFor="first-name">First name</label>
-                                <input type="text" maxLength={20} name="first-name" id="first-name" onChange={getDataOnForm}  required/>
+                                <input type="text" maxLength={20} name="first-name" id="first-name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
@@ -41,7 +41,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_lastName}>
                                 <label htmlFor="last-name">Last Name</label>
-                                <input type="text" maxLength={20} name="last-name" id="last-name" onChange={getDataOnForm}  required/>
+                                <input type="text" maxLength={20} name="last-name" id="last-name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
@@ -51,7 +51,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_email} >
                                 <label htmlFor="email">E-mail</label>
-                                <input type="email" maxLength={20} name="email" id="email" onChange={getDataOnForm} required/>
+                                <input type="email" maxLength={20} name="email" id="email" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
@@ -61,7 +61,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_company}>
                                 <label htmlFor="company">Company:</label>
-                                <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm}  required/>
+                                <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm} />
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
@@ -71,7 +71,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_password}>
                                 <label htmlFor="password">Password</label>
-                                <input type="text" maxLength={20} name="password" id="password" onChange={getDataOnForm}  required/>
+                                <input type="text" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span> 
                                         <RiErrorWarningLine />
@@ -79,10 +79,6 @@ const Signup = () => {
                                     </span> 
                                 </span>
                             </div>
-                            {/* <div className={styles.container_password}>
-                                <label htmlFor="confirm-password">Confirm Password</label>
-                                <input type="text" maxLength={20} name="confirm-password" id="confirm-password" onChange={getDataOnForm}  required/>
-                            </div> */}
                             <div className={styles.containerButton}>
                                 <button  type="submit">Create Account</button>
                             </div>
