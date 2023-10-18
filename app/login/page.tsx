@@ -7,7 +7,7 @@ import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
 import { verifyDataType, verifyDataValue} from "../utils/functions/function";
 
 const Login = () => {
-    const [toggleElements, setToggleElements] = useState(false);
+    const [toggleElements, setToggleElements] = useState(true);
     const [formData, setFormData] = useState({password:"", email_username:""});
     const [nameAlertToggle, setnameAlertToggle] = useState(true);
     const [passwordAlertToggle, setPasswordlAlertToggle] = useState(true);
@@ -23,17 +23,16 @@ const Login = () => {
         
         const {password, email_username} = safeParseFunctionLogin(formData);
 
-         if(password && email_username){
-             if(!verifyDataValue(password) && !verifyDataType(password)) 
-                 setPasswordlAlertToggle(false);
-     
-             if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
-                 setnameAlertToggle(false);
-     
-             if((!verifyDataValue(password) && !verifyDataType(password)) && 
-                 (!verifyDataValue(email_username) && !verifyDataType(email_username)))
-                  setFieldAlertToggle(false); 
-         }
+
+        if(!verifyDataValue(password) && !verifyDataType(password)) 
+            setPasswordlAlertToggle(false);
+
+        if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
+            setnameAlertToggle(false);
+
+        if((!verifyDataValue(password) && !verifyDataType(password)) && 
+            (!verifyDataValue(email_username) && !verifyDataType(email_username)))
+             setFieldAlertToggle(false); 
 
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
