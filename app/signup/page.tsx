@@ -4,6 +4,7 @@ import Link from "next/link";
 import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
 import styles from "./signup.module.css";
+import { verifyDataType, verifyDataValue } from "../utils/functions/function";
 
 const Signup = () => {
      const [formData, setFormData] = useState({first_name: '', last_name: '', company: '', email: '', password: ''});
@@ -15,8 +16,22 @@ const Signup = () => {
 
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
          e.preventDefault();  
-        const exe= safeParseFunctionSignup(formData);
-        console.log(exe)
+         const {first_name, last_name, company, email, password} = safeParseFunctionSignup(formData);
+
+         if(!verifyDataValue(first_name) && !verifyDataType(first_name)) 
+            setFirst_nameAlertToggle(false);
+
+         if(!verifyDataValue(last_name) && !verifyDataType(last_name)) 
+            setLast_nameAlertToggle(false);
+
+         if(!verifyDataValue(email) && !verifyDataType(email)) 
+            setEmailAlertToggle(false);
+
+         if(!verifyDataValue(company) && !verifyDataType(company)) 
+            setCompanyAlertToggle(false);
+
+         if(!verifyDataValue(password) && !verifyDataType(password)) 
+            setPasswordAlertToggle(false);
      } 
 
      const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {

@@ -23,16 +23,17 @@ const Login = () => {
         
         const {password, email_username} = safeParseFunctionLogin(formData);
 
-
-        if(!verifyDataValue(password) && !verifyDataType(password)) 
-            setPasswordlAlertToggle(false);
-
-        if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
-            setnameAlertToggle(false);
-
-        if((!verifyDataValue(password) && !verifyDataType(password)) && 
-            (!verifyDataValue(email_username) && !verifyDataType(email_username)))
-             setFieldAlertToggle(false); 
+         if(password && email_username){
+             if(!verifyDataValue(password) && !verifyDataType(password)) 
+                 setPasswordlAlertToggle(false);
+     
+             if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
+                 setnameAlertToggle(false);
+     
+             if((!verifyDataValue(password) && !verifyDataType(password)) && 
+                 (!verifyDataValue(email_username) && !verifyDataType(email_username)))
+                  setFieldAlertToggle(false); 
+         }
 
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
@@ -83,7 +84,7 @@ const Login = () => {
                 </div>
             <div className={styles.opctionsBottomOfForm}> 
                 <p onClick={handlerOnclickHideListElement}>Password Manager and Addicional Options</p>
-                <ul className={toggleElements ? styles.showListElement : styles.hideListElement}>
+                <ul className={toggleElements ? "hideListElement" : "showListElement"}>
                     <li><Link href="#">Password Manager</Link></li>
                     <li><Link href="#">Contact Us</Link></li>
                 </ul>
