@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import Link from "next/link";
 import styles from "./login.module.css";
 import {RiErrorWarningLine} from "react-icons/Ri";
-import {safeParseFunction, verifyDataType, verifyDataValue} from "../utils/form_validation/loginValidation";
+import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
+import { verifyDataType, verifyDataValue} from "../utils/functions/function";
 
 const Login = () => {
     const [toggleElements, setToggleElements] = useState(false);
@@ -20,7 +21,7 @@ const Login = () => {
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
         e.preventDefault();    
         
-        const {password, email_username} = safeParseFunction(formData);
+        const {password, email_username} = safeParseFunctionLogin(formData);
 
 
         if(!verifyDataValue(password) && !verifyDataType(password)) 
@@ -33,7 +34,6 @@ const Login = () => {
             (!verifyDataValue(email_username) && !verifyDataType(email_username)))
              setFieldAlertToggle(false); 
 
-            //  console.log(password, email_username)
     } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
@@ -52,7 +52,7 @@ const Login = () => {
                 </div>
                 <div className={styles.containerFormLoginpBody}>
                     <div className={styles.notificationLoginFormField}>
-                        <span className={`${fieldAlertToggle ? styles.hideListElement :styles.showListElement}`}>
+                        <span className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}`}>
                             <span><RiErrorWarningLine /> </span>
                             <span>Authentication failed check your credencials</span>             
                         </span>
@@ -61,7 +61,7 @@ const Login = () => {
                         <label htmlFor="email_username">Username or E-mail</label>
                         <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
                         <span className={styles.notificationLoginFormField}>
-                            <span className={`${nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
+                            <span className={`${nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
                                 <span><RiErrorWarningLine /> </span>
                                 <span>Please enter a username or e-mail</span>
                             </span> 
@@ -71,7 +71,7 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password"/>
                         <span className={styles.notificationLoginFormField}>
-                            <span className={`${passwordAlertToggle ? styles.hideListElement :styles.showListElement}`}>
+                            <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}>
                                  <span><RiErrorWarningLine /> </span> 
                                  <span>Please enter a password</span> 
                             </span> 

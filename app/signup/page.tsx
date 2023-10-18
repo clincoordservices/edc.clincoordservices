@@ -1,20 +1,22 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-import {RiErrorWarningLine} from "react-icons/Ri"
-// import fetchWithParams from "../assets/fetchData/fetch";
+import {RiErrorWarningLine} from "react-icons/Ri";
+import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
 import styles from "./signup.module.css";
 
 const Signup = () => {
-     const [formData, setFormData] = useState({});
-     const [passwordAlertToggle, setPasswordAlertToggle] = useState();
-     const [first_nameAlertToggle, setFirst_nameAlertToggle ] = useState();
-     const [last_nameAlertToggle, setLast_nameAlertToggle] = useState();
-     const [companyAlertToggle, setCompanyAlertToggle] = useState();
-     const [emailAlertToggle, setEmailAlertToggle] = useState();
+     const [formData, setFormData] = useState({first_name: '', last_name: '', company: '', email: '', password: ''});
+     const [passwordAlertToggle, setPasswordAlertToggle] = useState(true);
+     const [first_nameAlertToggle, setFirst_nameAlertToggle ] = useState(true);
+     const [last_nameAlertToggle, setLast_nameAlertToggle] = useState(true);
+     const [companyAlertToggle, setCompanyAlertToggle] = useState(true);
+     const [emailAlertToggle, setEmailAlertToggle] = useState(true);
 
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
          e.preventDefault();  
+        const exe= safeParseFunctionSignup(formData);
+        console.log(exe)
      } 
 
      const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
@@ -35,31 +37,31 @@ const Signup = () => {
                      </div>
                      <div className={styles.containerFormSignupBody}>
                             <div className={styles.container_firstname}>
-                                <label htmlFor="first-name">First name</label>
-                                <input type="text" maxLength={20} name="first-name" id="first-name" onChange={getDataOnForm}/>
+                                <label htmlFor="first_name">First name</label>
+                                <input type="text" maxLength={20} name="first_name" id="first_name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span className={`${first_nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
-                                        <span><RiErrorWarningLine /></span> 
+                                    <span className={`${first_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                                        <span><RiErrorWarningLine /> </span> 
                                         <span>Please enter a username or First-name</span> 
                                     </span> 
                                 </span>
                             </div>
                             <div className={styles.container_lastName}>
-                                <label htmlFor="last-name">Last Name</label>
-                                <input type="text" maxLength={20} name="last-name" id="last-name" onChange={getDataOnForm}/>
+                                <label htmlFor="last_name">Last Name</label>
+                                <input type="text" maxLength={20} name="last_name" id="last_name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span className={`${last_nameAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
-                                        <span><RiErrorWarningLine /></span> 
+                                    <span className={`${last_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                                        <span><RiErrorWarningLine /> </span> 
                                         <span>Please enter a username Last Name</span> 
                                     </span> 
                                 </span>
                             </div>
                             <div className={styles.container_email} >
                                 <label htmlFor="email">E-mail</label>
-                                <input type="email" maxLength={20} name="email" id="email" onChange={getDataOnForm}/>
+                                <input type="email" maxLength={60} name="email" id="email" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span className={`${emailAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
-                                        <span><RiErrorWarningLine /></span> 
+                                    <span className={`${emailAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                                        <span><RiErrorWarningLine /> </span> 
                                         <span> Please enter a e-mail</span> 
                                     </span> 
                                 </span>
@@ -68,18 +70,18 @@ const Signup = () => {
                                 <label htmlFor="company">Company</label>
                                 <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm} />
                                 <span className={styles.notificationLoginFormField}>
-                                    <span className={`${companyAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
-                                        <span><RiErrorWarningLine /></span> 
+                                    <span className={`${companyAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                                        <span><RiErrorWarningLine /> </span> 
                                         <span> Please enter the Company</span> 
                                     </span> 
                                 </span>
                             </div>
                             <div className={styles.container_password}>
                                 <label htmlFor="password">Password</label>
-                                <input type="text" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
+                                <input type="password" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
-                                    <span className={`${passwordAlertToggle ? styles.hideListElement :styles.showListElement}`}> 
-                                        <span><RiErrorWarningLine /></span> 
+                                    <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                                        <span><RiErrorWarningLine /> </span> 
                                         <span> Please enter a Password</span> 
                                     </span> 
                                 </span>

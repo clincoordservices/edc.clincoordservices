@@ -93,12 +93,7 @@
       list-style: none;
       margin-left: 10px;
 }
- .hideListElement{
-   visibility: hidden;
-}
-  .showListElement{
-    visibility: visible;   
-}
+
 
 /* RESPONSIBLE SIZE*/
 
