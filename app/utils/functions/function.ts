@@ -1,8 +1,7 @@
  const verifyDataValue = function(data: any){
-    return (data === undefined);
+    return (data !== undefined && data !== Object);
 }
 const verifyDataType = function(data: any){
-    return (typeof data === "string");
+    return (typeof data !== "string");
 }
-
 export {verifyDataType, verifyDataValue};

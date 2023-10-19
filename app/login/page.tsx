@@ -5,6 +5,7 @@ import styles from "./login.module.css";
 import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
 import { verifyDataType, verifyDataValue} from "../utils/functions/function";
+import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
     const [toggleElements, setToggleElements] = useState(true);
@@ -22,24 +23,29 @@ const Login = () => {
         e.preventDefault();    
         
         const {password, email_username} = safeParseFunctionLogin(formData);
+        const allFieldsValid = verifyDataValue(password) && verifyDataValue(email_username);
 
+        if(allFieldsValid){
+            if(verifyDataValue(password) && verifyDataType(password)) 
+                setPasswordlAlertToggle(false);
 
-        if(!verifyDataValue(password) && !verifyDataType(password)) 
-            setPasswordlAlertToggle(false);
+            if(verifyDataValue(email_username) && verifyDataType(email_username)) 
+                setnameAlertToggle(false);
 
-        if(!verifyDataValue(email_username) && !verifyDataType(email_username)) 
-            setnameAlertToggle(false);
+            if((verifyDataValue(password) && verifyDataType(password)) && 
+                (verifyDataValue(email_username) && verifyDataType(email_username)))
+                setFieldAlertToggle(false);
+        } else {
+                // const response = await fetchWithParams("http://localhost:3000/api/login", "POST", JSON.stringify({password, email_username}))
+                // const body = await response.json();
+        }
+    }
 
-        if((!verifyDataValue(password) && !verifyDataType(password)) && 
-            (!verifyDataValue(email_username) && !verifyDataType(email_username)))
-             setFieldAlertToggle(false); 
-
-    } 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
         setFormData((prevState) => ({
           ...prevState,
-          [element.name]: element.value
+          [element.name]: element.value+"".trim()
         }));
      }
 
@@ -58,7 +64,7 @@ const Login = () => {
                         </span>
                     </div>
                     <div className={styles.containerEmail}>
-                        <label htmlFor="email_username">Username or E-mail</label>
+                        <label htmlFor="email_username">E-mail</label>
                         <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
@@ -84,8 +90,9 @@ const Login = () => {
             <div className={styles.opctionsBottomOfForm}> 
                 <p onClick={handlerOnclickHideListElement}>Password Manager and Addicional Options</p>
                 <ul className={toggleElements ? "hideListElement" : "showListElement"}>
-                    <li><Link href="#">Password Manager</Link></li>
-                    <li><Link href="#">Contact Us</Link></li>
+                    <li><Link href="/contactus">Contact Us</Link></li>
+                    <li><Link href="/forgetpassword">Forgot Password</Link></li>
+                    <li><Link href="/verifyaccount">Check if you have an account If you have an account</Link></li>
                 </ul>
             </div>              
         </form>

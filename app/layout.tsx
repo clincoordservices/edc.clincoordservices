@@ -1,12 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from './components/header/page';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ClinCoord eDC',
+  title: 'ClinCoord EDC',
   description: 'ClinCoord Services (CCS) is a Site Management Organization (SMO) based in California with nationwide and international presence. We are the first SMO that focuses primarily on supporting medical institutions and principal investigators serving underrepresented patients/study populations.',
 }
 

@@ -1,0 +1,114 @@
+.mainContent {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:#f7f7ff;
+    
+}
+.mainContent header {
+    width: 80%;
+    height: 60px;
+    background:  var(--secondary-color);
+    margin: 5px auto;
+    border-radius: 2px;
+}
+.mainContent header span {
+    float: right;
+    background-color: #f7f7ff;
+    padding: .5rem;
+    border-radius: 0.3rem;
+    margin: 10px 15px 0 0;
+    font-size: 10pt;
+    font-size:medium;
+}
+.mainContent header span:hover {
+        color: var(--secondary-color);
+}
+.mainBody {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+.contactInfo {
+     display: flex;
+     width: 100%;
+     justify-content: space-around;
+     margin: 15px 0 0 0;
+}
+.contactInfo div {
+     display: flex;
+     margin-right: 1.5rem;
+}
+
+.containerFormContactUsHeader h2 {
+    color: var(--secondary-color);
+}
+.containerFormContactUsHeader  {
+    
+}
+.containerFormContactUs {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.containerFormContactUsBody input,
+.containerFormContactUsBody input,
+.containerFormContactUsBody button, 
+.containerFormContactUsBody textarea {
+     width: 400px;
+     height: 40px;
+     border-radius: 0.375rem;
+     border: 1px solid rgba(26,28,30,.2);
+     font-size: 12pt;
+     color: #111111;
+     outline: none;
+}
+.containerFormContactUsBody textarea { 
+    height: unset;
+    resize: none;
+    padding: 5px;
+}
+.containerFormContactUsBody input:focus,
+.containerFormContactUsBody input:focus {
+     border: 2px solid var(--primary-color);
+}
+.containerFormContactUsBody div input,
+.containerFormContactUsBody div textarea {
+    text-indent: 10px;
+}
+.containerFormContactUsBody label,
+.containerButton button {
+    margin: 5px 0;
+    font-size: 11pt;
+}
+.containerFormContactUsBody div {
+     display: flex;
+     flex-direction: column;
+}
+.containerFormContactUsBody button {
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 5px;
+}
+.containerFormContactUsBody button:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    opacity: .8;
+}
+.notificationContactUsFormField {
+    margin-top: 5px;
+    font-size: 10pt;
+    color: #ff4500;
+}
+.notificationContactUsFormField  {
+    color: #ff4500;
+    margin: 1px 3px  0 0;
+    padding: 5px;
+}

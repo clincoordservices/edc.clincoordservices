@@ -5,6 +5,7 @@ import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
 import styles from "./signup.module.css";
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
+import fetchWithParams from "../utils/fetchData/fetch";
 
 const Signup = () => {
      const [formData, setFormData] = useState({first_name: '', last_name: '', company: '', email: '', password: ''});
@@ -16,22 +17,33 @@ const Signup = () => {
 
      const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
          e.preventDefault();  
+
          const {first_name, last_name, company, email, password} = safeParseFunctionSignup(formData);
+         const allFieldsValid = verifyDataValue(first_name,) || verifyDataValue(last_name) 
+                                || verifyDataValue(company) || verifyDataValue(email) || verifyDataValue(password);
 
-         if(!verifyDataValue(first_name) && !verifyDataType(first_name)) 
-            setFirst_nameAlertToggle(false);
+             if(allFieldsValid){
+                 if(verifyDataValue(first_name) && verifyDataType(first_name)) 
+                     setFirst_nameAlertToggle(false);
+         
+                 if(verifyDataValue(last_name) && verifyDataType(last_name)) 
+                     setLast_nameAlertToggle(false);
+         
+                 if(verifyDataValue(email) && verifyDataType(email)) 
+                     setEmailAlertToggle(false);
+         
+                 if(verifyDataValue(company) && verifyDataType(company)) 
+                     setCompanyAlertToggle(false);
+         
+                 if(verifyDataValue(password) && verifyDataType(password)) 
+                     setPasswordAlertToggle(false);   
+             } 
+    
+            const response = await fetchWithParams("http://localhost:3000/api/signup", "POST", JSON.stringify({first_name, last_name, company, email, password}))
+            const body = await response.json();
+    
 
-         if(!verifyDataValue(last_name) && !verifyDataType(last_name)) 
-            setLast_nameAlertToggle(false);
-
-         if(!verifyDataValue(email) && !verifyDataType(email)) 
-            setEmailAlertToggle(false);
-
-         if(!verifyDataValue(company) && !verifyDataType(company)) 
-            setCompanyAlertToggle(false);
-
-         if(!verifyDataValue(password) && !verifyDataType(password)) 
-            setPasswordAlertToggle(false);
+ 
      } 
 
      const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
@@ -39,7 +51,7 @@ const Signup = () => {
 
         setFormData((prevState) => ({
           ...prevState,
-          [element.name]: element.value
+          [element.name]: element.value+"".trim()
         }));
      }
 
