@@ -78,7 +78,7 @@ const ContactUs = () => {
         <form  onSubmit={submitHandler} method="post" className={styles.containerFormContactUs}>
             <div className={styles.containerFormContactUsHeader}>
                 <legend> <h2>Get in touch </h2> </legend>
-            </div>
+            </div>       
             <div className={styles.containerFormContactUsBody}>
                 <div className={styles.container_firstname}>
                     <label htmlFor="first_name">First name</label>
@@ -117,7 +117,7 @@ const ContactUs = () => {
                     <span className={styles.notificationContactUsFormField}>
                         <span className={`${companyAlertToggle ? "hideListElement" : "showListElement"}`}> 
                             <span><RiErrorWarningLine /> </span> 
-                            <span> Please enter the Company</span> 
+                            <span> Please enter your Company</span> 
                         </span> 
                     </span>
                 </div>

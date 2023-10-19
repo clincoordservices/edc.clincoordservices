@@ -42,20 +42,22 @@
      display: flex;
      margin-right: 1.5rem;
 }
-
-.containerFormContactUsHeader h2 {
-    color: var(--secondary-color);
-}
-.containerFormContactUsHeader  {
-    
-}
 .containerFormContactUs {
     width: 100%; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-top: 2rem;
+}
+.containerFormContactUsHeader h2 {
+    color: var(--secondary-color);
+}
+.containerFormContactUsHeader {
+    width: 400px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(26,28,30,.1);
 }
 .containerFormContactUsBody input,
 .containerFormContactUsBody input,
@@ -102,12 +104,12 @@
     cursor: pointer;
     opacity: .8;
 }
+.notificationContactUsFormField span  {
+        background-color: red;
+}
 .notificationContactUsFormField {
     margin-top: 5px;
     font-size: 10pt;
-    color: #ff4500;
-}
-.notificationContactUsFormField  {
     color: #ff4500;
     margin: 1px 3px  0 0;
     padding: 5px;
