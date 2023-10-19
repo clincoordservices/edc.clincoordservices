@@ -7,15 +7,13 @@ export type SignupData = {
     company: string,
     password: string
 }
-
 const SignupSchema = object({
     first_name: string().min(2).max(10),
     last_name:  string().min(2).max(10),
     email: string().email().max(60),
     company: string().min(2).max(20),
-    password: string().min(6).max(10),
+    password: string().min(6).max(20),
 });
-
 export const safeParseFunctionSignup = function (signupData: SignupData){
     const result = SignupSchema.safeParse(signupData);
     if(!result.success){
@@ -26,5 +24,4 @@ export const safeParseFunctionSignup = function (signupData: SignupData){
              return data;
     }
 }
-
 export default safeParseFunctionSignup;

@@ -5,25 +5,24 @@ import {RiErrorWarningLine} from "react-icons/Ri";
 import {BsFillTelephoneFill} from "react-icons/bs";
 import {MdLocationOn} from "react-icons/md";
 import {SiMinutemailer} from "react-icons/si";
-import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
-import styles from "./contactus.module.css";
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
-import fetchWithParams from "../utils/fetchData/fetch";
+import safeParseFunctionContactUs from "../utils/form_validation/formValidation";
+import styles from "./contactus.module.css";
 
 const ContactUs = () => {
-    const [formData, setFormData] = useState({first_name: '', last_name: '', company: '', email: '', password: ''});
-    const [passwordAlertToggle, setPasswordAlertToggle] = useState(true);
+    const [formData, setFormData] = useState({first_name: '', last_name: '', message: '', subject: ''});
     const [first_nameAlertToggle, setFirst_nameAlertToggle ] = useState(true);
     const [last_nameAlertToggle, setLast_nameAlertToggle] = useState(true);
-    const [companyAlertToggle, setCompanyAlertToggle] = useState(true);
-    const [emailAlertToggle, setEmailAlertToggle] = useState(true);
+    const [messageAlertToggle, setMessageAlertToggle] = useState(true);
+    const [subjectlAlertToggle, setSubjectlAlertToggle] = useState(true);
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
         e.preventDefault();  
 
-        const {first_name, last_name, company, email, password} = safeParseFunctionSignup(formData);
+        const {first_name, last_name, message, subject} = safeParseFunctionContactUs(formData);
+
         const allFieldsValid = verifyDataValue(first_name,) || verifyDataValue(last_name) 
-                               || verifyDataValue(company) || verifyDataValue(email) || verifyDataValue(password);
+                               || verifyDataValue(subject) || verifyDataValue(message);
 
             if(allFieldsValid){
                 if(verifyDataValue(first_name) && verifyDataType(first_name)) 
@@ -32,14 +31,11 @@ const ContactUs = () => {
                 if(verifyDataValue(last_name) && verifyDataType(last_name)) 
                     setLast_nameAlertToggle(false);
         
-                if(verifyDataValue(email) && verifyDataType(email)) 
-                    setEmailAlertToggle(false);
+                if(verifyDataValue(subject) && verifyDataType(subject)) 
+                setSubjectlAlertToggle(false);
         
-                if(verifyDataValue(company) && verifyDataType(company)) 
-                    setCompanyAlertToggle(false);
-        
-                if(verifyDataValue(password) && verifyDataType(password)) 
-                    setPasswordAlertToggle(false);   
+                if(verifyDataValue(message) && verifyDataType(message)) 
+                    setMessageAlertToggle(false);  
             } 
 
     } 
@@ -49,7 +45,7 @@ const ContactUs = () => {
 
        setFormData((prevState) => ({
          ...prevState,
-         [element.name]: element.value+"".trim()
+         [element.name]: element.value
        }));
     }
   
@@ -63,17 +59,25 @@ const ContactUs = () => {
     <section className={styles.mainBody}>
         <article className={styles.contactInfo}>
             <div>
-                <span><BsFillTelephoneFill/> </span>
+                <span><BsFillTelephoneFill className={styles.iconContactInfo} /> </span>
                 <span> Main Line: +1 (916) 844 2959</span> 
             </div>
-            <div>
-                <span><MdLocationOn/> </span>
-                <span> <p>California, USA 3400 Cottage Way, STE G2 <br/>Sacramento, CA 95825</p></span> 
-            </div>
-            <div>
-                <span><SiMinutemailer/> </span>
-                <span> Send us E-mail</span>
-            </div>
+            
+            <Link href="#">
+                <div>
+                    <span><MdLocationOn className={styles.iconContactInfo}/> </span>
+                    <span> <p>California, USA 3400 Cottage Way, STE G2 <br/>Sacramento, CA 95825</p></span> 
+                </div>
+            </Link>
+         
+            
+            <Link href="#">
+                <div>
+                    <span><SiMinutemailer className={styles.iconContactInfo}/> </span>
+                    <span> Send us E-mail</span>
+                 </div>
+            </Link>
+            
         </article>
         <form  onSubmit={submitHandler} method="post" className={styles.containerFormContactUs}>
             <div className={styles.containerFormContactUsHeader}>
@@ -100,24 +104,24 @@ const ContactUs = () => {
                         </span> 
                     </span>
                 </div>
-                <div className={styles.container_email} >
+                <div className={styles.container_subject} >
                     <label htmlFor="subject">Subject</label>
                     <input type="subject" maxLength={60} name="subject" id="subject" onChange={getDataOnForm}/>
                     <span className={styles.notificationContactUsFormField}>
-                        <span className={`${emailAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                        <span className={`${subjectlAlertToggle ? "hideListElement" : "showListElement"}`}> 
                             <span><RiErrorWarningLine /> </span> 
                             <span> Please enter your Subject</span> 
                         </span> 
                     </span>
                 </div>
-                <div className={styles.container_company}>
+                <div className={styles.container_message}>
                     <label htmlFor="message">Message</label>
                     <textarea rows={8} name="message" id="message">
                     </textarea>
                     <span className={styles.notificationContactUsFormField}>
-                        <span className={`${companyAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                            <span><RiErrorWarningLine /> </span> 
-                            <span> Please enter your Company</span> 
+                        <span className={`${messageAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                            <span><RiErrorWarningLine/> </span> 
+                            <span> Please enter your Message</span> 
                         </span> 
                     </span>
                 </div>
