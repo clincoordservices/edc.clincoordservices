@@ -58,10 +58,12 @@ const ContactUs = () => {
         </header>
     <section className={styles.mainBody}>
         <article className={styles.contactInfo}>
-            <div>
-                <span><BsFillTelephoneFill className={styles.iconContactInfo} /> </span>
-                <span> Main Line: +1 (916) 844 2959</span> 
-            </div>
+            <Link href="#">
+                <div>
+                    <span><BsFillTelephoneFill className={styles.iconContactInfo} /> </span>
+                    <span> Main Line: +1 (916) 844 2959</span> 
+                </div>
+            </Link>
             
             <Link href="#">
                 <div>
@@ -69,8 +71,6 @@ const ContactUs = () => {
                     <span> <p>California, USA 3400 Cottage Way, STE G2 <br/>Sacramento, CA 95825</p></span> 
                 </div>
             </Link>
-         
-            
             <Link href="#">
                 <div>
                     <span><SiMinutemailer className={styles.iconContactInfo}/> </span>

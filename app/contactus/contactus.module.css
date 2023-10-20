@@ -27,15 +27,14 @@
 }
 .mainBody {
      display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
+    
 }
 .contactInfo {
-     display: flex;
-     width: 100%;
-     justify-content: space-around;
-     margin: 15px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+    background-color: red;
 }
 .contactInfo div {
      display: flex;
@@ -48,11 +47,10 @@
      height: 90px;
      padding: 10px;
      font-size: 10pt;
-     margin-left: 10px;
      display: flex;
      flex-direction: column;
-     flex-wrap: wrap;
-     align-items: center;   
+     /* flex-wrap: wrap;
+     align-items: center;    */
 }
 .containerFormContactUs {
     width: 100%; 
@@ -63,13 +61,15 @@
 }
 .containerFormContactUsHeader h2 {
     color: var(--secondary-color);
+    border-bottom: 1px solid rgba(26,28,30,.1);
+    border-radius: 0.3rem;
+    padding: 5px;
+    text-indent: 5px;
 }
 .containerFormContactUsHeader {
     width: 400px;
     height: 40px;
-    padding: 5px;
-    border-radius: 0.3rem;
-    border: 1px solid rgba(26,28,30,.1);
+    margin-bottom: 15px;
 }
 
 .iconContactInfo {
@@ -90,7 +90,7 @@
 .containerFormContactUsBody textarea { 
     height: unset;
     resize: none;
-    padding: 1px;
+    padding: 2px;
 }
 .containerFormContactUsBody textarea:focus {
     border: 1px solid var(--primary-color);
@@ -129,7 +129,7 @@
     margin: 1px 3px  0 0;
     padding: 5px;
 }
-@media screen and (max-width: 1180px) {
+/* @media screen and (max-width: 1180px) {
     .mainContent header {
         width: 97%;
     }
@@ -160,15 +160,32 @@
     }
 }
 @media screen and (max-width: 550px) {
+    .mainContent {
+        width: 100%;
+    }
     .mainContent header {
         width: 100%;
         margin: 0;
         height: 70px;
     }
+    .mainBody {
+         width: 100%;
+    }
     .contactInfo {
+         width: 100%;
         display: grid;
         grid-template-columns: 1fr ;
+        place-items: center;
         row-gap: 10px;
+    }
+
+    .contactInfo a {
+       background-color: red;
+       width: 100%;
+    }
+    .contactInfo a div{
+       background-color: blue;
+       width: 80%;
     }
     .containerButton button {
         margin: 0;
@@ -177,4 +194,18 @@
     .container_message {
         margin: 0;
     }
-}
+    .containerFormContactUs {
+         width: 80%;
+    }
+    .containerFormContactUsHeader {
+        width: 100%;
+    }
+    .containerFormContactUsBody  {
+        width: 90%;
+    }
+    .containerFormContactUsBody input,
+    .containerFormContactUsBody textarea,
+    .containerFormContactUsBody button {
+        width: 100%;
+    }
+} */
