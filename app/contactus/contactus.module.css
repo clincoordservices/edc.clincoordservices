@@ -26,22 +26,24 @@
     color: var(--secondary-color);
 }
 .mainBody {
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    column-gap: 15px;
+    justify-content: center;
+    margin-top: 3rem;
 }
 .contactInfo {
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
+    row-gap: 20px;
     justify-content: center;
-    border-right: 1px solid var(--primary-color); ;
+    height: fit-content;
 }
 .contactInfo div {
      display: flex;
      margin-right: 1.5rem;
-     border: 1px solid rgba(26,28,30,.1);
+     border: 1px solid var(--primary-color); 
      background-color: rgba(26,28,30,.1);
      color: #111111;
      border-radius: 10px;
@@ -51,11 +53,10 @@
      font-size: 10pt;
      display: flex;
      flex-direction: column;
-     /* flex-wrap: wrap;
-     align-items: center;    */
+     place-content: center;
 }
 .containerFormContactUs {
-    width: 100%; 
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,83 +132,67 @@
     margin: 1px 3px  0 0;
     padding: 5px;
 }
-/* @media screen and (max-width: 1180px) {
+ @media screen and (max-width: 1010px) {
     .mainContent header {
-        width: 97%;
-    }
-}
-@media screen and (max-width: 1060px) {
-    .containerFormContactUsBody input,
-    .containerFormContactUsBody button, 
-    .containerFormContactUsBody textarea,
-    .containerFormContactUsHeader  {
-        width: 20rem;
-        height: 35px;
-    }
-    .containerFormContactUsBody textarea {
-        height: unset;
-    }
-    .contactInfo div {
-        width: 15rem;   
-   }
-}
-@media screen and (max-width: 815px) {
-    .contactInfo {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 15px;
-    }
-    .containerFormContactUsBody textarea {
-        height: 100px;
-    }
-}
-@media screen and (max-width: 550px) {
-    .mainContent {
-        width: 100%;
-    }
-    .mainContent header {
-        width: 100%;
-        margin: 0;
-        height: 70px;
-    }
-    .mainBody {
-         width: 100%;
-    }
-    .contactInfo {
-         width: 100%;
-        display: grid;
-        grid-template-columns: 1fr ;
-        place-items: center;
-        row-gap: 10px;
-    }
-
-    .contactInfo a {
-       background-color: red;
-       width: 100%;
-    }
-    .contactInfo a div{
-       background-color: blue;
-       width: 80%;
-    }
-    .containerButton button {
-        margin: 0;
-        font-size: 10pt;
-    }
-    .container_message {
-        margin: 0;
-    }
-    .containerFormContactUs {
-         width: 80%;
-    }
-    .containerFormContactUsHeader {
-        width: 100%;
-    }
-    .containerFormContactUsBody  {
         width: 90%;
     }
-    .containerFormContactUsBody input,
-    .containerFormContactUsBody textarea,
-    .containerFormContactUsBody button {
+}
+ @media screen and (max-width: 850px) {
+    .mainContent header {
+        width: 95%;
+    }
+}
+ @media screen and (max-width: 800px) {
+    .mainContent header {
+        width: 98%;
+    }
+}
+ @media screen and (max-width: 790px) {
+    .mainBody { 
+         flex-direction: column;
+         margin-top: 1rem;
+    }
+    .mainContent header {
         width: 100%;
     }
-} */
+    .containerFormContactUsBody div textarea {
+        height: 100px;
+    }
+    .containerFormContactUsBody input,
+    .containerFormContactUsBody button, 
+    .containerFormContactUsBody textarea {
+        font-size: 12pt;
+        height: 30px;
+    }
+
+    .iconContactInfo {
+        font-size: 18pt;
+   }
+    .containerFormContactUsBody label,
+    .containerButton button {
+    margin: 3px 0;
+    font-size: 9pt;
+  }
+  .contactInfo div {
+    height: 75px;
+    width: 400px;
+    font-size: 9pt;
+  }
+  .contactInfo  {
+    margin-left: 1.5rem;
+  }
+  .containerFormContactUs {
+     margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+    .containerFormContactUsBody input,
+    .containerFormContactUsBody button, 
+    .containerFormContactUsBody textarea {
+         width: 300px;
+    }
+    .contactInfo div {
+        width: 18rem ;
+    }
+}
