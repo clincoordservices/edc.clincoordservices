@@ -6,7 +6,7 @@ import Image from "next/image";
 const HeaderNoLogin = () => {
 
     return (
-        <main className={styles.mainContent}>
+        <div className={styles.mainContent}>
             <header>
             <Link href="/">
             <h1>
@@ -23,8 +23,7 @@ const HeaderNoLogin = () => {
                 <Link href="/login">Login</Link>
             </span>    
         </header>
-        </main>
+        </div>
     );
 }
-
 export default HeaderNoLogin;

@@ -7,7 +7,7 @@ import styles from "./login.module.css";
 import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
 import { verifyDataType, verifyDataValue} from "../utils/functions/function";
-import fetchWithParams from "../utils/fetchData/fetch";
+// import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
     const [toggleElements, setToggleElements] = useState(true);
