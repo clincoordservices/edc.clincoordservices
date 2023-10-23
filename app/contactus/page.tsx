@@ -8,6 +8,7 @@ import {SiMinutemailer} from "react-icons/si";
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
 import safeParseFunctionContactUs from "../utils/form_validation/formValidation";
 import styles from "./contactus.module.css";
+import HeaderNoLogin from "../components/headerNoLogin/headernologin";
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({first_name: '', last_name: '', message: '', subject: ''});
@@ -51,11 +52,8 @@ const ContactUs = () => {
   
     return (
     <main className={styles.mainContent}> 
-        <header>
-                <span>
-                    <Link href="/login">Login</Link>
-                </span>    
-        </header>
+       {/* herader */}
+       <HeaderNoLogin />
     <section className={styles.mainBody}>
         <article className={styles.contactInfo}>
             <Link href="#">
@@ -68,7 +66,7 @@ const ContactUs = () => {
             <Link href="#">
                 <div>
                     <span><MdLocationOn className={styles.iconContactInfo}/> </span>
-                    <span> <p>California, USA 3400 Cottage Way, STE G2 <br/>Sacramento, CA 95825</p></span> 
+                    <span style={{textAlign: "center"}}> <p>California, USA 3400 Cottage Way, STE G2 <br/>Sacramento, CA 95825</p></span> 
                 </div>
             </Link>
             <Link href="#">

@@ -1,6 +1,8 @@
 "use client"
 import React, {useState} from "react";
 import Link from "next/link";
+import Image from "next/image";
+import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
 import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
@@ -38,7 +40,7 @@ const Login = () => {
         } else {
                 // const response = await fetchWithParams("http://localhost:3000/api/login", "POST", JSON.stringify({password, email_username}))
                 // const body = await response.json();
-        }
+        } 
     }
 
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
@@ -51,7 +53,16 @@ const Login = () => {
 
     return (
         <div  className={styles.main_Content}>
-            <div className={styles.firstContent} ></div>
+            <div className={styles.firstContent} >
+                <Image
+                    src={ImageLogo}
+                    width={250}
+                    height={100}
+                    
+                    alt="ClinCoord EDC Logo"
+                    style={{userSelect: "none"}}
+                />
+            </div>
             <form onSubmit={submitHandler}   method="post" className={styles.containerFormLogin}>
                 <div className={styles.containerFormLoginHeader}>
                         <legend> <h2>Welcome, please sign in</h2> </legend>

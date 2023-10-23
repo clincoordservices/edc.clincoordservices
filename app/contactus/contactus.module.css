@@ -6,23 +6,29 @@
     align-items: center;
     background:#f7f7ff;  
 }
-.mainContent header {
-    width: 80%;
-    height: 60px;
+.mainContent header { 
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
     background:  var(--secondary-color);
     margin: 5px auto;
     border-radius: 2px;
 }
+.mainContent header h1 {
+    margin: -7px 0 0  0;
+} 
 .mainContent header span {
-    float: right;
     background-color: #f7f7ff;
     padding: .5rem;
     border-radius: 0.3rem;
-    margin: 10px 15px 0 0;
+    margin: 30px 15px 0 0;
     font-size: 10pt;
     font-size:medium;
-}
-.mainContent header span:hover {
+    height: fit-content;
+} 
+ .mainContent header span:hover {
     color: var(--secondary-color);
 }
 .mainBody {
@@ -53,7 +59,8 @@
      font-size: 10pt;
      display: flex;
      flex-direction: column;
-     place-content: center;
+     align-items: center;
+     row-gap: .2rem;
 }
 .containerFormContactUs {
     height: fit-content;
