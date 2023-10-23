@@ -19,9 +19,14 @@ const HeaderNoLogin = () => {
                     />
             </h1>
             </Link>
-            <span>
-                <Link href="/login">Login</Link>
-            </span>    
+            <div>
+                <span>
+                    <Link href="/login">Login</Link>
+                </span>    
+                <span>
+                    <Link href="/signup">Signup</Link>
+                </span>    
+            </div>
         </header>
         </div>
     );

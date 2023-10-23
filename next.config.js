@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // experimental: {
-    //     serverActions: true,
-    //   },
+    'react-icons/Ri': 'latest',
 }
 module.exports = nextConfig
