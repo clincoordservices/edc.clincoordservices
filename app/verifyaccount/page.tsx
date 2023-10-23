@@ -22,7 +22,6 @@ const VerifyAccount  = () => {
                 setmailAlertToggle(false);
         }
     }
-
     const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
         const element = e.target as HTMLInputElement;
         setFormData((prevState) => ({
@@ -30,7 +29,6 @@ const VerifyAccount  = () => {
           [element.name]: element.value+"".trim()
         }));
      } 
-  
     return (
             <>
                 <HeaderNoLogin />
