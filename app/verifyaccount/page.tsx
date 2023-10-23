@@ -5,7 +5,7 @@ import HeaderNoLogin from "../components/headerNoLogin/headernologin";
 import styles from "./verifyaccount.module.css"
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
 import safeParseFunctionForgetPassWord from "../utils/form_validation/forgetpassword";
-import { RiErrorWarningLine } from "react-icons/Ri";
+// import { RiErrorWarningLine } from "react-icons/Ri";
 
 const VerifyAccount  = () => {
     const [formData, setFormData] = useState({email:""});
@@ -45,7 +45,7 @@ const VerifyAccount  = () => {
                                 <input onChange={getDataOnForm} type="email" maxLength={30} name="email" id="email"/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${mailAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span>
+                                        {/* <span><RiErrorWarningLine /> </span> */}
                                         <span>Please enter a e-mail</span>
                                     </span> 
                                 </span>
