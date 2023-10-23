@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-import {RiErrorWarningLine} from "react-icons/Ri";
+// import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
 import styles from "./signup.module.css";
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
@@ -68,7 +68,7 @@ const Signup = () => {
                                 <input type="text" maxLength={20} name="first_name" id="first_name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${first_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span> 
+                                        {/* <span><RiErrorWarningLine /> </span>  */}
                                         <span>Please enter a username or First-name</span> 
                                     </span> 
                                 </span>
@@ -78,7 +78,7 @@ const Signup = () => {
                                 <input type="text" maxLength={20} name="last_name" id="last_name" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${last_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span> 
+                                        {/* <span><RiErrorWarningLine /> </span>  */}
                                         <span>Please enter a username Last Name</span> 
                                     </span> 
                                 </span>
@@ -88,7 +88,7 @@ const Signup = () => {
                                 <input type="email" maxLength={60} name="email" id="email" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${emailAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span> 
+                                        {/* <span><RiErrorWarningLine /> </span>  */}
                                         <span> Please enter a e-mail</span> 
                                     </span> 
                                 </span>
@@ -98,7 +98,7 @@ const Signup = () => {
                                 <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm} />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${companyAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span> 
+                                        {/* <span><RiErrorWarningLine /> </span>  */}
                                         <span> Please enter the Company</span> 
                                     </span> 
                                 </span>
@@ -108,7 +108,7 @@ const Signup = () => {
                                 <input type="password" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span> 
+                                        {/* <span><RiErrorWarningLine /> </span>  */}
                                         <span> Please enter a Password</span> 
                                     </span> 
                                 </span>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import HeaderNoLogin from "../components/headerNoLogin/headernologin";
 import styles from "./forgetpassword.module.css";
-import { RiErrorWarningLine } from "react-icons/Ri";
+// import { RiErrorWarningLine } from "react-icons/Ri";
 import { verifyDataType, verifyDataValue } from "../utils/functions/function";
 import safeParseFunctionForgetPassWord from "../utils/form_validation/forgetpassword";
 
@@ -46,7 +46,7 @@ const ForgetPassword  = () => {
                                 <input onChange={getDataOnForm} type="email" maxLength={30} name="email" id="email"/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${mailAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                        <span><RiErrorWarningLine /> </span>
+                                        {/* <span><RiErrorWarningLine /> </span> */}
                                         <span>Please enter a e-mail</span>
                                     </span> 
                                 </span>

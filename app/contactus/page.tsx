@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-import {RiErrorWarningLine} from "react-icons/Ri";
+// import {RiErrorWarningLine} from "react-icons/Ri";
 import {BsFillTelephoneFill} from "react-icons/bs";
 import {MdLocationOn} from "react-icons/md";
 import {SiMinutemailer} from "react-icons/si";
@@ -87,7 +87,7 @@ const ContactUs = () => {
                         <input type="text" maxLength={20} name="first_name" id="first_name" onChange={getDataOnForm}/>
                         <span className={styles.notificationContactUsFormField}>
                             <span className={`${first_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                <span><RiErrorWarningLine /> </span> 
+                                {/* <span><RiErrorWarningLine /> </span>  */}
                                 <span>Please enter a First-name</span> 
                             </span> 
                         </span>
@@ -97,7 +97,7 @@ const ContactUs = () => {
                         <input type="text" maxLength={20} name="last_name" id="last_name" onChange={getDataOnForm}/>
                         <span className={styles.notificationContactUsFormField}>
                             <span className={`${last_nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                <span><RiErrorWarningLine /> </span> 
+                                {/* <span><RiErrorWarningLine /> </span>  */}
                                 <span>Please enter your Last Name</span> 
                             </span> 
                         </span>
@@ -107,7 +107,7 @@ const ContactUs = () => {
                         <input type="subject" maxLength={60} name="subject" id="subject" onChange={getDataOnForm}/>
                         <span className={styles.notificationContactUsFormField}>
                             <span className={`${subjectlAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                <span><RiErrorWarningLine /> </span> 
+                                {/* <span><RiErrorWarningLine /> </span>  */}
                                 <span> Please enter your Subject</span> 
                             </span> 
                         </span>
@@ -118,7 +118,7 @@ const ContactUs = () => {
                         </textarea>
                         <span className={styles.notificationContactUsFormField}>
                             <span className={`${messageAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                <span><RiErrorWarningLine/> </span> 
+                                {/* <span><RiErrorWarningLine/> </span>  */}
                                 <span> Please enter your Message</span> 
                             </span> 
                         </span>

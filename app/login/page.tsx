@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
-import {RiErrorWarningLine} from "react-icons/Ri";
+// import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
 import { verifyDataType, verifyDataValue} from "../utils/functions/function";
 // import fetchWithParams from "../utils/fetchData/fetch";
@@ -70,7 +70,7 @@ const Login = () => {
                 <div className={styles.containerFormLoginpBody}>
                     <div className={styles.notificationLoginFormField}>
                         <span className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}`}>
-                            <span><RiErrorWarningLine /> </span>
+                            {/* <span><RiErrorWarningLine /> </span> */}
                             <span>Authentication failed check your credencials</span>             
                         </span>
                     </div>
@@ -79,7 +79,7 @@ const Login = () => {
                         <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
-                                <span><RiErrorWarningLine /> </span>
+                                {/* <span><RiErrorWarningLine /> </span> */}
                                 <span>Please enter a username or e-mail</span>
                             </span> 
                         </span>
@@ -89,7 +89,7 @@ const Login = () => {
                         <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}>
-                                 <span><RiErrorWarningLine /> </span> 
+                                 {/* <span><RiErrorWarningLine /> </span>  */}
                                  <span>Please enter a password</span> 
                             </span> 
                         </span>
