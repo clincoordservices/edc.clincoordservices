@@ -4,4 +4,5 @@
 const verifyDataType = function(data: any){
     return (typeof data !== "string");
 }
+
 export {verifyDataType, verifyDataValue};

@@ -85,6 +85,11 @@
 .containerFormLoginHeader h2 {
     font-size: 14pt;
 }
+.containerFormLoginHeader legend {
+    width: 320px;
+    display: grid;
+    place-content: center;
+}
 }
 @media screen and (max-width: 330px) { 
     .containerEmail input,

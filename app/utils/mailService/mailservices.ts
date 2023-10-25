@@ -1,29 +1,29 @@
-import nodemailer from "nodemailer"
+// import nodemailer from "nodemailer"
 
 
-class MailServices {
+// class MailServices {
      
-    constructor(){
+//     constructor(){
 
-    }
+//     }
 
-    async sendMail(){
-        //  return await nodemailer.createTestAccount
-    }
-}
+//     async sendMail(){
+//         //  return await nodemailer.createTestAccount
+//     }
+// }
 
 
 
-interface ITransportOption  {
-    host: string,
-    secure: boolean,
-    port: number,
-    auth: {
-    user: string,
-    pass: string,
-}
-}
+// interface ITransportOption  {
+//     host: string,
+//     secure: boolean,
+//     port: number,
+//     auth: {
+//     user: string,
+//     pass: string,
+// }
+// }
 
-interface IMailer {
+// interface IMailer {
     
-}
+// }

@@ -6,7 +6,7 @@ import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
 // import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
-import { verifyDataType, verifyDataValue} from "../utils/functions/function";
+import {verifyDataType, verifyDataValue} from "../utils/functions/function";
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
@@ -76,7 +76,7 @@ const Login = () => {
                     </div>
                     <div className={styles.containerEmail}>
                         <label htmlFor="email_username">E-mail</label>
-                        <input onChange={getDataOnForm} type="email_username" maxLength={30} name="email_username" id="email_username"/>
+                        <input onChange={getDataOnForm} type="email_username" maxLength={60} name="email_username" id="email_username"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
                                 {/* <span><RiErrorWarningLine /> </span> */}
@@ -86,7 +86,7 @@ const Login = () => {
                     </div>
                     <div className={styles.containerPassword}>
                         <label htmlFor="password">Password</label>
-                        <input  onChange={getDataOnForm} type="password" maxLength={30} name="password" id="password"/>
+                        <input  onChange={getDataOnForm} type="password" maxLength={60} name="password" id="password"/>
                         <span className={styles.notificationLoginFormField}>
                             <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}>
                                  {/* <span><RiErrorWarningLine /> </span>  */}

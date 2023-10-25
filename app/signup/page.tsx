@@ -95,7 +95,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_company}>
                                 <label htmlFor="company">Company</label>
-                                <input type="text" maxLength={20} name="company" id="company" onChange={getDataOnForm} />
+                                <input type="text" maxLength={25} name="company" id="company" onChange={getDataOnForm} />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${companyAlertToggle ? "hideListElement" : "showListElement"}`}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
@@ -105,7 +105,7 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_password}>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" maxLength={20} name="password" id="password" onChange={getDataOnForm}/>
+                                <input type="password" maxLength={60} name="password" id="password" onChange={getDataOnForm}/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
