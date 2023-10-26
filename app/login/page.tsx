@@ -1,56 +1,41 @@
 "use client"
 import React, {useState} from "react";
+import type { FieldValues  } from "react-hook-form";
+import { useForm   } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import Image from "next/image";
 import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
-// import {RiErrorWarningLine} from "react-icons/Ri";
 import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
 import {verifyDataType, verifyDataValue} from "../utils/functions/function";
+import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
-    const [toggleElements, setToggleElements] = useState(true);
-    const [formData, setFormData] = useState({password:"", email_username:""});
-    const [nameAlertToggle, setnameAlertToggle] = useState(true);
-    const [passwordAlertToggle, setPasswordlAlertToggle] = useState(true);
-    const [fieldAlertToggle, setFieldAlertToggle] = useState(true);
-     
+    const [wasSent, setWasSent] = useState(true);
+    const {
+            register,
+            handleSubmit,
+            formState: {errors, isSubmitting},
+            reset,
+            getValues   
+    } = useForm<TLoginData>({
+            resolver: zodResolver(LoginSchema)
+    });
     
+    
+    const submitHandler = async (data: FieldValues)=> {
+            
+        await new Promise((resolve)=> setTimeout(resolve, 1000));
+        reset();
+    }
+    const [toggleElements, setToggleElements] = useState(true);
+
     const handlerOnclickHideListElement = () => {
         setToggleElements(!toggleElements);
-    }
-
-    const submitHandler = async (e: React.FormEvent<HTMLFormElement>) =>  {
-        e.preventDefault();    
-        
-        const {password, email_username} = safeParseFunctionLogin(formData);
-        const allFieldsValid = verifyDataValue(password) && verifyDataValue(email_username);
-
-        if(allFieldsValid){
-            if(verifyDataValue(password) && verifyDataType(password)) 
-                setPasswordlAlertToggle(false);
-
-            if(verifyDataValue(email_username) && verifyDataType(email_username)) 
-                setnameAlertToggle(false);
-
-            if((verifyDataValue(password) && verifyDataType(password)) && 
-                (verifyDataValue(email_username) && verifyDataType(email_username)))
-                setFieldAlertToggle(false);
-        } else {
-                // const response = await fetchWithParams("http://localhost:3000/api/login", "POST", JSON.stringify({password, email_username}))
-                // const body = await response.json();
-        } 
-    }
-
-    const getDataOnForm = (e: React.FormEvent<HTMLInputElement>) => {
-        const element = e.target as HTMLInputElement;
-        setFormData((prevState) => ({
-          ...prevState,
-          [element.name]: element.value+"".trim()
-        }));
-     }
-
+        }
+ 
     return (
         <div  className={styles.main_Content}>
             <div className={styles.firstContent} >
@@ -63,34 +48,40 @@ const Login = () => {
                     style={{userSelect: "none"}}
                 />
             </div>
-            <form onSubmit={submitHandler}   method="post" className={styles.containerFormLogin}>
+            <form onSubmit={handleSubmit(submitHandler)}  method="post" className={styles.containerFormLogin}>
                 <div className={styles.containerFormLoginHeader}>
                         <legend> <h2>Welcome, please sign in</h2> </legend>
                 </div>
                 <div className={styles.containerFormLoginpBody}>
                     <div className={styles.notificationLoginFormField}>
-                        <span className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}`}>
+                        <span >
+                        {/* className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}` */}
                             {/* <span><RiErrorWarningLine /> </span> */}
                             <span>Authentication failed check your credencials</span>             
                         </span>
                     </div>
                     <div className={styles.containerEmail}>
-                        <label htmlFor="email_username">E-mail</label>
-                        <input onChange={getDataOnForm} type="email_username" maxLength={60} name="email_username" id="email_username"/>
+                        <label htmlFor="email">E-mail</label>
+                        <input  
+                                type="text" 
+                                maxLength={255}
+                                id="email" 
+                                {...register("email")}
+                            />
                         <span className={styles.notificationLoginFormField}>
-                            <span className={`${nameAlertToggle ? "hideListElement" : "showListElement"}`}> 
+                            <span className={errors.email ?"showListElement":"hideListElement"}> 
                                 {/* <span><RiErrorWarningLine /> </span> */}
-                                <span>Please enter a username or e-mail</span>
+                                {errors.email && (<span>{`${errors.email.message}`}</span> )}
                             </span> 
                         </span>
                     </div>
                     <div className={styles.containerPassword}>
                         <label htmlFor="password">Password</label>
-                        <input  onChange={getDataOnForm} type="password" maxLength={60} name="password" id="password"/>
+                        <input type="password" maxLength={60} name="password" id="password"/>
                         <span className={styles.notificationLoginFormField}>
-                            <span className={`${passwordAlertToggle ? "hideListElement" : "showListElement"}`}>
+                            <span className={errors.password ?"showListElement":"hideListElement"}>
                                  {/* <span><RiErrorWarningLine /> </span>  */}
-                                 <span>Please enter a password</span> 
+                                 {errors.password && (<span>{`${errors.password.message}`}</span> )}
                             </span> 
                         </span>
                     </div>

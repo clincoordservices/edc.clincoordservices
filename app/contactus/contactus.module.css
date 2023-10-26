@@ -13,6 +13,7 @@
     row-gap: 20px;
     justify-content: center;
     height: fit-content;
+    cursor: unset;
 }
 .contactInfo div {
      display: flex;
@@ -116,28 +117,12 @@
     opacity: .8;
 }
 .notificationContactUsFormField {
-    margin-top: 5px;
     font-size: 10pt;
     color: #ff4500;
     margin: 1px 3px  0 0;
     padding: 5px;
+    height: 26px;
 }
- /* @media screen and (max-width: 1010px) {
-    .mainContent header {
-        width: 90%;
-    }
-}
- @media screen and (max-width: 850px) {
-    .mainContent header {
-        width: 95%;
-    }
-}
- @media screen and (max-width: 800px) {
-    .mainContent header {
-        width: 98%;
-    }
-} */
-
 @media screen and (min-width: 791px) and (max-width: 1130px)  {
     .contactInfo {
          margin-left: 1rem;

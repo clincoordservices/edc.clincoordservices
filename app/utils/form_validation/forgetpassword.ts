@@ -1,10 +1,10 @@
 import { object, string } from "zod";
 
-type ForgetPasswordData = {
+export type ForgetPasswordData = {
     email: string
 }
-const ForgetPasswordSchema = object({
-    email: string().email().min(6).max(60),
+export const ForgetPasswordSchema = object({
+    email: string().email("Please enter a user e-mail").min(6).max(255),
 });
 
 export const safeParseFunctionForgetPassWord = function (forgetPasswordData: ForgetPasswordData){

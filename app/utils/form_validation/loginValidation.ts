@@ -1,18 +1,18 @@
 import { object, string } from "zod";
 
-type LoginData = {
-    email_username: string,
+export type TLoginData = {
+    email: string,
     password: string
 }
-const LoginSchema = object({
-    email_username: string().email().min(6).max(60),
-    password: string().min(6).max(40),
+export const LoginSchema = object({
+    email: string().email("Please enter a user e-mail").min(6).max(255),
+    password: string().min(6, "Please enter a password").max(255, "Please enter a password"),
 });
-export const safeParseFunctionLogin = function (loginData: LoginData){
+export const safeParseFunctionLogin = function (loginData: TLoginData){
     const result = LoginSchema.safeParse(loginData);
     if(!result.success){
-        const {password, email_username} = result.error.format();
-        return {password, email_username};
+        const {password, email} = result.error.format();
+        return {password, email};
     } else {
              const {data} = result;
              return data;

@@ -7,12 +7,12 @@ export type SignupData = {
     company: string,
     password: string
 }
-const SignupSchema = object({
-    first_name: string().min(2).max(10),
-    last_name:  string().min(2).max(10),
-    email: string().email().max(60),
-    company: string().min(2).max(20),
-    password: string().min(6).max(20),
+export const SignupSchema = object({
+    first_name: string().min(2, "Please enter a username or First-name").max(255, "Please enter a username or First-name"),
+    last_name:  string().min(2, "Please enter Last Name").max(255,"Please enter Last Name"),
+    email: string().email("Please enter a e-mail").max(255, "Please enter a e-mail"),
+    company: string().min(2, "Please enter the Company").max(255, "Please enter the Company"),
+    password: string().min(6, "Please enter a Password").max(255, "Please enter a Password"),
 });
 export const safeParseFunctionSignup = function (signupData: SignupData){
     const result = SignupSchema.safeParse(signupData);
