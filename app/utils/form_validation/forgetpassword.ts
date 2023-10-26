@@ -4,7 +4,7 @@ type ForgetPasswordData = {
     email: string
 }
 const ForgetPasswordSchema = object({
-    email: string().email().min(6).max(60),
+    email: string().email().min(6).max(255),
 });
 
 export const safeParseFunctionForgetPassWord = function (forgetPasswordData: ForgetPasswordData){

@@ -43,7 +43,7 @@ const ForgetPassword  = () => {
                             <span>with mail for resetting your password.</span><br/>
                             <div className={styles.containerEmail}>
                                 <label htmlFor="email">E-mail</label>
-                                <input onChange={getDataOnForm} type="email" maxLength={60} name="email" id="email"/>
+                                <input onChange={getDataOnForm} type="email" maxLength={255} name="email" id="email"/>
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={`${mailAlertToggle ? "hideListElement" : "showListElement"}`}> 
                                         {/* <span><RiErrorWarningLine /> </span> */}

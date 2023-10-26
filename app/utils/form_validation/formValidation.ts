@@ -8,11 +8,11 @@ export type ContactUsData = {
     email: string   
 }
 const ContactUsSchema = object({
-    first_name: string().min(2).max(10),
-    last_name:  string().min(2).max(10),
-    subject: string().min(2).max(100),
-    message: string().min(6).max(500),
-    email: string().email().min(6).max(60),
+    first_name: string().min(2).max(30),
+    last_name:  string().min(2).max(30),
+    subject: string().min(2).max(255),
+    message: string().min(6).max(1000),
+    email: string().email().min(6).max(255),
 });
 export const safeParseFunctionContactUs = function (contactUsData: ContactUsData){
     const result = ContactUsSchema.safeParse(contactUsData);

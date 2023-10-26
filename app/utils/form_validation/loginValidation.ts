@@ -5,8 +5,8 @@ type LoginData = {
     password: string
 }
 const LoginSchema = object({
-    email_username: string().email().min(6).max(60),
-    password: string().min(6).max(40),
+    email_username: string().email().min(6).max(255),
+    password: string().min(6).max(255),
 });
 export const safeParseFunctionLogin = function (loginData: LoginData){
     const result = LoginSchema.safeParse(loginData);

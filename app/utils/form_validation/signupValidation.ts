@@ -8,11 +8,11 @@ export type SignupData = {
     password: string
 }
 const SignupSchema = object({
-    first_name: string().min(2).max(10),
-    last_name:  string().min(2).max(10),
-    email: string().email().max(60),
-    company: string().min(2).max(20),
-    password: string().min(6).max(20),
+    first_name: string().min(2).max(30),
+    last_name:  string().min(2).max(30),
+    email: string().email().max(255),
+    company: string().min(2).max(255),
+    password: string().min(6).max(255),
 });
 export const safeParseFunctionSignup = function (signupData: SignupData){
     const result = SignupSchema.safeParse(signupData);
