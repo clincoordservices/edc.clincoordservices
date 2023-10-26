@@ -60,7 +60,6 @@ const Signup = () => {
         <form  onSubmit={submitHandler} method="post" className={styles.containerFormSignup}>
                      <div className={styles.containerFormSignupHeader}>
                         <legend> <h2>Create user account </h2> </legend>
-                        <p>Already Have An Acount? <strong> <Link href="/login"> Log In </Link></strong> </p>
                      </div>
                      <div className={styles.containerFormSignupBody}>
                             <div className={styles.container_firstname}>

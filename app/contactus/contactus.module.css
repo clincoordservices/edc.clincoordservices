@@ -37,6 +37,18 @@
     align-items: center;
     margin-top: 2rem;
 }
+.emailsentMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 4rem 0 4rem;
+}
+.emailsentMessage p {
+     text-align:  center;
+     margin-top: 2rem;
+}
 .containerFormContactUsHeader {
     width: 400px;
     height: 40px;
@@ -125,6 +137,13 @@
         width: 98%;
     }
 } */
+
+@media screen and (min-width: 791px) and (max-width: 1130px)  {
+    .contactInfo {
+         margin-left: 1rem;
+    }
+
+ }
  @media screen and (max-width: 790px) {
     .mainBody { 
          flex-direction: column;

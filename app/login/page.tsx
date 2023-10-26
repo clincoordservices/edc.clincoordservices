@@ -103,7 +103,7 @@ const Login = () => {
                 <ul className={toggleElements ? "hideListElement" : "showListElement"}>
                     <li><Link href="/contactus">Contact Us</Link></li>
                     <li><Link href="/forgetpassword">Forgot Password</Link></li>
-                    <li><Link href="/verifyaccount">Check if you have an account If you have an account</Link></li>
+                    <li><Link href="/verifyaccount">Verify Account</Link></li>
                 </ul>
             </div>              
         </form>
