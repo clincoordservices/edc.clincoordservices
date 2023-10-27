@@ -8,7 +8,7 @@ export type SignupData = {
     password: string
 }
 export const SignupSchema = object({
-    first_name: string().min(2, "Please enter a username or First-name").max(255, "Please enter a username or First-name"),
+    first_name: string().min(2, "Please enter First-name").max(255, "Please enter First-name"),
     last_name:  string().min(2, "Please enter Last Name").max(255,"Please enter Last Name"),
     email: string().email("Please enter a e-mail").max(255, "Please enter a e-mail"),
     company: string().min(2, "Please enter the Company").max(255, "Please enter the Company"),

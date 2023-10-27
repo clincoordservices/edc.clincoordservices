@@ -47,7 +47,7 @@ const ForgetPassword  = () => {
                                     id="subject" 
                                     {...register("email")}
                                     />
-                                <span className={styles.notificationContactUsFormField}>
+                                <span className={styles.notificationLoginFormField}>
                                     <span > 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
                                         {errors.email && (<span>{`${errors.email.message}`}</span> )}

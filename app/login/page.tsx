@@ -7,13 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
-import safeParseFunctionLogin from "../utils/form_validation/loginValidation";
-import {verifyDataType, verifyDataValue} from "../utils/functions/function";
 import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
-    const [wasSent, setWasSent] = useState(true);
+    // const [wasSent, setWasSent] = useState(true);
     const {
             register,
             handleSubmit,
@@ -26,6 +24,8 @@ const Login = () => {
     
     
     const submitHandler = async (data: FieldValues)=> {
+
+         console.log(getValues())
             
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
@@ -54,7 +54,7 @@ const Login = () => {
                 </div>
                 <div className={styles.containerFormLoginpBody}>
                     <div className={styles.notificationLoginFormField}>
-                        <span >
+                        <span className={`${!(errors.email && errors.password) ? "hideListElement" : "showListElement"}`}>
                         {/* className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}` */}
                             {/* <span><RiErrorWarningLine /> </span> */}
                             <span>Authentication failed check your credencials</span>             
@@ -63,8 +63,7 @@ const Login = () => {
                     <div className={styles.containerEmail}>
                         <label htmlFor="email">E-mail</label>
                         <input  
-                                type="text" 
-                                maxLength={255}
+                                type="text"
                                 id="email" 
                                 {...register("email")}
                             />
@@ -77,7 +76,11 @@ const Login = () => {
                     </div>
                     <div className={styles.containerPassword}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" maxLength={60} name="password" id="password"/>
+                        <input 
+                            type="password"
+                            id="password"
+                            {...register("password")}
+                            />
                         <span className={styles.notificationLoginFormField}>
                             <span className={errors.password ?"showListElement":"hideListElement"}>
                                  {/* <span><RiErrorWarningLine /> </span>  */}
@@ -86,7 +89,11 @@ const Login = () => {
                         </span>
                     </div>
                     <div className={styles.containerButton}>
-                        <button type="submit">Sign in</button>
+                        <button 
+                            disabled={isSubmitting} 
+                            type="submit">
+                                Sign in
+                        </button>
                     </div>
                 </div>
             <div className={styles.opctionsBottomOfForm}> 

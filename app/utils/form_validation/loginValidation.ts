@@ -6,7 +6,7 @@ export type TLoginData = {
 }
 export const LoginSchema = object({
     email: string().email("Please enter a user e-mail").min(6).max(255),
-    password: string().min(6, "Please enter a password").max(255, "Please enter a password"),
+    password: string().min(5, "Please enter a password").max(255, "Please enter a password"),
 });
 export const safeParseFunctionLogin = function (loginData: TLoginData){
     const result = LoginSchema.safeParse(loginData);

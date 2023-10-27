@@ -48,9 +48,9 @@ const VerifyAccount  = () => {
                                     {...register("email")}
                                     />
                                 <span className={styles.notificationContactUsFormField}>
-                                    <span > 
-                                        {/* <span><RiErrorWarningLine /> </span>  */}
-                                        {errors.email && (<span>{`${errors.email.message}`}</span> )}
+                                    <span> 
+                                        {/* <span className={styles.notificationContactUsFormField_}><RiErrorWarningLine /> </span>  */}
+                                        {errors.email && (<span className={styles.notificationContactUsFormField_}>{`${errors.email.message}`}</span> )}
                                     </span> 
                                 </span>
                             </div>

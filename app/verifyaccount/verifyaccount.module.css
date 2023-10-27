@@ -35,9 +35,6 @@
      font-size: 10pt;
      color: #111111;
 }
-.containerButton {
-    margin-top: 5px;
-}
 .containerEmail input,
 .containerButton button {
     width: 400px;
@@ -55,19 +52,19 @@
     background-color: var(--secondary-color);
     font-weight: bold;
     color: rgb(255, 255, 255);
-    margin-top: 5px;
 }
 .containerButton button:hover {
     color: rgba(255, 255, 255, .8);
     cursor: pointer;
 }
-.notificationLoginFormField span{
-    margin: 7px 0 5px 0;
-    font-size: 10pt;
-    color: #ff4500;
+
+.notificationContactUsFormField {
+    margin-top: 5px;
+    height: 26px;
 }
-.containerEmail input {
-     margin-bottom: 8px;
+.notificationContactUsFormField_{
+    font-size: 10pt;
+    color: #ff4500 !important;
 }
 @media screen and (max-width: 460px) {
     .containerEmail input,

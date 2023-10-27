@@ -2,14 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 // import {RiErrorWarningLine} from "react-icons/Ri";
-import safeParseFunctionSignup from "../utils/form_validation/signupValidation";
-import styles from "./signup.module.css";
-import { verifyDataType, verifyDataValue } from "../utils/functions/function";
 import fetchWithParams from "../utils/fetchData/fetch";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm   } from "react-hook-form";
 import type { FieldValues  } from "react-hook-form";
 import  {SignupSchema, SignupData} from "../utils/form_validation/signupValidation"
+import styles from "./signup.module.css";
 
 const Signup = () => {
     const {
@@ -39,7 +37,11 @@ const Signup = () => {
                      <div className={styles.containerFormSignupBody}>
                             <div className={styles.container_firstname}>
                                 <label htmlFor="first_name">First name</label>
-                                <input type="text" maxLength={20} name="first_name" id="first_name" />
+                                <input 
+                                    type="text"  
+                                    id="first_name"
+                                    {...register("first_name")} 
+                                     />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={errors.first_name ?"showListElement":"hideListElement"}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
@@ -49,7 +51,11 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_lastName}>
                                 <label htmlFor="last_name">Last Name</label>
-                                <input type="text" maxLength={20} name="last_name" id="last_name" />
+                                <input 
+                                    type="text" 
+                                    id="last_name"
+                                    {...register("last_name")}
+                                />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={errors.last_name ?"showListElement":"hideListElement"}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
@@ -59,7 +65,11 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_email} >
                                 <label htmlFor="email">E-mail</label>
-                                <input type="email" maxLength={60} name="email" id="email" />
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    {...register("email")}
+                                />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={errors.email ?"showListElement":"hideListElement"}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
@@ -70,8 +80,7 @@ const Signup = () => {
                             <div className={styles.container_company}>
                                 <label htmlFor="company">Company</label>
                                 <input 
-                                    type="text" 
-                                    maxLength={20} 
+                                    type="text"  
                                     id="first_name" 
                                     {...register("company")}  
                                 />
@@ -84,7 +93,11 @@ const Signup = () => {
                             </div>
                             <div className={styles.container_password}>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" maxLength={60} name="password" id="password" />
+                                <input 
+                                    type="password" 
+                                     id="password" 
+                                     {...register("password")} 
+                                />
                                 <span className={styles.notificationLoginFormField}>
                                     <span className={errors.password ?"showListElement":"hideListElement"}> 
                                         {/* <span><RiErrorWarningLine /> </span>  */}
@@ -93,7 +106,11 @@ const Signup = () => {
                                 </span>
                             </div>
                             <div className={styles.containerButton}>
-                                <button  type="submit">Create Account</button>
+                                <button  
+                                    disabled={isSubmitting} 
+                                    type="submit">
+                                        Create Account
+                                </button>
                             </div>
                 </div>
         </form>
