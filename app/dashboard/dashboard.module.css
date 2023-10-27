@@ -1,0 +1,52 @@
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 10px auto;
+    height: 97vh;
+}
+.mainBodyContent {
+    display: flex;
+}
+.headerContent {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+}
+.headerContentUserInfo h3{
+        font-size: 11pt;
+        cursor: pointer;
+        height: 20px;
+        position: relative;
+        margin-top: .5rem;
+}
+.headerContentUserInfo h3 span{
+    margin-right: 0.5rem;
+}
+.headerContentUserInfo h3 span:nth-child(2){ 
+        margin-top: 1rem;
+        position: absolute;
+        top: -15px;
+}
+.headerContentUserInfo ul  li {
+    font-family: 15pt;
+}
+.asideContent {
+     width: 15%;
+     padding: 0 2rem 0 2rem;
+     height: 80vh;
+}
+.asideContentNav {
+    margin-top: 30px;
+}
+.bodyContent {
+    width: 80%;
+    background-color: #fff;
+    padding: 0 2rem 0 2rem;
+    height: 79vh;
+    place-self: center;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
