@@ -1,0 +1,128 @@
+.mainContent {
+     padding: 2rem;
+}
+.mainContent section {
+     display: flex;
+     column-gap: 1rem;
+     margin-top: 1rem;
+}
+.mainContent h4,
+.mainContent h3{
+   color: #333333;
+}
+.leftSide {
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 40%;
+    height: fit-content;
+    padding: 1rem;
+}
+.leftSide div p{
+     margin-top: 0.3rem;
+     font-size: 11pt;
+}
+.leftSide div h5{
+     margin-top: 0.3rem;
+    
+}
+.rightSide {
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 60%;
+    padding: 1rem;
+}
+.rightSide button  {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    height: 30px;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+.contentForm {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+}
+.contentForm div {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+.contentForm div  textarea:focus {
+    border: 1px solid var(--primary-color);
+}
+.contentForm div input:focus {
+     border: 1px solid var(--primary-color);
+}
+.contentForm div input { 
+        height: 25px;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+}
+.contentForm div label { 
+      font-size: 12pt;
+      margin: 0.5rem 0 0.2rem 0;
+}
+.contentForm div textarea { 
+     resize: none;
+     outline: none;
+     height: 120px;
+     padding: 0.5rem;
+     text-indent: 0.1rem;
+     border-radius: 5px;
+     border: 1px solid #ccc;
+}
+.contentForm  .description {
+    width: 200%;
+}
+
+@media screen and (max-width: 1119px) {
+    .mainContent section { 
+         flex-direction: column;
+         row-gap: 0.5rem;
+    }
+    .leftSide {
+        width: 90%;
+    }
+    .rightSide {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 924px) { 
+    .leftSide {
+        width: 100%;
+    }
+    .rightSide {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 749px) { 
+    .contentForm div  textarea {
+         width: 90%;
+         margin: 0 auto;
+    }
+    .contentForm div input {  
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 660px) { 
+    .contentForm {
+        display: flex;
+        flex-direction: column;
+    }
+    .contentForm div label { 
+        font-size: 10.5pt;
+    }
+
+    .mainContent {
+        height: fit-content;
+    }
+}

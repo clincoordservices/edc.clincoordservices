@@ -7,11 +7,13 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
+import { useRouter } from "next/navigation";
 import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
     // const [wasSent, setWasSent] = useState(true);
+    const router = useRouter();
     const {
             register,
             handleSubmit,
@@ -26,9 +28,9 @@ const Login = () => {
     const submitHandler = async (data: FieldValues)=> {
 
          console.log(getValues())
-            
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
+        router.push("/dashboard/user");
     }
     const [toggleElements, setToggleElements] = useState(true);
 
@@ -43,7 +45,6 @@ const Login = () => {
                     src={ImageLogo}
                     width={250}
                     height={100}
-                    
                     alt="ClinCoord EDC Logo"
                     style={{userSelect: "none"}}
                 />

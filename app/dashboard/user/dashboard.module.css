@@ -24,14 +24,20 @@
 }
 .headerContentUserInfo h3 span{
     margin-right: 0.5rem;
+    transition: ease-in 500;
 }
 .headerContentUserInfo h3 span:nth-child(2){ 
         margin-top: 1rem;
         position: absolute;
         top: -15px;
 }
-.headerContentUserInfo ul  li {
-    font-family: 15pt;
+.list_items li {
+    font-size: 10pt;
+    font-weight: 500;
+    transition: ease-in 500;
+}
+.list_items li:hover {
+    color: rgba(5, 5, 5, .8);
 }
 .asideContent {
      width: 15%;
