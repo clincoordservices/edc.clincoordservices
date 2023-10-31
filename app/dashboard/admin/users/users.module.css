@@ -1,0 +1,49 @@
+.manegeUserBobyForm {
+   display: flex;
+}.mainBody {
+    margin-top: 1.5rem;
+}
+.mainContent_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+.mainContent_header_ {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.formContent legend {
+    margin-bottom: 0.5rem;
+}
+.formContent div button {
+     padding: 0.2rem;
+}
+.mainContent_header form {
+     width: 100%;
+}
+.mainContent_header span button {
+    padding: 0.3rem;
+}
+.mainContent_header form input,
+.mainContent_header span input  {
+     width: 85%;
+     padding: 0.2rem;
+     border-radius: 5px;
+     border: 1px solid #ccc;
+     outline: none;
+     margin-top: 0.3rem;
+}
+.mainContent_header form input:focus,
+.mainContent_header span input:focus  {
+    border: 1px solid var(--primary-color);
+}
+.mainContent_header form label {
+     font-size: 10pt;    
+}
+.mainContent_body {
+    margin-top: 1rem;
+}
+

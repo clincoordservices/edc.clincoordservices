@@ -56,3 +56,11 @@
     border-radius: 10px;
     border: 1px solid #333333;
 }
+
+@media screen and (max-width: 660px) { 
+    .bodyContent {
+        overflow-y: scroll;
+        overflow-x: none;
+    }
+
+}

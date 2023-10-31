@@ -106,7 +106,6 @@
 @media screen and (max-width: 749px) { 
     .contentForm div  textarea {
          width: 90%;
-         margin: 0 auto;
     }
     .contentForm div input {  
         width: 90%;
@@ -114,15 +113,17 @@
 }
 
 @media screen and (max-width: 660px) { 
+    .rightSide {
+        width: 100%;
+    }
     .contentForm {
         display: flex;
         flex-direction: column;
     }
+    .contentForm div  textarea {
+        width: 42%;
+   }
     .contentForm div label { 
         font-size: 10.5pt;
-    }
-
-    .mainContent {
-        height: fit-content;
     }
 }

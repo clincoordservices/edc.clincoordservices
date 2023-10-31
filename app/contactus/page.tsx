@@ -51,7 +51,7 @@ const ContactUs = () => {
                 </article>
                 <div> 
                 <div className={`${ wasSent ? "hideListElement" : styles.emailsentMessage}`}>
-                            <p>Thank you for for get in touch to us, if you have an account with us, an email will be sent to you</p>
+                            <p>Thank you for get in touch to us,an email will be sent to you as soon as possible.</p>
                 </div>
                     <form  onSubmit={handleSubmit(submitHandler)} method="post" className={`${ wasSent? styles.containerFormContactUs : "hideListElement"}`}>
                         <div className={styles.containerFormContactUsHeader}>
@@ -107,7 +107,6 @@ const ContactUs = () => {
                                 <label htmlFor="subject">Subject</label>
                                 <input 
                                     type="text" 
-                                    maxLength={60}
                                     id="subject" 
                                     {...register("subject")}
                                     />
