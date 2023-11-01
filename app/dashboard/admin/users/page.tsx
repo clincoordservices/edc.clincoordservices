@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm   } from "react-hook-form";
+import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
 import UserList from "@/app/components/admin_userlist/page";
@@ -9,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 
 const ManageUsers = () => {
-     const [show, setShow] = useState<Boolean>(true);
+     const [show, setShow] = useState<Boolean>(false);
      const [user, setUser] = useState<IUserData[]>([]);
 
      const {
@@ -47,8 +48,11 @@ const ManageUsers = () => {
                         <span>
                                 <button onClick={clickHander}> Add user</button>
                         </span>
-                        <span>
-                            <input type="search"/>
+                        <span className={styles.mainContent_header_search}>
+                            <input id="search" type="search"/> 
+                            <label htmlFor="search" >
+                                <CiSearch/>
+                            </label>
                         </span>
                     </div>
                     <div className={` ${show ?"showListElement":"hideListElement"}`}>
@@ -135,7 +139,7 @@ const ManageUsers = () => {
                 </div>
 
                 <div className={styles.mainContent_body}>
-                    <h4>USERS LIST</h4>
+                    <h5>USERS LIST</h5>
                     <ul> 
                          { !(user.length===0) ? <UserList users= {user} /> : "No user yet."
                             

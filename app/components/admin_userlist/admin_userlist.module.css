@@ -1,4 +1,51 @@
-.UserListContent li {
-     display: flex;
-     justify-content: space-around;
-}
+.UserListContent   {
+     display: table;
+     width: 100%;
+     margin: 0 auto;
+     border-collapse: collapse;
+     font-size: 10pt;
+   }
+   
+   .UserListContent   thead {
+     background-color: var(--secondary-color);
+     color: #fff;
+     text-align: center;
+   }
+   
+   .UserListContent   thead th {
+     padding: 10px;
+   }
+   
+   .UserListContent   tbody {
+     background-color: #fff;
+   }
+   
+   .UserListContent   tbody button {
+      border: none;
+      background-color: #333333;
+      color: #ffffff;
+      width: 4rem;
+      border-radius: 0.3rem;
+      padding: 0.5rem;
+   }
+   .UserListContent   tbody button:hover {
+      border: none;
+      background-color: rgba(51, 51, 51, 0.8);
+      color: #ffffff;
+   }
+   .UserListContent   tbody button:nth-child(2) {
+      margin-top: 0.2rem;
+   }
+   
+   .UserListContent   tbody td {
+     padding: 10px;
+     text-align: center;
+     width: 20%;
+   }
+   .UserListContent   tbody td:last-child button:first-child{
+          margin-right: 0.5rem;
+   }
+   
+   .UserListContent   tbody tr:nth-child(even) {
+     background-color: #f2f2f2;
+   }

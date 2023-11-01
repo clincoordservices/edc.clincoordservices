@@ -35,15 +35,26 @@
      border: 1px solid #ccc;
      outline: none;
      margin-top: 0.3rem;
+
 }
-.mainContent_header form input:focus,
-.mainContent_header span input:focus  {
+.mainContent_header span input {
+     border: none;
+}
+.mainContent_header form input:focus {
     border: 1px solid var(--primary-color);
+}
+
+.mainContent_header_search {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
 }
 .mainContent_header form label {
      font-size: 10pt;    
 }
 .mainContent_body {
     margin-top: 1rem;
+}
+.mainContent_body h4 {
+    margin-bottom: 0.5rem;
 }
 

@@ -4,25 +4,29 @@ import { IUserData } from "@/app/utils/form_validation/adminAddUsers";
 
 const UserList = ({ users }: { users: IUserData[] }) => {
     return (
-      <ul className={styles.UserListContent}>
-         <li>             
-            <p>Full Name</p>
-            <p>Email</p>
-            <p>Institution</p>
-            <p>Role</p> 
-        </li>
+      <table className={styles.UserListContent}>
+         <thead>
+         <tr>             
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Institution</th>
+            <th>Role</th>
+            <th>opc.</th>
+          </tr> 
+        </thead>
+        <tbody>
         {users.map((user) => (
          
-          <li key={user.user_email}>
-            <p>{user.first_name + " " + user.last_name}</p>
-            <p>{user.user_email}</p>
-            <p>{user.user_institute}</p>
-            <p>{user.user_role}</p>
-            <button type="submit"> Edit</button>
-            <button type="submit"> Delete</button>
-          </li>
-        ))}
-      </ul>
+            <tr key={user.user_email}>
+              <td>{user.first_name + " " + user.last_name}</td>
+              <td>{user.user_email}</td>
+              <td>{user.user_institute}</td>
+              <td>{user.user_role}</td> 
+              <td><button type="submit"> Edit</button><button type="submit"> Delete</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   };
   
