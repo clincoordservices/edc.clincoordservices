@@ -141,7 +141,7 @@ const ManageUsers = () => {
                 <div className={styles.mainContent_body}>
                     <h5>USERS LIST</h5>
                     <ul> 
-                         { !(user.length===0) ? <UserList users= {user} /> : "No user yet."
+                         { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span>
                             
                         }
 
