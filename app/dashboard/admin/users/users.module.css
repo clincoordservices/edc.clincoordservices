@@ -36,6 +36,7 @@
 }
 .mainContent_header span input {
      border: none;
+     outline: none;
      text-indent: 0.5rem;
 }
 .mainContent_header form input:focus {
@@ -55,7 +56,5 @@
 .mainContent_body h4 {
     margin-bottom: 0.5rem;
 }
-.mainContent_body ul span {
-    padding: 0.5rem;
-}
+
 

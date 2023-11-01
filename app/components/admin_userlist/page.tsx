@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./admin_userlist.module.css";
 import { IUserData } from "@/app/utils/form_validation/adminAddUsers";
@@ -11,7 +12,7 @@ const UserList = ({ users }: { users: IUserData[] }) => {
             <th>Email</th>
             <th>Institution</th>
             <th>Role</th>
-            <th>opc.</th>
+            <th>Opc. </th>
           </tr> 
         </thead>
         <tbody>
@@ -22,7 +23,7 @@ const UserList = ({ users }: { users: IUserData[] }) => {
               <td>{user.user_email}</td>
               <td>{user.user_institute}</td>
               <td>{user.user_role}</td> 
-              <td><button type="submit"> Edit</button><button type="submit"> Delete</button></td>
+              <div><button type="submit"> Edit</button><button type="submit"> Delete</button></div>
             </tr>
           ))}
         </tbody>

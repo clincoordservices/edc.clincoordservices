@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm   } from "react-hook-form";
-import {CiSearch} from "react-icons/Ci";
+// import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
 import UserList from "@/app/components/admin_userlist/page";
@@ -51,7 +51,7 @@ const ManageUsers = () => {
                         <span className={styles.mainContent_header_search}>
                             <input id="search" type="search"/> 
                             <label htmlFor="search" >
-                                <CiSearch/>
+                                {/* <CiSearch/> */}
                             </label>
                         </span>
                     </div>
