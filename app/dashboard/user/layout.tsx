@@ -24,9 +24,6 @@ export default function RootLayout({
         setUserInfoToggle(prev=> !prev);
      }
 
-
-
-
   return (
     <html lang="en">
       <body>
@@ -58,7 +55,7 @@ export default function RootLayout({
 
                 <div className={styles.mainBodyContent}>
                     <aside className={styles.asideContent}>
-                        <SidebarItems/>
+                        <SidebarItems />
                         </aside>
                     <main className={styles.bodyContent}>
                         <div id="content">

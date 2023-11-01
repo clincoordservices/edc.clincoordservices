@@ -29,8 +29,8 @@ const Login = () => {
 
          console.log(getValues())
         await new Promise((resolve)=> setTimeout(resolve, 1000));
-        reset();
         router.push("/dashboard/user");
+        reset();
     }
     const [toggleElements, setToggleElements] = useState(true);
 

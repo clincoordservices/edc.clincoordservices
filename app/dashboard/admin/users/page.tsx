@@ -3,20 +3,14 @@ import { useState } from "react";
 import { useForm   } from "react-hook-form";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
+import UserList from "@/app/components/admin_userlist/page";
+import { IUserData, IUserSchema } from "@/app/utils/form_validation/adminAddUsers";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type IUser =  {
-    first_name: string,
-    last_name: string,
-    middle_name: string
-    temp_pswd:string
-    user_email:string
-    user_institute: string
-    user_role:string
-}
 
 const ManageUsers = () => {
      const [show, setShow] = useState<Boolean>(true);
-     const [user, setUser] = useState<IUser[]>([]);
+     const [user, setUser] = useState<IUserData[]>([]);
 
      const {
         register,
@@ -24,13 +18,17 @@ const ManageUsers = () => {
         formState: {errors, isSubmitting},
         reset,
         getValues   
-   } = useForm();
-   const [wasSent, setWasSent] = useState(true);
+   } = useForm<IUserData>({
+    resolver: zodResolver(IUserSchema)
+});
+
+//    const [wasSent, setWasSent] = useState(true);
 
      const submitHandler = async (data: FieldValues)=> {
-        
-        console.log(getValues())
 
+        console.log(getValues())
+        setUser([...user, getValues()])
+        
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
     }
@@ -38,8 +36,6 @@ const ManageUsers = () => {
     const clickHander = ()=> {
         setShow(prev=> !prev)
     }
-     
-
     return (
     <>
         <main className={styles.mainBody}>
@@ -110,15 +106,15 @@ const ManageUsers = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="user_institute">User Institution</label>
+                                    <label htmlFor="user_institute">Institution</label>
                                     <input 
                                         type="text" 
                                         id="user_institute" 
                                         {...register("user_institute")}
-                                    />
+                                    /> 
                                 </div>
                                 <div>
-                                    <label htmlFor="user_project">User project</label>
+                                    <label htmlFor="user_project">Project</label>
                                     <input 
                                         type="text" 
                                         id="user_institute" 
@@ -141,9 +137,9 @@ const ManageUsers = () => {
                 <div className={styles.mainContent_body}>
                     <h4>USERS LIST</h4>
                     <ul> 
-                         {
-                          
-                             }
+                         { !(user.length===0) ? <UserList users= {user} /> : "No user yet."
+                            
+                        }
 
                     </ul>
                 </div>
