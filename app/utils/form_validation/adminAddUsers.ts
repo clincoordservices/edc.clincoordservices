@@ -1,7 +1,7 @@
 
 import { string, object } from "zod";
 
-export interface IUserData  {
+export type IUserData = {
     first_name: string,
     last_name: string,
     middle_name: string

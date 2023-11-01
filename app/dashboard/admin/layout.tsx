@@ -21,69 +21,7 @@ export default function RootLayout({
     const [url, setUrl ] = useState<String>("string");
     const router = useRouter()
     const currentPath = usePathname();
-
-    const [item, setItem] = useState<Item[]>([
-        {
-          name: "Manage Users",
-          href: `/dashboard/users/users" }`,
-        },
-        {
-          name: "Settings",
-          href: `/dashboard/admin/settings`,
-        },
-        {
-          name: "User sessions",
-          href: `/dashboard/admin/sessions`,
-        },
-        {
-          name: "Item 2",
-          href: "/Item2",
-        },
-        {
-          name: "Item 3",
-          href: "/Item3a",
-        },
-        {
-          name: "Item 4",
-          href: "/Item4",
-        },
-        {
-          name: "Item 5",
-          href: "/Item5",
-        },
-        {
-          name: "Item 6",
-          href: "/Item6",
-        },
-        {
-          name: "Item 7",
-          href: "/Item7",
-        },
-        {
-          name: "Item 3",
-          href: "/Item31",
-        },
-        {
-          name: "Item 4",
-          href: "/Item42",
-        },
-        {
-          name: "Item 5",
-          href: "/Item51",
-        },
-        {
-          name: "Item 6",
-          href: "/Item62",
-        },
-        {
-          name: "Item 71",
-          href: "/Item10",
-        },
-      ]);
-
-    useEffect(()=> {
-        setUrl("./")
-    })
+    
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);
      }

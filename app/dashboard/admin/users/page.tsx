@@ -4,7 +4,7 @@ import { useForm   } from "react-hook-form";
 // import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
-import UserList from "@/app/components/admin_userlist/page";
+import UserList from "@/app/components/admin_userlist/page2";
 import { IUserData, IUserSchema } from "@/app/utils/form_validation/adminAddUsers";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -140,12 +140,7 @@ const ManageUsers = () => {
 
                 <div className={styles.mainContent_body}>
                     <h5>USERS LIST</h5>
-                    <ul> 
-                         { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span>
-                            
-                        }
-
-                    </ul>
+                         { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span> }   
                 </div>
 
             </section>

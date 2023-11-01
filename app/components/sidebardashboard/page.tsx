@@ -21,11 +21,11 @@ const SidebarItems = () => {
           href: "/Item2",
         },
         {
-          name: "Item 3",
+          name: "Item 33",
           href: "/Item3a",
         },
         {
-          name: "Item 4",
+          name: "Item 43",
           href: "/Item4",
         },
         {
@@ -33,7 +33,7 @@ const SidebarItems = () => {
           href: "/Item5",
         },
         {
-          name: "Item 6",
+          name: "Item 61",
           href: "/Item6",
         },
         {
@@ -64,8 +64,8 @@ const SidebarItems = () => {
     
       return (
         <ul>
-          {items.map((item) => (
-            <li key={item.name}>
+          {items.map((item, index) => (
+            <li key={index}>
               <Link href={item.href}>{item.name}</Link>
             </li>
           ))}
