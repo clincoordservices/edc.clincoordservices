@@ -121,8 +121,8 @@ const ManageUsers = () => {
                                     <label htmlFor="user_project">Project</label>
                                     <input 
                                         type="text" 
-                                        id="user_institute" 
-                                        {...register("user_institute")}
+                                        id="user_project" 
+                                        {...register("user_project")}
                                     />
                                 </div>
                             <div>

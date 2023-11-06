@@ -1,32 +1,44 @@
-.main_Content {
+.main_Content,
+.main_Content_Form {
     height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .containerFormLogin {  
     display: flex;
     flex-direction: column;
-    width: 50%;
     align-items: center;
     justify-content: center;
     user-select: none;
-   background-size: 100% 100%;
-   background-repeat: no-repeat;
-   background-attachment: fixed;
 }
 .containerEmail {
      margin-top: 5px;
      display: flex;
      flex-direction: column;
 }
+.main_Content_HideMessage {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
 .containerFormLoginpBody label {
     margin: 5px 0;
     font-size: 11pt;
 }
+.containerFormLoginHeader {
+    width: 100%;
+}
+.containerFormLoginHeader legend {
+    width: 300px;
+}
 .containerFormLoginHeader h2 {
     color: var(--secondary-color);
     margin-bottom: 5px;
+    font-size: 16pt;
 }
 .containerEmail input {
      text-indent: 10px;
@@ -66,6 +78,10 @@
     font-size: 10pt;
     color: #ff4500 !important;
 }
+
+.hideEntiretElement{
+    display: none;
+}
 @media screen and (max-width: 460px) {
     .containerEmail input,
     .containerButton button {
@@ -84,8 +100,6 @@
 }
 .containerFormLoginHeader legend {
     width: 320px;
-    display: grid;
-    place-content: center;
 }
 }
 @media screen and (max-width: 330px) { 

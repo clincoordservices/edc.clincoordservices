@@ -26,6 +26,7 @@ const VerifyAccount  = () => {
         
 
        await new Promise((resolve)=> setTimeout(resolve, 1000));
+       setWasSent(prev=> !prev);
        reset();
    }
      
@@ -33,36 +34,39 @@ const VerifyAccount  = () => {
             <>
                 <HeaderNoLogin />
                 <main className={styles.main_Content}>
-                    <form onSubmit={handleSubmit(submitHandler)}   method="post" className={styles.containerFormLogin}>
-                        <div className={styles.containerFormLoginHeader}>
-                                <legend> <h2>Verify your account</h2> </legend>
-                        </div>
-                        <div className={styles.containerFormLoginpBody}>
-                        <span>Please enter your email adress below to receive instructions </span><br/>
-                            <span>with mail for resetting your password.</span><br/>
-                            <div className={styles.containerEmail} >
-                                <label htmlFor="email">E-mail</label>
-                                <input 
-                                    type="text" 
-                                    id="subject" 
-                                    {...register("email")}
-                                    />
-                                <span className={styles.notificationContactUsFormField}>
-                                    <span> 
-                                        {/* <span className={styles.notificationContactUsFormField_}><RiErrorWarningLine /> </span>  */}
-                                        {errors.email && (<span className={styles.notificationContactUsFormField_}>{`${errors.email.message}`}</span> )}
-                                    </span> 
-                                </span>
+                    <div className={`${wasSent? styles.hideEntiretElement :"showListElement"} ${styles.main_Content_HideMessage}`}>
+                        <span><p>Verify your email adress</p></span>
+                    </div>
+                    <div  className={`${wasSent? "showListElement" :styles.hideEntiretElement } ${styles.main_Content_Form}`}>
+                        <form onSubmit={handleSubmit(submitHandler)}   method="post" className={styles.containerFormLogin}>
+                            <div className={styles.containerFormLoginHeader}>
+                                    <legend> <h2>Verify your account</h2> </legend>
                             </div>
-                            <div className={styles.containerButton}>
-                                <button 
-                                    disabled={isSubmitting} 
-                                    type="submit"
-                                    >SEND
-                                </button>
-                            </div>
-                        </div>            
-                    </form>
+                            <div className={styles.containerFormLoginpBody}>
+                                <div className={styles.containerEmail} >
+                                    <label htmlFor="email">E-mail</label>
+                                    <input 
+                                        type="text" 
+                                        id="subject" 
+                                        {...register("email")}
+                                        />
+                                    <span className={styles.notificationContactUsFormField}>
+                                        <span> 
+                                            {/* <span className={styles.notificationContactUsFormField_}><RiErrorWarningLine /> </span>  */}
+                                            {errors.email && (<span className={styles.notificationContactUsFormField_}>{`${errors.email.message}`}</span> )}
+                                        </span> 
+                                    </span>
+                                </div>
+                                <div className={styles.containerButton}>
+                                    <button 
+                                        disabled={isSubmitting} 
+                                        type="submit"
+                                        >SEND
+                                    </button>
+                                </div>
+                            </div>            
+                        </form>
+                    </div>
                 </main>
             </> 
     );
