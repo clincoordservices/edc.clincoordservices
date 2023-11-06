@@ -24,11 +24,6 @@ const AdminProfile = () => {
             <div className={styles.leftSide}>
                      <h3>User Name</h3>
                      <h6>Role</h6>
-
-                     <div>
-                        <h5>Description</h5>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quia consectetur, quo unde veniam at officiis fugiat assumenda sequi consequatur, beatae fuga minima iusto vitae hic. A ipsam quo architecto.</p>
-                     </div>
             </div>
 
                <div className={styles.rightSide}>
@@ -58,10 +53,6 @@ const AdminProfile = () => {
                         <div  className={styles.time_zone}> 
                            <label>Time zone</label>
                            <input />
-                        </div>
-                        <div  className={styles.description}> 
-                           <label>Description</label>
-                           <textarea></textarea>
                         </div>
                      </div>
                      <button 

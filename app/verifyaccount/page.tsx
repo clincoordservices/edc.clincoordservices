@@ -70,6 +70,5 @@ const VerifyAccount  = () => {
                 </main>
             </> 
     );
-
 }
 export default VerifyAccount;
