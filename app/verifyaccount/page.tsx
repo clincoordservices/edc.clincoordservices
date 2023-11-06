@@ -29,7 +29,6 @@ const VerifyAccount  = () => {
        setWasSent(prev=> !prev);
        reset();
    }
-     
     return (
             <>
                 <HeaderNoLogin />

@@ -22,10 +22,7 @@ const HeaderNoLogin = () => {
             <div>
                 <span>
                     <Link href="/login">Login</Link>
-                </span>    
-                <span>
-                    <Link href="/signup">Signup</Link>
-                </span>    
+                </span>   
             </div>
         </header>
         </div>

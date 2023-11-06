@@ -15,7 +15,7 @@ export type IUserData = {
 export const IUserSchema = object({
     first_name: string().min(2, "Please enter First-name").max(255),
     last_name:  string().min(2, "Please enter Last Name").max(255,"Please enter Last Name"),
-    middle_name:  string().min(2, "Please enter Last Name").max(255,"Please enter Last Name"),
+    middle_name:  string().max(255,"Please enter Middle Name"),
     user_email: string().email("Please enter a e-mail").max(255, "Please enter a e-mail"),
     temp_pswd: string().min(6, "Please enter a Password").max(255, "Please enter a Password"),
     user_institute: string().min(2, "Please enter a Password").max(255, "Please enter a Institute"),

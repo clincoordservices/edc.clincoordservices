@@ -46,10 +46,10 @@ const ContactUs = () => {
                         </div>
                         <div>
                             <span><SiMinutemailer className={styles.iconContactInfo}/> </span>
-                            <span> <strong>admin@clincoord.com</strong></span>
+                            <span> <strong>admin@clincoordservices.com</strong></span>
                         </div>
                 </article>
-                <div> 
+                <div style={{position: "relative"}}> 
                 <div className={`${ wasSent ? "hideListElement" : styles.emailsentMessage}`}>
                             <p>Thank you for get in touch to us,an email will be sent to you as soon as possible.</p>
                 </div>

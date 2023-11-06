@@ -1,0 +1,131 @@
+.main_Content{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    margin-top: 8rem;
+
+    background: linear-gradient(to right, var(--secondary-color) 30%, #fff 60%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.firstContent {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.containerFormLogin {  
+     display: flex;
+     flex-direction: column;
+     width: 50%;
+     align-items: center;
+     justify-content: center;
+     user-select: none;
+     background: linear-gradient(to right, #fff  30%, #f7f7ff 30%);
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+}
+.containerEmail,
+.containerPassword {
+      display: flex;
+      flex-direction: column;
+}
+.containerFormLoginpBody label {
+     margin: 5px 0;
+     font-size: 11pt;
+}
+.containerFormLoginHeader h2 {
+     color: var(--secondary-color);
+}
+.containerEmail input,
+.containerPassword input {
+      text-indent: 10px;
+}
+.containerEmail input,
+.containerPassword input,
+.containerButton button {
+     width: 400px;
+     height: 40px;
+     border-radius: 0.375rem;
+     border: 1px solid rgba(26,28,30,.2);
+     font-size: 12pt;
+     color: #111111;
+     outline: none;
+}
+.containerEmail input:focus,
+.containerPassword input:focus {
+     border: 2px solid var(--primary-color);
+}
+.containerFormLogin div {
+     width: 25rem;     
+}
+.firstContent{
+     width: 50%;
+     border-right: 1px solid #999; 
+}
+.containerButton button {
+     background-color: var(--secondary-color);
+     font-weight: bold;
+     color: #ffffff;
+     margin-top: 5px;
+}
+.containerButton button:hover {
+     background-color: var(--secondary-color);
+     cursor: pointer;
+     opacity: .8;
+}
+.notificationLoginFormField{
+      margin: 6px 0 3px 0;
+      font-size: 10pt;
+      color: #ff4500;
+      height: 26px;
+}
+.opctionsBottomOfForm  {
+      margin-top: 20px;
+      font-size: 10pt;
+      font-weight: 400; 
+}
+.opctionsBottomOfForm  p:hover,
+.opctionsBottomOfForm li:hover{
+      cursor: pointer;
+      text-decoration: underline;
+}
+.opctionsBottomOfForm li {
+     margin-top: 5px;
+}
+.opctionsBottomOfForm ul {
+      list-style: none;
+      margin-left: 10px;
+}
+/* RESPONSIBLE SIZE*/
+
+@media screen and (max-width: 849px) {
+     .firstContent {
+           display: none;
+     }
+     .main_Content{ 
+          background: unset;
+     }
+     .containerFormLogin {   
+          width: 100%;
+          background:  #f7f7ff;
+     }
+}
+@media screen and (max-width: 431px) {
+     .main_Content {
+         width: 100%;
+     }
+     .containerFormLogin {
+           width: 100%;
+     }
+     .containerFormLogin div,
+     .containerEmail input,
+     .containerPassword input,
+     .containerButton button { 
+          width: 18rem;
+     }
+     .containerFormLoginHeader h2 {
+           font-size: 15pt;
+     }
+}
