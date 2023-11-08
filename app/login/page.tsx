@@ -12,7 +12,6 @@ import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
-    // const [wasSent, setWasSent] = useState(true);
     const router = useRouter();
     const {
             register,
@@ -36,7 +35,7 @@ const Login = () => {
 
     const handlerOnclickHideListElement = () => {
         setToggleElements(!toggleElements);
-        }
+    }
  
     return (
         <div  className={styles.main_Content}>

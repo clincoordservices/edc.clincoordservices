@@ -23,11 +23,10 @@ const Login = () => {
     } = useForm<TLoginData>({
             resolver: zodResolver(LoginSchema)
     });
-    
-    
+
     const submitHandler = async (data: FieldValues)=> {
 
-         console.log(getValues())
+        
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         router.push("/dashboard/admin");
         reset();

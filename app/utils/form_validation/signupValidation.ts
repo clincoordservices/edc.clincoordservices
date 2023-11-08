@@ -1,3 +1,4 @@
+import User from "@/app/dashboard/user/users/page";
 import { string, object } from "zod";
 
 export type SignupData = {
@@ -5,7 +6,8 @@ export type SignupData = {
     last_name: string,
     email: string,
     company: string,
-    password: string
+    password: string,
+    role: string
 }
 export const SignupSchema = object({
     first_name: string().min(2, "Please enter First-name").max(255, "Please enter First-name"),
