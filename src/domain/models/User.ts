@@ -1,7 +1,7 @@
 interface IUser {     
     first_name: string,
     last_name: string,
-    middle_name?: string,
+    middle_name: string,
     email: string,
     company: string,
     password: string,

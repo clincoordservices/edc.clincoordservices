@@ -25,6 +25,8 @@ const ManageUsers = () => {
 
 //    const [wasSent, setWasSent] = useState(true);
 
+ console.log(process.env)
+
      const submitHandler = async (data: FieldValues)=> {
 
         console.log(getValues())
