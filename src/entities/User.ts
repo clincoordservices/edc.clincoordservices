@@ -5,9 +5,9 @@ class User implements IUser {
 
     constructor( 
         public readonly first_name: string,
+        public readonly middle_name: string, 
         public readonly last_name: string, 
         public readonly email: string,
-        public readonly middle_name: string, 
         public readonly company: string,
         public readonly password: string,
         public readonly  institution: string,

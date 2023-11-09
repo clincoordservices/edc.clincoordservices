@@ -4,8 +4,9 @@ import Connection from './connection';
 export default class MongoDBConnection implements Connection {
  private client: MongoClient;
 
+    // Connctar a DATABASE 
  constructor(private uri: string) {
-   this.client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+   this.client = new MongoClient(uri);
  }
 
  async query(statement: string, params: any): Promise<any> {

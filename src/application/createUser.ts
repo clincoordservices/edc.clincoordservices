@@ -9,6 +9,6 @@ export default class CreateUser {
     async perform({ first_name,last_name, middle_name, email,company, password,institution,project,role}: IUser) {
         const user = new User(first_name,last_name, middle_name, email,company, password,institution,project,role);
         const res = await this.userRepository.create(user);
-        return res
+        return res;
     }
 }
