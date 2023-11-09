@@ -1,8 +1,6 @@
 import IUser from "../domain/models/User"
 
-
 class User implements IUser {
-
     constructor( 
         public readonly first_name: string,
         public readonly middle_name: string, 
@@ -12,6 +10,8 @@ class User implements IUser {
         public readonly password: string,
         public readonly  institution: string,
         public readonly project: string,
-        public readonly role: string){}
+        public readonly role: string,
+        public readonly access_level: string
+        ){}
 }
 export default User;
