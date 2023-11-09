@@ -4,24 +4,31 @@ import Connection from "../../database/connection";
 
 export default class UserRepositoryDatabase implements UserRepository {
 
-    constructor (readonly connection: Connection) {
+    constructor (readonly connection: Connection, readonly collection: string) {
 	}
 
-    get(userEmail: string): Promise<User> {
-        
-        return User;
+    async get(userEmail: string): Promise<User> {
+       const user =  await this.connection.query(this.collection,{ findOne: { email: userEmail } });
+        return user;
     }
-    create(user: User): Promise<void> {
-        throw new Error("Method not implemented.");
+    async create(user: User): Promise<void> {
+        await this.connection.query(this.collection,{ insertOne: user });
     }
-    edit(user: User, userEmail: string): Promise<User | null> {
-        throw new Error("Method not implemented.");
+    async edit(user: User, userEmail: string): Promise<User | null> {
+        const user_ = await this.connection.query(this.collection,{ updateOne: { email: userEmail }, $set: user });
+
+        if(user_)
+            return user_;
+
+            return null;
     }
-    delete(userEmail: string): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    async delete(userEmail: string): Promise<boolean> {
+        const isDeleted = await this.connection.query(this.collection, { deleteOne: { email: userEmail} });
+        return isDeleted
     }
-    list(): Promise<User[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<User[]> {
+        const users = await this.connection.query(this.collection, { find: {} });
+        return users;
     } 
 
 
