@@ -2,18 +2,9 @@
 import UserRepository from "@/src/domain/repository/userRepository";
 import User from "@/src/entities/User";
 import Connection from "../../database/connection";
-import { InsertOneResult } from "mongodb";
-
-// import UserRepository from 'caminho-do-seu-repositorio/UserRepository';
-// import Connection from 'caminho-do-seu-repositorio/Connection';
-// import { ObjectId } from 'mongodb';
-// import IUser from 'caminho-do-seu-modelo/IUser';
-    
 export default class UserRepositoryDatabase implements UserRepository {
-      
-    
+  
       constructor(private connection: Connection, readonly collectionName: string) {}
-    
       async getUserById(userEmail: string): Promise<{} | User> {
         try {
           const usersCollection = await this.connection.getModel(this.collectionName);
