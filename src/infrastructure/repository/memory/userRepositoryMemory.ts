@@ -36,17 +36,17 @@ class UserRepositoryMemory implements UserRepository {
   async list(): Promise<User[]> {
     throw new Error("Method not implemented.");
   }
-    // async findUserByMail(userEmail: string): Promise<IUser | undefined> {
-    //   const user = this.users.find((u) => u.email === userEmail);
-    //   return user;
-    // }
+    async findUserByMail(userEmail: string): Promise<IUser | undefined> {
+      const user = this.users.find((u) => u.email === userEmail);
+      return user;
+    }
   
     async findUserByEmail(email: string): Promise<IUser | undefined> {
       const user = this.users.find((u) => u.email === email);
       return user;
     }
   
-    // async updateUser(userEmail: string, user: IUser): Promise<IUser | null> {
+    // async updateUser(userEmail: string, user: IUser): Promise<IUser | {null}> {
 
     // }
 

@@ -7,7 +7,7 @@ interface IUser {
     password: string,
     institution: string,
     project: string,
-    role: string,
-    access_level: string
+    access_level: string,
+    role: string
 }
 export default IUser;

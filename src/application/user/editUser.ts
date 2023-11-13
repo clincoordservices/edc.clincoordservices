@@ -5,12 +5,12 @@ export default class EditUser {
 
     constructor(private userRepository: UserRepository){ }
 
-    async perform(user: User, userEmail: string):Promise<User | null> {
-        const res = await this.userRepository.edit(user, userEmail);
+    async perform(user: User, userEmail: string):Promise<User | {}> {
+        const res = await this.userRepository.updateUser(user, userEmail);
         
         if(res)
         return res;
     
-        return null;
+        return {};
     }
 }

@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import IUser from "../domain/models/User"
 
 class User implements IUser {

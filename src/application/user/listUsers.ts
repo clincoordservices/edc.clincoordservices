@@ -6,7 +6,7 @@ export default class ListUser {
     constructor(private userRepository: UserRepository){ }
 
     async perform():Promise<User[]> {
-        const res = await this.userRepository.list();
+        const res = await this.userRepository.getAllUsers();
         return res;
     }
 }

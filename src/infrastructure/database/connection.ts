@@ -1,4 +1,7 @@
+import { Collection } from "mongodb";
+
 export default interface Connection {
-	query (statement: string, params: any): Promise<any>;
+	connect (statement: string, params: any): Promise<any>;
+  	getModel(modelName: string):  Promise<Collection>;
 	close (): Promise<void>;
 }
