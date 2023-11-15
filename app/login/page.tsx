@@ -11,13 +11,10 @@ import { useRouter } from "next/navigation";
 import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
 import fetchWithParams from "../utils/fetchData/fetch";
 
-
-
-
-
-
 const Login = () => {
     const router = useRouter();
+    const [result_, setResult] = useState<boolean>(true)
+    const [message_, setMessage] = useState("")
     const {
             register,
             handleSubmit,
@@ -31,18 +28,22 @@ const Login = () => {
     
     const submitHandler = async (data: FieldValues)=> {
 
-    
- 
-         
         const {email, password} = getValues();
         await new Promise((resolve)=> setTimeout(resolve, 1000));
-        reset();
+        
 
         const response = await fetchWithParams('/api/login/', 'POST', JSON.stringify({email, password}));
         const res = await response.json()
 
         if(res.result) return  router.push("/dashboard/user");
-       
+
+        const {result, message} = res;
+
+        if(!result && message){
+            setMessage(message);
+            setResult(result);
+        }
+        reset();
     }
     const [toggleElements, setToggleElements]  = useState(true);
 
@@ -67,10 +68,11 @@ const Login = () => {
                 </div>
                 <div className={styles.containerFormLoginpBody}>
                     <div className={styles.notificationLoginFormField}>
-                        <span className={`${!(errors.email && errors.password) ? "hideListElement" : "showListElement"}`}>
+                        <span className={`${!(errors.email && errors.password) ? "hideListElement" : "showListElement"} ${ !result_ ? "showListElement":"hideListElement"} `}>
                         {/* className={`${fieldAlertToggle ? "hideListElement" : "showListElement"}` */}
                             {/* <span><RiErrorWarningLine /> </span> */}
-                            <span>Authentication failed check your credencials</span>             
+                            { (errors.email && errors.password) && <span>Authentication failed check your credencials</span>}
+                            {(!result_ && !(errors.email && errors.password)) && message_}             
                         </span>
                     </div>
                     <div className={styles.containerEmail}>

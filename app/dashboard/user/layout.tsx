@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link";
-import { useRouter , usePathname  } from 'next/navigation'
 import {AiFillCaretDown} from "react-icons/ai";
 import styles from "./dashboard.module.css";
 import { useEffect, useState } from "react";
@@ -13,9 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
-    const [content, setContent] = useState("");
-    const router = useRouter()
-    const currentPath = usePathname();
+    
 
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);

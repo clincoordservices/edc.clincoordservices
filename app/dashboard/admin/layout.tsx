@@ -18,9 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
-    const [url, setUrl ] = useState<String>("string");
     const router = useRouter()
-    const currentPath = usePathname();
     
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);
