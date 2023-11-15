@@ -2,12 +2,11 @@
 // import User from "@/src/entities/User";
 // import MongooseUserRepository from "@/src/infrastructure/database/MongoDBAdapter";
 // import MongooseConnect from "@/src/infrastructure/database/mongooseconnection";
-// import UserUseCase from "@/src/infrastructure/database/use-case";
 
-// // const uri: string = "mongodb://localhost:27017/clicncoordservices" 
+// const uri: string = "mongodb://localhost:27017/clicncoordservices" 
 
-// // // const dbConncet = new UserDataAdapter()
-// // // const repo = new UserRepositoryDatabase(dbConncet, "users");
+// const dbConncet = new UserDataAdapter()
+// const repo = new UserRepositoryDatabase(dbConncet, "users");
 
 
 // // // test('should return a user',async  () => {

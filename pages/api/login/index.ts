@@ -1,39 +1,43 @@
-import User from '@/src/entities/User';
-import MongooseUserRepository from '@/src/infrastructure/database/MongoDBAdapter';
-import MongooseConnect from '@/src/infrastructure/database/mongooseconnection';
-import UserUseCase from '@/src/infrastructure/database/use-case';
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from "next";
+import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
+import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
+import { comparePassword } from "@/src/utils/hashPassword";
+import User from "@/src/entities/User";
+import { generateJWT } from "@/src/utils/jwt/generateJWT";
+import { setAuthCookie } from "@/src/utils/cookieGenerator";
+
+
  
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const mongoConnectionString = "mongodb://localhost:27017/clicncoordservices";
-  const mongooseConnection = new MongooseConnect(mongoConnectionString);
-  
-  // Repositório e UseCase usando o Mongoose
-  const userRepository = new MongooseUserRepository(mongooseConnection);
-  const userUseCase = new UserUseCase(userRepository);
+export default async function POST(req: NextApiRequest,res: NextApiResponse) {
+  const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
+  const dbName = 'clicncoordservices';
+  const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
+  const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
+  const {email, password} = req.body
 
-  const newUser: User = {
-    first_name: 'John',
-    last_name: 'Doe',
-    middle_name: 'M',
-    email: 'john.doe@example.com',
-    company: 'Example Inc',
-    password: 'secretpassword',
-    institution: 'Example University',
-    project: 'Example Project',
-    role: 'Developer',
-    access_level: 'Admin',
-  };
+   try {
+    await mongoAdapter.connect();
+    const user = await userRepository.getUserByEmail(email);
 
-  const res_ = await userUseCase.createUser(newUser)
-  console.log(res_)
-    try {
-          const {first_name} = req.body
-          res.status(200).json({first_name })
-  } catch (err) {
-    res.status(500).json({ error: 'failed to load data' })
-  }
+    if(Object.keys(user).length === 0) {
+      await mongoAdapter.close();
+      return res.status(400).json({message: "Inavlid credencials!"});
+    }
+    const  user_ =  user as User;
+    const result = await comparePassword(password, user_.password);
+
+    if(!result) {
+      await mongoAdapter.close();
+      return res.status(400).json({message: "Inavlid credencials!"});
+    }
+
+    const token = generateJWT(user_);
+    setAuthCookie(res, token);
+    await mongoAdapter.close();
+    return res.json({token, user, result});
+
+   } catch(err){
+      throw new Error("Intern Error. Report it.");
+   }
 }
+

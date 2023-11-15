@@ -1,11 +1,10 @@
 // __tests__/database.test.ts
-// import mongoose from 'mongoose';
 
-// import User from "@/src/entities/User";
-// import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
-// import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
-// import { AuthCreateUserService } from "@/src/services/authService/authSignup";
-// import { ObjectId } from "mongodb";
+
+import User from "@/src/entities/User";
+import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
+import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
+import { ObjectId } from "mongodb";
 
 // // describe('Database Connection', () => {
 // //   it('should connect to the database', async () => {
@@ -14,10 +13,10 @@
 // //     expect(isConnected).toBe(true);
 // //   });
 // // });
-// const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
-// const dbName = 'clicncoordservices';
-// const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
-// const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
+const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
+const dbName = 'clicncoordservices';
+const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
+const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
 
 // const newUser: User = {
 //     id: "1",
@@ -92,21 +91,21 @@
 //         await mongoAdapter.connect();
 //     })
 // })
-// describe('Integration Test - Database Connection GET User', () => {
-//     beforeAll(async () => {
+describe('Integration Test - Database Connection GET User', () => {
+    beforeAll(async () => {
 
-//         await mongoAdapter.connect();
-//     })
-//     it('should GET  user to the database', async () => {
-//         const user1 = await userRepository.getUserById('mauro.doe@example.com');
-//         const user2 = await userRepository.getUserById('manuel.doe@example.com');
-//         expect(user1).toStrictEqual(user2); 
-//     })
-//     afterAll(async () => {
+        await mongoAdapter.connect();
+    })
+    it('should GET  user to the database', async () => {
+        const user1 = await userRepository.getUserById('eman.doe@example.com');
+        const user2 = await userRepository.getUserById('eman.doe@example.com');
+        expect(user1).toStrictEqual(user2); 
+    })
+    afterAll(async () => {
 
-//         await mongoAdapter.close()
-//     })
-// })
+        await mongoAdapter.close()
+    })
+})
 // describe('Integration Test - Database Connection GET ALL  User', () => {
 //     beforeAll(async () => {
 

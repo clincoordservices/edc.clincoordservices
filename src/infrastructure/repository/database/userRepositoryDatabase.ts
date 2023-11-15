@@ -1,11 +1,10 @@
-
 import UserRepository from "@/src/domain/repository/userRepository";
 import User from "@/src/entities/User";
 import Connection from "../../database/connection";
 export default class UserRepositoryDatabase implements UserRepository {
   
-      constructor(private connection: Connection, readonly collectionName: string) {}
-      async getUserById(userEmail: string): Promise<{} | User> {
+    constructor(private connection: Connection, readonly collectionName: string) {}
+      async getUserByEmail(userEmail: string): Promise<{} | User> {
         try {
           const usersCollection = await this.connection.getModel(this.collectionName);
           const user = await usersCollection.findOne({ email: userEmail });
