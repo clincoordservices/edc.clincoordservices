@@ -30,7 +30,6 @@ const Login = () => {
 
         const {email, password} = getValues();
         await new Promise((resolve)=> setTimeout(resolve, 1000));
-        
 
         const response = await fetchWithParams('/api/login/', 'POST', JSON.stringify({email, password}));
         const res = await response.json()

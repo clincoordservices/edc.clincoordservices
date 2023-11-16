@@ -1,8 +1,23 @@
 import User from '@/src/entities/User';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
+const secreteKey = process.env.NEXT_PUBLIC_SECRET_KEY! as string 
 
 export function generateJWT(user: User): string {
-  const secret = "?mw+id7UI|N'zulaG+GXurY68~)hW@~3}WZc#wM6Ifw<aCF+S4LnE{(]Jm7B>N";
-  const token = sign({ id: user.id }, secret, { expiresIn: '7d' });
+  const {id, email} =  user;
+  const token = sign({id, email}, secreteKey, { expiresIn: '7d' });
   return token;
+}
+
+export function verifyJWT(token: string): UserRetorn | null {
+  try {
+    const decoded = verify(token, secreteKey);
+    const { id, email } = decoded as User;
+    return { id, email };
+  } catch (error) {
+    return null;
+  }
+}
+interface UserRetorn {
+  id: string, 
+  email: string
 }

@@ -1,24 +1,37 @@
 "use client"
+import {useEffect, useState } from "react";
 import Link from "next/link";
 import {AiFillCaretDown} from "react-icons/ai";
 import styles from "./dashboard.module.css";
-import { useEffect, useState } from "react";
+import {useRouter} from "next/navigation";
 import SidebarItems from "../../components/sidebardashboard/page";
+import fetchWithParams from "@/app/utils/fetchData/fetch";
+import User from "@/src/entities/User";
 
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children}:{children: React.ReactNode}) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
+    // const [userData, setUserData ] = useState<User>(await getUserData());
+    const router = useRouter();
     
-
+ 
+    // const getUserData = async() => {
+    //     const response = await fetchWithParams('/api/me/', 'GET');
+    //     const res = await response.json(); 
+    //     return res;
+    // }
+    
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);
      }
-     const logoutHandler = () =>{
-        setUserInfoToggle(prev=> !prev);
+     const logoutHandler = async() =>{    
+            try {
+                const res = await fetchWithParams('/api/logout/', 'GET');
+                const {ok} = await res.json();
+                    ok && router.push('/login');
+            } catch (error:any) {
+                console.log(error.message);
+            }
      }
 
   return (
@@ -34,7 +47,7 @@ export default function RootLayout({
                              <ul>
                                 <h3 onClick={userInfoToggleHandler}>
                                     <span>
-                                       {"User Name"}
+                                       {userData && userData.first_name}
                                     </span>
                                     <span>
                                         <AiFillCaretDown/>

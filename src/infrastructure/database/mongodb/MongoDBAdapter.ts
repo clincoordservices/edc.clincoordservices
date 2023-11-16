@@ -9,16 +9,13 @@ export default class MongoDBAdapter implements Connection {
     this.client = new MongoClient(uri);
     this.dbName = dbName;
   }
-
   async connect(): Promise<void> {
     await this.client.connect();
     this.db = this.client.db(this.dbName);
   }
-
   async getModel(modelName: string): Promise<Collection> {
     return this.db.collection(modelName);
   }
-
   async close(): Promise<void> {
     await this.client.close();
   }
