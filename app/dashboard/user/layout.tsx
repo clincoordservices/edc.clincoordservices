@@ -47,7 +47,7 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
                              <ul>
                                 <h3 onClick={userInfoToggleHandler}>
                                     <span>
-                                       {userData && userData.first_name}
+                                       User name
                                     </span>
                                     <span>
                                         <AiFillCaretDown/>
