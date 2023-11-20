@@ -10,7 +10,7 @@ class User implements IUser {
         public readonly email: string,
         public readonly company: string,
         public readonly password: string,
-        public readonly  institution: string,
+        public readonly institution: string,
         public readonly project: string,
         public readonly role: string,
         public readonly access_level: string

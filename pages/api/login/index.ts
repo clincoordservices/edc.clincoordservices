@@ -13,29 +13,32 @@ export default async function POST(req: NextApiRequest,res: NextApiResponse) {
     const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
     const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
     const searchUser = new GetUser(userRepository);
+    const method = req.method;
     const {email, password} = req.body
 
    try {
-        await mongoAdapter.connect();
-        const user = await searchUser.perform(email);
-        console.log(user)
-        if(Object.keys(user).length === 0){
-          await mongoAdapter.close();
-          return res.status(400).json({message: "Inavlid credencials!", result: false});
-        }
-      const  user_ =  user as User;
-      const pass = await hashPassword(password);
-      const result = await comparePassword(password, pass);
+      if(method === 'POST'){
+          await mongoAdapter.connect();
+          const user = await searchUser.perform(email);
+          console.log(user)
+          if(Object.keys(user).length === 0){
+            await mongoAdapter.close();
+            return res.status(400).json({message: "Inavlid credencials!", result: false});
+          }
+        const  user_ =  user as User;
+        const pass = await hashPassword(password);
+        const result = await comparePassword(password, pass);
 
-    if(!result) {
+      if(!result) {
+        await mongoAdapter.close();
+        return res.status(400).json({message: "Inavlid credencials!", result: false});
+      }
+
+      const token = generateJWT(user_);
+      setAuthCookie(res, token, process.env.NEXT_PUBLIC_COOKIE_USER! as string);
       await mongoAdapter.close();
-      return res.status(400).json({message: "Inavlid credencials!", result: false});
+      return res.json({token, user, result});
     }
-
-    const token = generateJWT(user_);
-    setAuthCookie(res, token, process.env.NEXT_PUBLIC_COOKIE_USER! as string);
-    await mongoAdapter.close();
-    return res.json({token, user, result});
    } catch(err){
       throw new Error("Intern Error. Report it.");
    }

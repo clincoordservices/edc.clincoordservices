@@ -32,16 +32,12 @@ const Login = () => {
     });
 
     const submitHandler = async (data: FieldValues)=> {
-
         const {email, password} = getValues();
         await new Promise((resolve)=> setTimeout(resolve, 1000));
 
         const response = await fetchWithParams('/api/dashboard/admin/login/', 'POST', JSON.stringify({email, password}));
         const res = await response.json();
         if(res.result) return  router.push("/dashboard/admin");
-
-
-
     }
 
  

@@ -6,10 +6,10 @@ export type IUserData = {
   first_name: string,
   last_name: string,
   middle_name: string
-  temp_pswd:string
-  user_email:string
-  user_institute: string
-  user_role:string
+  password:string
+  email:string
+  institute: string
+  role:string
 }
 const UserList = ({ users }: { users: IUserData[] }) => {
   return (
@@ -23,12 +23,12 @@ const UserList = ({ users }: { users: IUserData[] }) => {
         </tr>
       </thead>
       <tbody>
-        {users.map((user) => (
-          <tr key={user.user_email}>
+        { users && users.map((user) => (
+          <tr key={user.email}>
             <td>{user.first_name + " " + user.last_name}</td>
-            <td>{user.user_email}</td>
-            <td>{user.user_institute}</td>
-            <td>{user.user_role}</td>
+            <td>{user.email}</td>
+            <td>{user.institute}</td>
+            <td>{user.role}</td>
           </tr>
         ))}
       </tbody>

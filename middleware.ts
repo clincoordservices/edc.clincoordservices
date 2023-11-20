@@ -26,9 +26,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.nextUrl));
   }
   
-  if (!isPublicPath && !tokenUser) {
-    return NextResponse.redirect(new URL('/dashboard/admin/login', request.nextUrl));
-  }
+  // if (!isPublicPath && !tokenUser) {
+  //   return NextResponse.redirect(new URL('/dashboard/admin/login', request.nextUrl));
+  // }
 
     const isDashboardAdminRoute = path.startsWith('/dashboard/admin');
   if (isDashboardAdminRoute && tokenUser) {
@@ -53,6 +53,7 @@ export const config = {
     '/verifyaccount',
     '/dashboard/user',
     '/dashboard/user/:path*',
+    '/dashboard/login-admin'
 
   ],
 };

@@ -23,10 +23,10 @@ const createuser = new CreateUser(userRepository)
 
 const newUser: User = {
     id: "1",
-    first_name: 'Rodrigo',
-    last_name: 'Lima',
-    middle_name: 'Caiala',
-    email: 'em.doe@example.com',
+    first_name: 'Jonas',
+    last_name: 'Segunda',
+    middle_name: 'Adriano',
+    email: 'ep.doe@example.com',
     company: 'Example Inc',
     password: 'secretpassword',
     institution: 'Example University',
@@ -54,7 +54,7 @@ describe('Integration Test - Database Connection', () => {
         await mongoAdapter.connect();
     })
     afterAll(async () => {
-        await mongoAdapter.connect();
+        await mongoAdapter.close();
     })
 
     it('should connect and ADD user to the database', async () => {
@@ -100,8 +100,8 @@ describe('Integration Test - Database Connection GET User', () => {
         await mongoAdapter.connect();
     })
     it('should GET  user to the database', async () => {
-        const user1 = await userRepository.getUserByEmail('jc.doe@example.com');
-        const user2 = await userRepository.getUserByEmail('jc.de@example.com');
+        const user1 = await userRepository.getUserById('343568482');
+        const user2 = await userRepository.getUserByEmail('jc.doe@example.com');
         expect(user1).toStrictEqual(user2); 
     })
     afterAll(async () => {

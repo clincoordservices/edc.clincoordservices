@@ -9,6 +9,9 @@ class UserRepositoryMemory implements UserRepository {
     constructor() {
       this.users = [];
     }
+  getUserById(userId: string): Promise<User> {
+    throw new Error("Method not implemented.");
+  }
   getUserByEmail(userEmail: string): Promise<{} | User> {
     throw new Error("Method not implemented.");
   }

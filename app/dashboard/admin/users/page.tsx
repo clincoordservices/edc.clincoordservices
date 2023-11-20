@@ -7,6 +7,8 @@ import styles from "./users.module.css";
 import UserList from "@/app/components/admin_userlist/page2";
 import { IUserData, IUserSchema } from "@/app/utils/form_validation/adminAddUsers";
 import { zodResolver } from "@hookform/resolvers/zod";
+import fetchWithParams from "@/app/utils/fetchData/fetch";
+import User from "@/src/entities/User";
 
 
 const ManageUsers = () => {
@@ -25,13 +27,15 @@ const ManageUsers = () => {
 
 //    const [wasSent, setWasSent] = useState(true);
 
- console.log(process.env)
+
 
      const submitHandler = async (data: FieldValues)=> {
 
         console.log(getValues())
         setUser([...user, getValues()])
-        
+        const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
+        const res = await response.json();
+        console.log(res)
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
     }
@@ -88,43 +92,51 @@ const ManageUsers = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="user_email">User email</label>
+                                    <label htmlFor="email">User email</label>
                                     <input 
                                         type="text" 
-                                        id="user_email" 
-                                        {...register("user_email")}
+                                        id="email" 
+                                        {...register("email")}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="temp_pswd">Tem. password</label>
+                                    <label htmlFor="password">Tem. Password</label>
                                     <input 
                                         type="text" 
-                                        id="temp_pswd" 
-                                        {...register("temp_pswd")}
+                                        id="password" 
+                                        {...register("password")}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="user_role">User role</label>
+                                    <label htmlFor="role">User role</label>
                                     <input 
                                         type="text" 
-                                        id="user_role" 
-                                        {...register("user_role")}
+                                        id="role" 
+                                        {...register("role")}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="user_institute">Institution</label>
+                                    <label htmlFor="institute">Institution</label>
                                     <input 
                                         type="text" 
-                                        id="user_institute" 
-                                        {...register("user_institute")}
+                                        id="institute" 
+                                        {...register("institute")}
                                     /> 
                                 </div>
                                 <div>
-                                    <label htmlFor="user_project">Project</label>
+                                    <label htmlFor="project">Project</label>
                                     <input 
                                         type="text" 
                                         id="user_project" 
-                                        {...register("user_project")}
+                                        {...register("project")}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="access_level">Acess Level</label>
+                                    <input 
+                                        type="text" 
+                                        id="access_level" 
+                                        {...register("access_level")}
                                     />
                                 </div>
                             <div>

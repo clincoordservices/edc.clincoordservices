@@ -53,7 +53,7 @@ export default function RootLayout({
      const logoutHandler = async() =>{
         try {
             await fetchWithParams('/api/logout_admin/', 'GET');
-            router.push("/dashboard/admin/login");
+            router.push("/login-admin");
         } catch (error:any) {
             console.log(error.message);
         }

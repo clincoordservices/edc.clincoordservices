@@ -2,9 +2,20 @@ import UserRepository from "@/src/domain/repository/userRepository";
 import User from "@/src/entities/User";
 import Connection from "../../database/connection";
 import generateRandomNumber from "@/src/utils/generateRandomNumber/generaterandomnumber";
+
 export default class UserRepositoryDatabase implements UserRepository {
   
   constructor(private connection: Connection, readonly collectionName: string) {}
+  
+   async getUserById(userId: string): Promise<User> {
+    try {
+      const usersCollection = await this.connection.getModel(this.collectionName);
+      const user = ((await usersCollection.findOne({ id: userId })) as unknown) as User;
+      return user;
+} catch (error) {
+      throw new Error(`Error fetching user by id: `);
+}
+  }
       async getUserByEmail(userEmail: string): Promise<{} | User> {
         try {
               const usersCollection = await this.connection.getModel(this.collectionName);
@@ -26,10 +37,12 @@ export default class UserRepositoryDatabase implements UserRepository {
       }
       async createUser(user: User): Promise<boolean> {
         const randomNumber = generateRandomNumber();
-        const hasNumber = (await this.getAllUsers()).findIndex(user => user.id === randomNumber);
+        const hasNumber = (await this.getUserById(user.id));
+        if(hasNumber) return this.createUser(user);
 
-        if(hasNumber !== -1) return this.createUser(user);
         try {
+              // const userExist = await this.getUserByEmail(user.email);
+              // if(userExist)  return false;
               const usersCollection = await this.connection.getModel(this.collectionName);
               const user_ = await usersCollection.insertOne({...user, id:randomNumber});
 
