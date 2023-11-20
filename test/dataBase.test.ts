@@ -1,6 +1,7 @@
 // __tests__/database.test.ts
 
 
+
 import User from "@/src/entities/User";
 import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
 import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
@@ -13,24 +14,26 @@ import { ObjectId } from "mongodb";
 // //     expect(isConnected).toBe(true);
 // //   });
 // // });
-const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
+const mongoUri = "mongodb+srv://rodrigo:d80z7Ws8dbp7XDpE@atlascluster.ng3rpy6.mongodb.net/cleancoordservices?retryWrites=true&w=majority";
 const dbName = 'clicncoordservices';
 const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
 const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
+import CreateUser from "@/src/application/user/createUser";
+const createuser = new CreateUser(userRepository)
 
-// const newUser: User = {
-//     id: "1",
-//     first_name: 'Josemar',
-//     last_name: 'Carvalho',
-//     middle_name: 'Da Silva',
-//     email: 'jc.doe@example.com',
-//     company: 'Example Inc',
-//     password: 'secretpassword',
-//     institution: 'Example University',
-//     project: 'Example Project',
-//     role: 'Developer',
-//     access_level: 'Admin',
-// };
+const newUser: User = {
+    id: "1",
+    first_name: 'Rodrigo',
+    last_name: 'Lima',
+    middle_name: 'Caiala',
+    email: 'em.doe@example.com',
+    company: 'Example Inc',
+    password: 'secretpassword',
+    institution: 'Example University',
+    project: 'Example Project',
+    role: 'Developer',
+    access_level: 'Admin',
+};
 // const newUser1: User = {
 //     id: "",
 //     first_name: 'Manuel',
@@ -45,23 +48,23 @@ const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
 //     access_level: 'Admin',
 // };
 
-// describe('Integration Test - Database Connection', () => {
+describe('Integration Test - Database Connection', () => {
 
-//     beforeAll(async () => {
-//         await mongoAdapter.connect();
-//     })
-//     afterAll(async () => {
-//         await mongoAdapter.connect();
-//     })
+    beforeAll(async () => {
+        await mongoAdapter.connect();
+    })
+    afterAll(async () => {
+        await mongoAdapter.connect();
+    })
 
-//     it('should connect and ADD user to the database', async () => {
-//         // const result = await userRepository.createUser(newUser)
-//         const createUser = new AuthCreateUserService(userRepository);
-//         const token =  await createUser.signup(newUser);
-//         expect(token).toStrictEqual(true);
-//     })
+    it('should connect and ADD user to the database', async () => {
+        // const result = await userRepository.createUser(newUser)
+        
+        const isCreated =  await createuser.perform(newUser);
+        expect(isCreated).toBe(true);
+    })
     
-// })
+})
 
 // describe('Integration Test - Database Connection Delete User', () => {
 //     beforeAll(async () => {
@@ -97,8 +100,8 @@ describe('Integration Test - Database Connection GET User', () => {
         await mongoAdapter.connect();
     })
     it('should GET  user to the database', async () => {
-        const user1 = await userRepository.getUserById('eman.doe@example.com');
-        const user2 = await userRepository.getUserById('eman.doe@example.com');
+        const user1 = await userRepository.getUserByEmail('jc.doe@example.com');
+        const user2 = await userRepository.getUserByEmail('jc.de@example.com');
         expect(user1).toStrictEqual(user2); 
     })
     afterAll(async () => {

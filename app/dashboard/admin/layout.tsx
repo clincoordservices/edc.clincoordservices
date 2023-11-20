@@ -5,12 +5,9 @@ import {AiFillCaretDown} from "react-icons/ai";
 import styles from "./dashboard.module.css";
 import { useEffect, useState } from "react";
 import SidebarItems from "../../components/sidebardashboard/page";
+import fetchWithParams from "@/app/utils/fetchData/fetch";
+import User from "@/src/entities/User";
 
-interface Item {
-    name: string,
-    href: string
- }
- 
 
 export default function RootLayout({
   children,
@@ -18,13 +15,49 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
+    const [adminData, setAdminData ] 
+    = useState<User>({id: "343568482",
+    first_name: 'Rodrigo',
+    last_name: 'Lima',
+    middle_name: 'JC',
+    email: 'admin@admin.com',
+    company: 'Example Inc',
+    password: 'secretpassword',
+    institution: 'Example University',
+    project: 'Example Project',
+    role: 'Developer',
+    access_level: 'Admin',
+    });
+
+    const [adminToken, setAdminToken ] = useState();
     const router = useRouter()
     
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);
      }
-     const logoutHandler = () =>{
-        router.push("/");
+
+     useEffect(()=>{
+        (async()=>{
+            const {user_admin, adminToken_} = await getUserData();
+
+            console.log( {user_admin, adminToken_})
+            // setAdminData(user_admin);
+            setAdminToken(adminToken_);
+        })();
+   }, []);
+   const getUserData = async() => {
+       const response = await fetchWithParams('/api/me_admin/', 'GET');
+       const res = await response.json(); 
+       return res;
+   }
+     const logoutHandler = async() =>{
+        try {
+            await fetchWithParams('/api/logout_admin/', 'GET');
+            router.push("/dashboard/admin/login");
+        } catch (error:any) {
+            console.log(error.message);
+        }
+        
      }
 
 
@@ -41,15 +74,15 @@ export default function RootLayout({
                              <ul>
                                 <h3 onClick={userInfoToggleHandler}>
                                     <span>
-                                       {"Admin Name"}
+                                       {`${adminData?.first_name} ${adminData?.last_name}`}
                                     </span>
                                     <span>
                                         <AiFillCaretDown/>
                                     </span>
                                 </h3>
                                     <span className={`${userInfoToggle? "hideListElement": "showListElement"} ${styles.list_items} `}>
-                                        <li className=""><Link href="/dashboard/admin/profile">Profile</Link></li> 
-                                        <li><Link href="#">User Account Number</Link></li> 
+                                        <li className=""><Link href={`/dashboard/admin/${adminToken}`}>Profile</Link></li> 
+                                        <li>{`${adminData?.id}`}</li> 
                                         <li onClick={logoutHandler}><Link href="#">Logout</Link></li> 
                                     </span>    
                              </ul>
@@ -59,7 +92,7 @@ export default function RootLayout({
 
                 <div className={styles.mainBodyContent}>
                     <aside className={styles.asideContent}>
-                        <SidebarItems />
+                        <SidebarItems  />
                         </aside>
                     <main className={styles.bodyContent}>
                         <div id="content">

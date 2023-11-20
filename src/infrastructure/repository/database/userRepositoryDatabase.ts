@@ -1,6 +1,7 @@
 import UserRepository from "@/src/domain/repository/userRepository";
 import User from "@/src/entities/User";
 import Connection from "../../database/connection";
+import generateRandomNumber from "@/src/utils/generateRandomNumber/generaterandomnumber";
 export default class UserRepositoryDatabase implements UserRepository {
   
   constructor(private connection: Connection, readonly collectionName: string) {}
@@ -23,11 +24,14 @@ export default class UserRepositoryDatabase implements UserRepository {
           throw new Error(`Error fetching all users: `);
         }
       }
-    
       async createUser(user: User): Promise<boolean> {
+        const randomNumber = generateRandomNumber();
+        const hasNumber = (await this.getAllUsers()).findIndex(user => user.id === randomNumber);
+
+        if(hasNumber !== -1) return this.createUser(user);
         try {
               const usersCollection = await this.connection.getModel(this.collectionName);
-              const user_ = await usersCollection.insertOne(user);
+              const user_ = await usersCollection.insertOne({...user, id:randomNumber});
 
               if(user_) return true; 
               return false;

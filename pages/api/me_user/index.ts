@@ -4,7 +4,7 @@ import MongoDBAdapter from '@/src/infrastructure/database/mongodb/MongoDBAdapter
 import UserRepositoryDatabase from '@/src/infrastructure/repository/database/userRepositoryDatabase';
 import { getAuthCookie } from '@/src/utils/cookieGenerator';
 import { verifyJWT } from '@/src/utils/jwt/generateJWT';
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
  
 export default async function GET(req: NextApiRequest,res: NextApiResponse) {
     const mongoUri = process.env.NEXT_PUBLIC_MONGODB_URI as string;
@@ -13,14 +13,15 @@ export default async function GET(req: NextApiRequest,res: NextApiResponse) {
     const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
     const searchUser = new GetUser(userRepository);
     try {
+         const userToken_ = process.env.NEXT_PUBLIC_COOKIE_USER! as string;
         await mongoAdapter.connect();
-        const cookieUser = getAuthCookie(req, process.env.NEXT_PUBLIC_COOKIE_USER! as string);
+        const cookieUser = getAuthCookie(req, userToken_);
         const {email} = verifyJWT(cookieUser as string) as User;
 
         const user = await searchUser.perform(email);
         await mongoAdapter.close();
         const user_ = {...user, password:""}; 
-        res.json({mesage: "user returned", user_});
+        res.json({mesage: "user returned", user_, userToken_: cookieUser});
   } catch (err) {
     res.status(500).json({error: 'failed to load data'})
   }

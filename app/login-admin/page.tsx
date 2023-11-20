@@ -8,12 +8,19 @@ import Image from "next/image";
 import ImageLogo from "/public/clincoordLogo.png"
 import styles from "./login.module.css";
 import { useRouter } from "next/navigation";
-import {TLoginData, LoginSchema} from "../../../utils/form_validation/loginValidation"
+import {TLoginData, LoginSchema} from "../utils/form_validation/loginValidation"
+import fetchWithParams from "@/app/utils/fetchData/fetch";
 // import fetchWithParams from "../utils/fetchData/fetch";
 
 const Login = () => {
     // const [wasSent, setWasSent] = useState(true);
     const router = useRouter();
+    const [toggleElements, setToggleElements] = useState(true);
+    const [adminData, setAdminData] = useState();
+
+    const handlerOnclickHideListElement = () => {
+        setToggleElements(!toggleElements);
+     }
     const {
             register,
             handleSubmit,
@@ -26,16 +33,18 @@ const Login = () => {
 
     const submitHandler = async (data: FieldValues)=> {
 
-        
+        const {email, password} = getValues();
         await new Promise((resolve)=> setTimeout(resolve, 1000));
-        router.push("/dashboard/admin");
-        reset();
-    }
-    const [toggleElements, setToggleElements] = useState(true);
 
-    const handlerOnclickHideListElement = () => {
-        setToggleElements(!toggleElements);
-        }
+        const response = await fetchWithParams('/api/dashboard/admin/login/', 'POST', JSON.stringify({email, password}));
+        const res = await response.json();
+        if(res.result) return  router.push("/dashboard/admin");
+
+
+
+    }
+
+ 
  
     return (
         <div  className={styles.main_Content}>

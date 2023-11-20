@@ -11,24 +11,34 @@ import User from "@/src/entities/User";
 
 export default function RootLayout({children}:{children: React.ReactNode}) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
-    // const [userData, setUserData ] = useState<User>(await getUserData());
+    const [userData, setUserData ] = useState<User>();
+    const [userToken, setUserToken ] = useState<User>();
     const router = useRouter();
     
- 
-    // const getUserData = async() => {
-    //     const response = await fetchWithParams('/api/me/', 'GET');
-    //     const res = await response.json(); 
-    //     return res;
-    // }
-    
+    useEffect(()=>{
+         (async()=>{
+             const {user_, userToken_} = await getUserData()
+             setUserData(user_);
+             setUserToken(userToken_);
+         })();
+    }, []);
+    const getUserData = async() => {
+        const response = await fetchWithParams('/api/me_user/', 'GET');
+        const res = await response.json(); 
+        return res;
+    }
+     
     const userInfoToggleHandler = () =>{
         setUserInfoToggle(prev=> !prev);
      }
      const logoutHandler = async() =>{    
             try {
+                
                 const res = await fetchWithParams('/api/logout/', 'GET');
                 const {ok} = await res.json();
-                    ok && router.push('/login');
+                ok && setInterval( async() =>{ 
+                      router.push('/login') 
+                    }, 2000);
             } catch (error:any) {
                 console.log(error.message);
             }
@@ -47,15 +57,15 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
                              <ul>
                                 <h3 onClick={userInfoToggleHandler}>
                                     <span>
-                                       User name
+                                    {userData?.first_name? `${userData?.first_name} ${userData?.last_name}` : "Loanding..."  }
                                     </span>
                                     <span>
                                         <AiFillCaretDown/>
                                     </span>
                                 </h3>
                                     <span className={`${userInfoToggle? "hideListElement": "showListElement"} ${styles.list_items} `}>
-                                        <li className=""><Link href="#">Profile</Link></li> 
-                                        <li><Link href="#">User Account Number</Link></li> 
+                                        <li className=""><Link href={`/dashboard/user/${userToken}`}>Profile</Link></li> 
+                                        <li>{userData?.id}</li> 
                                         <li onClick={logoutHandler}><Link href="/">Logout</Link></li> 
                                     </span>    
                              </ul>
@@ -65,7 +75,7 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
 
                 <div className={styles.mainBodyContent}>
                     <aside className={styles.asideContent}>
-                        <SidebarItems />
+                        <SidebarItems  />
                         </aside>
                     <main className={styles.bodyContent}>
                         <div id="content">

@@ -2,9 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
+type Role = {
+   role: string
+}
 const SidebarItems = () => {
     const [items, setItems] = useState([
-        {
+         {
           name: "Manage Users",
           href: "/dashboard/admin/users",
         },
@@ -64,7 +67,7 @@ const SidebarItems = () => {
     
       return (
         <ul>
-          {items.map((item, index) => (
+          {items.map((item, index) =>(
             <li key={index}>
               <Link href={item.href}>{item.name}</Link>
             </li>

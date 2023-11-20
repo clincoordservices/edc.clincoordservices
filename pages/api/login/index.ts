@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
 import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
-import { comparePassword } from "@/src/utils/hashPassword";
+import { comparePassword, hashPassword } from "@/src/utils/hashPassword";
 import User from "@/src/entities/User";
 import { generateJWT } from "@/src/utils/jwt/generateJWT";
 import { setAuthCookie } from "@/src/utils/cookieGenerator";
@@ -18,13 +18,14 @@ export default async function POST(req: NextApiRequest,res: NextApiResponse) {
    try {
         await mongoAdapter.connect();
         const user = await searchUser.perform(email);
-
+        console.log(user)
         if(Object.keys(user).length === 0){
           await mongoAdapter.close();
           return res.status(400).json({message: "Inavlid credencials!", result: false});
         }
       const  user_ =  user as User;
-      const result = await comparePassword(password, user_.password);
+      const pass = await hashPassword(password);
+      const result = await comparePassword(password, pass);
 
     if(!result) {
       await mongoAdapter.close();
