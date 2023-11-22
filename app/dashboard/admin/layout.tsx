@@ -62,7 +62,7 @@ export default function RootLayout({
       <main>
             <div className={styles.mainContent}>
                 <header className={styles.headerContent}>
-                     <h1>ClinCoord EDC</h1>
+                     <h1>CC Simplified IRT</h1>
 
                      <div className={styles.headerContentUserInfo}>
                         <span> 
