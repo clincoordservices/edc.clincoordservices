@@ -4,7 +4,7 @@ import Link from "next/link";
 import {AiFillCaretDown} from "react-icons/ai";
 import styles from "./dashboard.module.css";
 import {useRouter} from "next/navigation";
-import SidebarItems from "../../components/sidebardashboard/page";
+import SidebarItems from "../../components/sidebardashboard/userSideBar/page";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
 
@@ -12,15 +12,20 @@ import User from "@/src/entities/User";
 export default function RootLayout({children}:{children: React.ReactNode}) {
     const [userInfoToggle, setUserInfoToggle ] = useState<Boolean>(true);
     const [userData, setUserData ] = useState<User>();
-    const [userToken, setUserToken ] = useState<User>();
+    const [userToken, setUserToken ] = useState<string>();
     const router = useRouter();
     
     useEffect(()=>{
-         (async()=>{
-             const {user_, userToken_} = await getUserData()
-             setUserData(user_);
-             setUserToken(userToken_);
-         })();
+        try {
+            (async()=>{
+                const {user_, userToken_} = await getUserData()
+                setUserData(user_);
+                setUserToken(userToken_);
+            })();
+        } catch (error: any) {
+            console.log(error.message);
+            
+        } 
     }, []);
     const getUserData = async() => {
         const response = await fetchWithParams('/api/me_user/', 'GET');
@@ -45,8 +50,6 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
      }
 
   return (
-    <html lang="en">
-      <body>
       <main>
             <div className={styles.mainContent}>
                 <header className={styles.headerContent}>
@@ -75,8 +78,8 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
 
                 <div className={styles.mainBodyContent}>
                     <aside className={styles.asideContent}>
-                        <SidebarItems  />
-                        </aside>
+                        <SidebarItems  userToken= {userToken!} />
+                    </aside>
                     <main className={styles.bodyContent}>
                         <div id="content">
                         {children}
@@ -85,7 +88,5 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
                 </div>
             </div>
         </main>
-        </body>
-    </html>
   )
 }

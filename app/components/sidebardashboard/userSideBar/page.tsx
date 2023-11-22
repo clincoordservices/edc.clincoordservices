@@ -2,33 +2,34 @@
 import Link from "next/link";
 import { useState } from "react";
 
-type Role = {
-   role: string
+type SidebarProps = {
+  userToken: string,
 }
-const SidebarItems = () => {
+const SidebarItems = ({userToken }:SidebarProps) => {
     const [items, setItems] = useState([
-         {
-          name: "Manage Users",
-          href: "/dashboard/admin/users",
-        },
+      {
+        name: "Profile",
+        href: `/dashboard/user/${userToken!}`,
+      },
         {
           name: "Settings",
-          href: "/dashboard/admin/settings",
+          href: "/dashboard/user/settings",
         },
         {
-          name: "User sessions",
-          href: "/dashboard/admin/sessions",
+          name: "Sessions",
+          href: "/dashboard/user/sessions",
         },
+  
         {
           name: "Item 2",
-          href: "/Item2",
+          href: "/Item",
         },
         {
-          name: "Item 33",
-          href: "/Item3a",
+          name: "Item 3",
+          href: "/Item3",
         },
         {
-          name: "Item 43",
+          name: "Item 4",
           href: "/Item4",
         },
         {
@@ -44,24 +45,24 @@ const SidebarItems = () => {
           href: "/Item7",
         },
         {
-          name: "Item 3",
+          name: "Item 8",
           href: "/Item31",
         },
         {
-          name: "Item 4",
+          name: "Item 9",
           href: "/Item42",
         },
         {
-          name: "Item 5",
-          href: "/Item5",
+          name: "Item 10",
+          href: "/Item",
         },
         {
-          name: "Item 6",
-          href: "/Item6",
+          name: "Item 11",
+          href: "/Item",
         },
         {
-          name: "Item 7",
-          href: "/Item10",
+          name: "Item 12",
+          href: "/Item1",
         },
       ]);
     

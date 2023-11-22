@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm   } from "react-hook-form";
 // import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
@@ -10,10 +10,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
 
-
+type TRoleData = {
+    id: number,
+    name: string; 
+}
 const ManageUsers = () => {
      const [show, setShow] = useState<Boolean>(false);
      const [user, setUser] = useState<IUserData[]>([]);
+     const [roles, setRoles] = useState<TRoleData []>([]);
 
      const {
         register,
@@ -21,17 +25,29 @@ const ManageUsers = () => {
         formState: {errors, isSubmitting},
         reset,
         getValues   
-   } = useForm<IUserData>({
-    resolver: zodResolver(IUserSchema)
-});
+            } = useForm<IUserData>({
+                resolver: zodResolver(IUserSchema)
+    });
+    useEffect(() => {
 
-//    const [wasSent, setWasSent] = useState(true);
+        const rolesData = [
+          { id: 1, name: "Project Monitoring" },
+          { id: 2, name: "Project Data Manager" },
+          { id: 3, name: "Project Sponsor and Management" },
+          { id: 4, name: "Project Clinic Site" },
+          { id: 5, name: "Principal Investigator (eCRF signature)" },
+          { id: 6, name: "Project Coordinator" },
+          { id: 7, name: "Data Coordinator" },
+          { id: 8, name: "Admin" },
+        ];
+        setRoles(rolesData);
+      }, []);
+
 
 
 
      const submitHandler = async (data: FieldValues)=> {
-
-        console.log(getValues())
+         console.log(getValues())
         setUser([...user, getValues()])
         const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
         const res = await response.json();
@@ -109,11 +125,17 @@ const ManageUsers = () => {
                                 </div>
                                 <div>
                                     <label htmlFor="role">User role</label>
-                                    <input 
-                                        type="text" 
-                                        id="role" 
-                                        {...register("role")}
+                                    <input
+                                        
+                                        type="text"
+                                        list="role"
+                                        {...register('role')}
                                     />
+                                    <datalist id="role">
+                                            {roles.map((role) => (
+                                            <option key={role.id} value={role.name}>{role.name}</option>
+                                            ))}
+                                    </datalist>
                                 </div>
                                 <div>
                                     <label htmlFor="institute">Institution</label>

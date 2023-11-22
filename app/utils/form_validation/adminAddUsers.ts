@@ -8,11 +8,10 @@ export type IUserData = {
     password:string
     email:string,
     institute: string,
-    role:string,
+    role: "Admin" |  "Data Coordinator" | "Principal Investigator (eCRF signature)" | "Project Clinic Site" | "Project Sponsor and Management" |  "Project Data Manager"| "Project Monitoring"  ,
     project:string,
     access_level: string
 }
-
 export const IUserSchema = object({
     first_name: string().min(2, "Please enter First-name").max(255),
     last_name:  string().min(2, "Please enter Last Name").max(255,"Please enter Last Name"),

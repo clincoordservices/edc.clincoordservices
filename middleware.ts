@@ -12,6 +12,8 @@ export function middleware(request: NextRequest) {
     path === '/verifyaccount' ||
     path === '/forgetpassword';
 
+    const  isAdminPath = path === ""
+
   const tokenUser = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_USER as string)?.value || '';
   const tokenAdmin = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_ADMIN as string)?.value || '';
 
@@ -25,23 +27,16 @@ export function middleware(request: NextRequest) {
   if (!isPublicPath && !tokenUser) {
     return NextResponse.redirect(new URL('/login', request.nextUrl));
   }
-  
-  // if (!isPublicPath && !tokenUser) {
-  //   return NextResponse.redirect(new URL('/dashboard/admin/login', request.nextUrl));
-  // }
 
     const isDashboardAdminRoute = path.startsWith('/dashboard/admin');
   if (isDashboardAdminRoute && tokenUser) {
     return NextResponse.redirect(new URL('/dashboard/user', request.nextUrl));
   }
-    const isDashboardUserRoute = path.startsWith('/dashboard/user');
+    const isDashboardUserRoute = path.startsWith('/dashboard/admin');
   if (isDashboardUserRoute && tokenAdmin) {
     return NextResponse.redirect(new URL('/dashboard/admin', request.nextUrl));
   }
 
-  // if (tokenAdmin && path.startsWith('/dashboard/admin')) {
-  //   return NextResponse.next();
-  // }
 }
 
 export const config = {
@@ -54,7 +49,6 @@ export const config = {
     '/dashboard/user',
     '/dashboard/user/:path*',
     '/dashboard/login-admin'
-
   ],
 };
 

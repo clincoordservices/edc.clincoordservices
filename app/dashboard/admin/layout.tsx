@@ -4,7 +4,7 @@ import { useRouter , usePathname  } from 'next/navigation'
 import {AiFillCaretDown} from "react-icons/ai";
 import styles from "./dashboard.module.css";
 import { useEffect, useState } from "react";
-import SidebarItems from "../../components/sidebardashboard/page";
+import SidebarItems from "../../components/sidebardashboard/adminSideBar/page";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
 
@@ -39,9 +39,6 @@ export default function RootLayout({
      useEffect(()=>{
         (async()=>{
             const {user_admin, adminToken_} = await getUserData();
-
-            console.log( {user_admin, adminToken_})
-            // setAdminData(user_admin);
             setAdminToken(adminToken_);
         })();
    }, []);
@@ -62,8 +59,6 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en">
-      <body>
       <main>
             <div className={styles.mainContent}>
                 <header className={styles.headerContent}>
@@ -102,7 +97,5 @@ export default function RootLayout({
                 </div>
             </div>
         </main>
-        </body>
-    </html>
   )
 }
