@@ -3,12 +3,12 @@ import { useState } from "react";
 import HeaderNoLogin from "../components/headerNoLogin/headernologin";
 import styles from "./verifyaccount.module.css";
 // import { RiErrorWarningLine } from "react-icons/Ri";
-import { verifyDataType, verifyDataValue } from "../utils/functions/function";
-import safeParseFunctionForgetPassWord from "../utils/form_validation/forgetpassword";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm   } from "react-hook-form";
 import type { FieldValues  } from "react-hook-form";
 import {ForgetPasswordData, ForgetPasswordSchema} from "../utils/form_validation/forgetpassword"
+import fetchWithParams from "../utils/fetchData/fetch";
+import {useRouter} from  "next/navigation";
 
 const VerifyAccount  = () => {
     const {
@@ -21,11 +21,15 @@ const VerifyAccount  = () => {
         resolver: zodResolver(ForgetPasswordSchema)
    });
    const [wasSent, setWasSent] = useState(true);
+   const router = useRouter();
    
    const submitHandler = async (data: FieldValues)=> {
-        
+    const {email} = getValues();
+    const response = await fetchWithParams('/api/verify_account/', 'POST', JSON.stringify({email}));
+    const res = await response.json();
 
-       await new Promise((resolve)=> setTimeout(resolve, 1000));
+       await new Promise((resolve)=> setTimeout(resolve , 1000));
+       router.push("/");
        setWasSent(prev=> !prev);
        reset();
    }

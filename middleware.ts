@@ -12,10 +12,9 @@ export function middleware(request: NextRequest) {
     path === '/verifyaccount' ||
     path === '/forgetpassword';
 
-    const  isAdminPath = path === ""
-
   const tokenUser = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_USER as string)?.value || '';
   const tokenAdmin = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_ADMIN as string)?.value || '';
+
 
   if (isPublicPath && tokenUser) {
     return NextResponse.redirect(new URL('/dashboard/user', request.nextUrl));
@@ -32,7 +31,7 @@ export function middleware(request: NextRequest) {
   if (isDashboardAdminRoute && tokenUser) {
     return NextResponse.redirect(new URL('/dashboard/user', request.nextUrl));
   }
-    const isDashboardUserRoute = path.startsWith('/dashboard/admin');
+    const isDashboardUserRoute = path.startsWith('/dashboard/user');
   if (isDashboardUserRoute && tokenAdmin) {
     return NextResponse.redirect(new URL('/dashboard/admin', request.nextUrl));
   }
@@ -48,9 +47,7 @@ export const config = {
     '/verifyaccount',
     '/dashboard/user',
     '/dashboard/user/:path*',
-    '/dashboard/login-admin'
+    '/dashboard/admin/:path*',
+    
   ],
-};
-
-// '/dashboard/admin/((?!login).*)',
-// '/dashboard/admin'
+}; 
