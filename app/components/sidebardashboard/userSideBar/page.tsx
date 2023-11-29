@@ -2,14 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
-type SidebarProps = {
-  userToken: string,
-}
-const SidebarItems = ({userToken }:SidebarProps) => {
+
+const SidebarItems = () => {
     const [items, setItems] = useState([
       {
         name: "Profile",
-        href: `/dashboard/user/${userToken!}`,
+        href: `/dashboard/user/`,
       },
         {
           name: "Settings",

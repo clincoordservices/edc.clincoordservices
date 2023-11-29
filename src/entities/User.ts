@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import IUser from "../domain/models/User"
 
 class User implements IUser {
@@ -11,9 +10,10 @@ class User implements IUser {
         public readonly company: string,
         public readonly password: string,
         public readonly institution: string,
-        public readonly project: string,
+        public readonly project_id: string[],
         public readonly role: string,
         public readonly access_level: string
         ){}
+    ;
 }
 export default User;

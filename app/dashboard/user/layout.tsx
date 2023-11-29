@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation";
 import SidebarItems from "../../components/sidebardashboard/userSideBar/page";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
+import { removeAuthCookie_ } from "@/src/utils/cookieGenerator";
 
 
 export default function RootLayout({children}:{children: React.ReactNode}) {
@@ -20,11 +21,10 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
             (async()=>{
                 const {user_, userToken_} = await getUserData()
                 setUserData(user_);
-                setUserToken(userToken_);
+                setUserToken(userToken_ as string);
             })();
         } catch (error: any) {
             console.log(error.message);
-            
         } 
     }, []);
     const getUserData = async() => {
@@ -39,11 +39,12 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
      const logoutHandler = async() =>{    
             try {
                 
-                const res = await fetchWithParams('/api/logout/', 'GET');
-                const {ok} = await res.json();
-                ok && setInterval( async() =>{ 
-                      router.push('/login') 
-                    }, 2000);
+                await fetchWithParams('/api/logout/', 'GET');
+                setTimeout(()=>{
+                    removeAuthCookie_(process.env.NEXT_PUBLIC_COOKIE_USER! as string);
+                    router.push('/login') 
+                }, 3000)
+                    
             } catch (error:any) {
                 console.log(error.message);
             }
@@ -53,7 +54,7 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
       <main>
             <div className={styles.mainContent}>
                 <header className={styles.headerContent}>
-                     <h1>ClinCoord EDC</h1>
+                     <h1>ClinCooord Simplified IRT</h1>
 
                      <div className={styles.headerContentUserInfo}>
                         <span> 
@@ -78,7 +79,7 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
 
                 <div className={styles.mainBodyContent}>
                     <aside className={styles.asideContent}>
-                        <SidebarItems  userToken= {userToken!} />
+                        <SidebarItems />
                     </aside>
                     <main className={styles.bodyContent}>
                         <div id="content">

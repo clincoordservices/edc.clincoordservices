@@ -4,7 +4,7 @@ import { useForm   } from "react-hook-form";
 // import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
-import UserList from "@/app/components/admin_userlist/page2";
+// import UserList from "@/app/components/admin_userlist/page";
 import { IUserData, IUserSchema } from "@/app/utils/form_validation/adminAddUsers";
 import { zodResolver } from "@hookform/resolvers/zod";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
@@ -18,6 +18,16 @@ const ManageUsers = () => {
      const [show, setShow] = useState<Boolean>(false);
      const [user, setUser] = useState<IUserData[]>([]);
      const [roles, setRoles] = useState<TRoleData []>([]);
+     const rolesData = [
+        { id: 1, name: "Project Monitoring" },
+        { id: 2, name: "Project Data Manager" },
+        { id: 3, name: "Project Sponsor and Management" },
+        { id: 4, name: "Project Clinic Site" },
+        { id: 5, name: "Principal Investigator (eCRF signature)" },
+        { id: 6, name: "Project Coordinator" },
+        { id: 7, name: "Data Coordinator"}
+      ];
+
 
      const {
         register,
@@ -29,17 +39,28 @@ const ManageUsers = () => {
                 resolver: zodResolver(IUserSchema)
     });
     useEffect(() => {
+        (async ()=> {
+            // const response = await fetchWithParams('/api/all_users/', 'GET');
+            // const res = await response.json(); 
+            // const {users} = res
+            const users_ = [
+                {
+                    id: "string", 
+                    first_name: "string",
+                    last_name: "string",
+                    middle_name: "string",
+                    email: "string",
+                    company: "string",
+                    password: "string",
+                    institution: "string",
+                    project_id:  ["string"],
+                    access_level: "string",
+                    role: "strin",
+                },
+              ];
+        
+        })();
 
-        const rolesData = [
-          { id: 1, name: "Project Monitoring" },
-          { id: 2, name: "Project Data Manager" },
-          { id: 3, name: "Project Sponsor and Management" },
-          { id: 4, name: "Project Clinic Site" },
-          { id: 5, name: "Principal Investigator (eCRF signature)" },
-          { id: 6, name: "Project Coordinator" },
-          { id: 7, name: "Data Coordinator" },
-          { id: 8, name: "Admin" },
-        ];
         setRoles(rolesData);
       }, []);
 
@@ -138,19 +159,19 @@ const ManageUsers = () => {
                                     </datalist>
                                 </div>
                                 <div>
-                                    <label htmlFor="institute">Institution</label>
+                                    <label htmlFor="institution">Institution</label>
                                     <input 
                                         type="text" 
-                                        id="institute" 
-                                        {...register("institute")}
+                                        id="institution" 
+                                        {...register("instituition")}
                                     /> 
                                 </div>
                                 <div>
-                                    <label htmlFor="project">Project</label>
+                                    <label htmlFor="project">Comapny</label>
                                     <input 
                                         type="text" 
-                                        id="user_project" 
-                                        {...register("project")}
+                                        id="company" 
+                                        {...register("company")}
                                     />
                                 </div>
                                 <div>
@@ -176,7 +197,7 @@ const ManageUsers = () => {
 
                 <div className={styles.mainContent_body}>
                     <h5>USERS LIST</h5>
-                         { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span> }   
+                         {/* { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span> }    */}
                 </div>
 
             </section>
@@ -184,3 +205,6 @@ const ManageUsers = () => {
     </>);
 }
 export default ManageUsers;
+
+
+

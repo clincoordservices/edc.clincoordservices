@@ -9,40 +9,33 @@ class UserRepositoryMemory implements UserRepository {
     constructor() {
       this.users = [];
     }
-  getUserById(userId: string): Promise<User> {
-    throw new Error("Method not implemented.");
+  async getUserById(userId: string): Promise<User> {
+    const user =  this.users.find((u) => u.email === userId) as IUser;
+    return  user || undefined
   }
-  getUserByEmail(userEmail: string): Promise<{} | User> {
-    throw new Error("Method not implemented.");
+  async getUserByEmail(userEmail: string): Promise<{} | User> {
+    const user = this.users.find((u) => u.email === userEmail) as User;
+    return user;
   }
   getAllUsers(): Promise<User[]> {
     throw new Error("Method not implemented.");
   }
-  createUser(user: User): Promise<Boolean> {
-    throw new Error("Method not implemented.");
+  async createUser(user: User): Promise<Boolean> {
+     const res = this.users.push(user);
+     if(res) return true
+
+     return false
   }
-  updateUser(user: User, userEmail: string): Promise<{} | User> {
-    throw new Error("Method not implemented.");
-  }
-  deleteUser(userEmail: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
-  }
-  get(idItem: string): Promise<User> {
-    throw new Error("Method not implemented.");
-  }
-  async create(item: User): Promise<void> {
-    this.users.push(item);
-  }
-  async edit(item: User, userEmail: string): Promise<User | null> {
+  async updateUser(user: User, userEmail: string): Promise<{} | User> {
     const index = this.users.findIndex((u) => u.email === userEmail);
     if (index > -1) {
-      this.users[index] = item;
-      return item;
+      this.users[index] = user;
+      return user;
     } else {
-      return null;
+      return {};
     }
   }
-  async delete(userEmail: string): Promise<boolean> {
+  async deleteUser(userEmail: string): Promise<boolean> {
     const index = this.users.findIndex((u) => u.email === userEmail);
     if (index > -1) {
       this.users.splice(index, 1);
@@ -51,22 +44,6 @@ class UserRepositoryMemory implements UserRepository {
       return false;
     }
   }
-  async list(): Promise<User[]> {
-    throw new Error("Method not implemented.");
-  }
-    async findUserByMail(userEmail: string): Promise<IUser | undefined> {
-      const user = this.users.find((u) => u.email === userEmail);
-      return user;
-    }
-  
-    async findUserByEmail(email: string): Promise<IUser | undefined> {
-      const user = this.users.find((u) => u.email === email);
-      return user;
-    }
-  
-    // async updateUser(userEmail: string, user: IUser): Promise<IUser | {null}> {
-
-    // }
 
 }
 export default UserRepositoryMemory;

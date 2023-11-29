@@ -13,15 +13,14 @@ export default async function POST(req: NextApiRequest,res: NextApiResponse) {
     const createUser = new CreateUser(userRepository);
     const method = req.method;
     const id = "";
-    const company = "Company"
-    const {access_level, email, institute:institution, role, password, project, middle_name, first_name, last_name} = req.body
+    const {access_level, email, institute:institution, role, password, project_id, middle_name, first_name, last_name, company} = req.body
     const passwordHash = await hashPassword(password);
    
    try {
         await mongoAdapter.connect();
       if(method === 'POST'){
          
-         const isCreated = await createUser.perform({id, first_name,last_name, access_level, email, institution, role, password:passwordHash, project, middle_name, company});
+         const isCreated = await createUser.perform({id, first_name,last_name, access_level, email, institution, role, password:passwordHash, project_id, middle_name, company});
          await mongoAdapter.close();
          res.json({message: req.body.user_email, isCreated});
     }

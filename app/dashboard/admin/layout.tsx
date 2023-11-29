@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import SidebarItems from "../../components/sidebardashboard/adminSideBar/page";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
+import { removeAuthCookie, removeAuthCookie_ } from "@/src/utils/cookieGenerator";
 
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
     company: 'Example Inc',
     password: 'secretpassword',
     institution: 'Example University',
-    project: 'Example Project',
+    project_id: ["2627272hshshs"],
     role: 'Developer',
     access_level: 'Admin',
     });
@@ -41,7 +42,7 @@ export default function RootLayout({
             const {user_admin, adminToken_} = await getUserData();
             setAdminToken(adminToken_);
         })();
-   }, []);
+   },);
    const getUserData = async() => {
        const response = await fetchWithParams('/api/me_admin/', 'GET');
        const res = await response.json(); 
@@ -49,8 +50,12 @@ export default function RootLayout({
    }
      const logoutHandler = async() =>{
         try {
-            await fetchWithParams('/api/logout_admin/', 'GET');
-            router.push("/login-admin");
+            const res = await fetchWithParams('/api/logout_admin/', 'GET');
+            setTimeout(()=>{
+                removeAuthCookie_(process.env.NEXT_PUBLIC_COOKIE_ADMIN! as string);
+                router.push("/login-admin");
+            }, 3000)
+  
         } catch (error:any) {
             console.log(error.message);
         }
@@ -62,7 +67,7 @@ export default function RootLayout({
       <main>
             <div className={styles.mainContent}>
                 <header className={styles.headerContent}>
-                     <h1>ClinCoord EDC</h1>
+                     <h1>CC Simplified IRT</h1>
 
                      <div className={styles.headerContentUserInfo}>
                         <span> 

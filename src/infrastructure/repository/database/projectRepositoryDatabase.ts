@@ -12,9 +12,9 @@ export default class UserRepositoryDatabase implements UserRepository {
       const usersCollection = await this.connection.getModel(this.collectionName);
       const user = ((await usersCollection.findOne({ id: userId })) as unknown) as User;
       return user;
-    } catch (error) {
+} catch (error) {
       throw new Error(`Error fetching user by id: `);
-    }
+}
   }
       async getUserByEmail(userEmail: string): Promise<{} | User> {
         try {
@@ -41,9 +41,8 @@ export default class UserRepositoryDatabase implements UserRepository {
         if(hasNumber) return this.createUser(user);
 
         try {
-              const hasUser =  await this.getUserByEmail(user.email);
-
-              if(hasUser)  throw new   Error(`User Already Exist! :`);
+              // const userExist = await this.getUserByEmail(user.email);
+              // if(userExist)  return false;
               const usersCollection = await this.connection.getModel(this.collectionName);
               const user_ = await usersCollection.insertOne({...user, id:randomNumber});
 

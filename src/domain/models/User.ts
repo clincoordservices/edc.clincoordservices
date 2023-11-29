@@ -7,7 +7,7 @@ interface IUser {
     company: string,
     password: string,
     institution: string,
-    project: string,
+    project_id: string [],
     access_level: string,
     role: string
 }

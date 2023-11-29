@@ -32,6 +32,17 @@ export const removeAuthCookie = (res: NextApiResponse, cookieName:string): void 
   res.setHeader('Set-Cookie', cookieValue);
 };
 
+export const removeAuthCookie_ = ( cookieName:string): void => {
+  serialize(cookieName, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    expires: new Date(0), 
+    maxAge: 0,
+    path: '/',
+  });
+
+};
 export const getAuthCookie = (req: NextApiRequest, cookieName:string): string | null => {
   return parse(req.headers.cookie || '')[cookieName] || null;
 };
