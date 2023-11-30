@@ -13,7 +13,8 @@ export default async function POST(req: NextApiRequest,res: NextApiResponse) {
     const createUser = new CreateUser(userRepository);
     const method = req.method;
     const id = "";
-    const {access_level, email, institute:institution, role, password, project_id, middle_name, first_name, last_name, company} = req.body
+    const company = "Company"
+    const {access_level, email, institute:institution, role, password, project_id, middle_name, first_name, last_name} = req.body
     const passwordHash = await hashPassword(password);
    
    try {

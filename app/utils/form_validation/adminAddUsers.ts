@@ -7,12 +7,11 @@ export type IUserData = {
     middle_name: string
     password:string
     email:string,
-    instituition: string,
+    institution: string,
     role: string,
     project:string,
     access_level: string,
     company: string,
-    project_id: string []
 }
 export const IUserSchema = object({
     first_name: string().min(2, "Please enter First-name").max(255),
@@ -20,19 +19,17 @@ export const IUserSchema = object({
     middle_name:  string().max(255,"Please enter Middle Name"),
     email: string().email("Please enter a e-mail").max(255, "Please enter a e-mail"),
     password: string().min(6, "Please enter a Password").max(255, "Please enter a Password"),
-    institute: string().min(2, "Please enter a Password").max(255, "Please enter a Institute"),
     role: string().min(5, "Please enter a Password").max(255, "Please enter a Role"),
     project: string().min(5, "Please enter a Password").max(255, "Please enter the project"),
     access_level: string().min(5, "Please enter Acess Level").max(255, "Please enter the Acess Level"),
-    instituition: string().min(5, "Please enter Acess Level").max(255, "Please enter the Acess Level"),
+    institution: string().min(5, "Please enter Acess Level").max(255, "Please enter the Acess Level"),
     company: string().min(5, "Please enter Acess Level").max(255, "Please enter the Acess Level"),
-    project_id: array(string())
 });
 export const safeParseFunctionSignup = function (signupData: IUserData){
     const result = IUserSchema.safeParse(signupData);
     if(!result.success){
-        const {first_name, last_name, middle_name, password, instituition, role, project, access_level, project_id} = result.error.format();
-        return {first_name, last_name, middle_name, password, instituition, role, project, access_level, project_id};
+        const {first_name, last_name, middle_name, password, institution, role, project, access_level} = result.error.format();
+        return {first_name, last_name, middle_name, password, institution, role, project, access_level};
     } else {
              const {data} = result;
              return data;

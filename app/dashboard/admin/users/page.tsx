@@ -4,11 +4,11 @@ import { useForm   } from "react-hook-form";
 // import {CiSearch} from "react-icons/Ci";
 import type { FieldValues  } from "react-hook-form";
 import styles from "./users.module.css";
-// import UserList from "@/app/components/admin_userlist/page";
 import { IUserData, IUserSchema } from "@/app/utils/form_validation/adminAddUsers";
 import { zodResolver } from "@hookform/resolvers/zod";
 import fetchWithParams from "@/app/utils/fetchData/fetch";
 import User from "@/src/entities/User";
+import UserList from "@/app/components/admin_userlist/page2";
 
 type TRoleData = {
     id: number,
@@ -36,29 +36,14 @@ const ManageUsers = () => {
         reset,
         getValues   
             } = useForm<IUserData>({
-                resolver: zodResolver(IUserSchema)
+                resolver: zodResolver(IUserSchema),
     });
     useEffect(() => {
         (async ()=> {
-            // const response = await fetchWithParams('/api/all_users/', 'GET');
-            // const res = await response.json(); 
-            // const {users} = res
-            const users_ = [
-                {
-                    id: "string", 
-                    first_name: "string",
-                    last_name: "string",
-                    middle_name: "string",
-                    email: "string",
-                    company: "string",
-                    password: "string",
-                    institution: "string",
-                    project_id:  ["string"],
-                    access_level: "string",
-                    role: "strin",
-                },
-              ];
-        
+            const response = await fetchWithParams('/api/all_users/', 'GET');
+            const res = await response.json(); 
+            const {users} = res
+            // setUser(users)
         })();
 
         setRoles(rolesData);
@@ -68,11 +53,13 @@ const ManageUsers = () => {
 
 
      const submitHandler = async (data: FieldValues)=> {
+
+        alert()
          console.log(getValues())
-        setUser([...user, getValues()])
-        const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
-        const res = await response.json();
-        console.log(res)
+        // setUser([...user, getValues()])
+        // const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
+        // const res = await response.json();
+        console.log("res")
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
     }
@@ -163,15 +150,23 @@ const ManageUsers = () => {
                                     <input 
                                         type="text" 
                                         id="institution" 
-                                        {...register("instituition")}
+                                        {...register("institution")}
                                     /> 
                                 </div>
                                 <div>
-                                    <label htmlFor="project">Comapny</label>
+                                    <label htmlFor="company">Comapny</label>
                                     <input 
                                         type="text" 
                                         id="company" 
                                         {...register("company")}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="project">Project</label>
+                                    <input 
+                                        type="text" 
+                                        id="project" 
+                                        {...register("project")}
                                     />
                                 </div>
                                 <div>
@@ -197,7 +192,7 @@ const ManageUsers = () => {
 
                 <div className={styles.mainContent_body}>
                     <h5>USERS LIST</h5>
-                         {/* { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span> }    */}
+                         { !(user.length===0) ? <UserList users= {user} /> : <span>No user yet.</span> }   
                 </div>
 
             </section>
@@ -205,6 +200,3 @@ const ManageUsers = () => {
     </>);
 }
 export default ManageUsers;
-
-
-

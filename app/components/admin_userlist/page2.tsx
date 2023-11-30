@@ -8,7 +8,7 @@ export type IUserData = {
   middle_name: string
   password:string
   email:string
-  institute: string
+  institution: string
   role:string
 }
 const UserList = ({ users }: { users: IUserData[] }) => {
@@ -27,7 +27,7 @@ const UserList = ({ users }: { users: IUserData[] }) => {
           <tr key={user.email}>
             <td>{user.first_name + " " + user.last_name}</td>
             <td>{user.email}</td>
-            <td>{user.institute}</td>
+            <td>{user.institution}</td>
             <td>{user.role}</td>
           </tr>
         ))}

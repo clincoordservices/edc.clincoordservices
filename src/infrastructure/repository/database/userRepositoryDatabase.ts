@@ -35,6 +35,7 @@ export default class UserRepositoryDatabase implements UserRepository {
           throw new Error(`Error fetching all users: `);
         }
       }
+      
       async createUser(user: User): Promise<boolean> {
         const randomNumber = generateRandomNumber();
         const hasNumber = await this.getUserById(user.id);
