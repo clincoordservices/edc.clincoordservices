@@ -28,7 +28,10 @@ const ContactUs = () => {
     const [wasSent, setWasSent] = useState(true);
     
     const submitHandler = async (data: FieldValues)=> {
+        const {first_name, last_name, message, email_, subject} = getValues();
 
+        const response = await fetchWithParams('/api/contactus/', 'POST', JSON.stringify({first_name, last_name, message, email_, subject}));
+        const res = await response.json();
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
         setWasSent(prev=>!prev);

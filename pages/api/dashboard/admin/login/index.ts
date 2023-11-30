@@ -12,7 +12,7 @@ const newUser: User = {
   company: 'Example Inc',
   password: 'secretpassword',
   institution: 'Example University',
-  project: 'Example Project',
+  project_id: ['Example Project', 'Example Project'],
   role: 'Developer',
   access_level: 'Admin',
 };
@@ -27,7 +27,7 @@ export default async function POST(req: NextApiRequest,res: NextApiResponse) {
     company: 'Example Inc',
     password: 'secretpassword',
     institution: 'Example University',
-    project: 'Example Project',
+    project_id: ['Example Project', 'Example Project'],
     role: 'Developer',
     access_level: 'Admin',
   }

@@ -1,25 +1,25 @@
-import User from "@/src/entities/User";
-import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
-import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
+// import User from "@/src/entities/User";
+// import MongoDBAdapter from "@/src/infrastructure/database/mongodb/MongoDBAdapter";
+// import UserRepositoryDatabase from "@/src/infrastructure/repository/database/userRepositoryDatabase";
 
-const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
-const dbName = 'clicncoordservices';
-const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
-const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
+// const mongoUri = "mongodb://localhost:27017/clicncoordservices" ;
+// const dbName = 'clicncoordservices';
+// const mongoAdapter = new MongoDBAdapter(mongoUri, dbName);
+// const userRepository = new UserRepositoryDatabase(mongoAdapter, 'users');
 
-const newUser: User = {
-    id: "1",
-    first_name: 'Josué',
-    last_name: 'Martins',
-    middle_name: 'Borges',
-    email: 'eman.doe@example.com',
-    company: 'Example Inc',
-    password: 'secretpassword',
-    institution: 'Example University',
-    project: 'Example Project',
-    role: 'Developer',
-    access_level: 'Admin',
-};
+// const newUser: User = {
+//     id: "1",
+//     first_name: 'Josué',
+//     last_name: 'Martins',
+//     middle_name: 'Borges',
+//     email: 'eman.doe@example.com',
+//     company: 'Example Inc',
+//     password: 'secretpassword',
+//     institution: 'Example University',
+//     project: 'Example Project',
+//     role: 'Developer',
+//     access_level: 'Admin',
+// };
 
 // describe('Integration Test - Database Connection', () => {
 

@@ -37,22 +37,27 @@ export default class UserRepositoryDatabase implements UserRepository {
       }
       async createUser(user: User): Promise<boolean> {
         const randomNumber = generateRandomNumber();
-        const hasNumber = (await this.getUserById(user.id));
-        if(hasNumber) return this.createUser(user);
+        const hasNumber = await this.getUserById(user.id);
+        if (hasNumber) return await this.createUser(user);
 
         try {
-              const hasUser =  await this.getUserByEmail(user.email);
-
-              if(hasUser)  throw new   Error(`User Already Exist! :`);
-              const usersCollection = await this.connection.getModel(this.collectionName);
-              const user_ = await usersCollection.insertOne({...user, id:randomNumber});
-
-              if(user_) return true; 
-              return false;
+            const {email} = (await this.getUserByEmail(user.email)) as User ; 
+    
+            if (email) {
+                throw new Error(`User Already Exists!`);
+            }
+            const usersCollection = await this.connection.getModel(this.collectionName);
+            const user_ = await usersCollection.insertOne({ ...user, id: randomNumber });
+    
+            if (user_) {
+                return true;
+            }
+            return false;
         } catch (error) {
-            throw new Error(`Error creating user:`);
+            throw new Error(`Error creating user`);
         }
-      }
+    }
+    
     
       async updateUser(user: User, userEmail: string): Promise<{} | User> {
         try {

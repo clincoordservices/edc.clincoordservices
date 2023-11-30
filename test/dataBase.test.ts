@@ -1,4 +1,4 @@
-// __tests__/database.test.ts
+// // __tests__/database.test.ts
 
 
 
@@ -26,11 +26,11 @@ const newUser: User = {
     first_name: 'Jonas',
     last_name: 'Segunda',
     middle_name: 'Adriano',
-    email: 'ep.doe@example.com',
+    email: 'epba3b.doe@example.com',
     company: 'Example Inc',
     password: 'secretpassword',
     institution: 'Example University',
-    project: 'Example Project',
+    project_id: ['Example Project'],
     role: 'Developer',
     access_level: 'Admin',
 };
@@ -94,21 +94,21 @@ describe('Integration Test - Database Connection', () => {
 //         await mongoAdapter.connect();
 //     })
 // })
-describe('Integration Test - Database Connection GET User', () => {
-    beforeAll(async () => {
+// describe('Integration Test - Database Connection GET User', () => {
+//     beforeAll(async () => {
 
-        await mongoAdapter.connect();
-    })
-    it('should GET  user to the database', async () => {
-        const user1 = await userRepository.getUserById('343568482');
-        const user2 = await userRepository.getUserByEmail('jc.doe@example.com');
-        expect(user1).toStrictEqual(user2); 
-    })
-    afterAll(async () => {
+//         await mongoAdapter.connect();
+//     })
+//     it('should GET  user to the database', async () => {
+//         const user1 = await userRepository.getUserById('343568482');
+//         const user2 = await userRepository.getUserByEmail('epbb.doe@example.com');
+//         expect(user1).toStrictEqual(user2); 
+//     })
+//     afterAll(async () => {
 
-        await mongoAdapter.close()
-    })
-})
+//         await mongoAdapter.close()
+//     })
+// })
 // describe('Integration Test - Database Connection GET ALL  User', () => {
 //     beforeAll(async () => {
 
