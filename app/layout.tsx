@@ -6,7 +6,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ClinCoord EDC',
+  title: 'ClinCoord  Simplified IRT',
   description: 'ClinCoord Services (CCS) is a Site Management Organization (SMO) based in California with nationwide and international presence. We are the first SMO that focuses primarily on supporting medical institutions and principal investigators serving underrepresented patients/study populations.',
 }
 

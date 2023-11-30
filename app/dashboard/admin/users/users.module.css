@@ -52,6 +52,7 @@
 }
 .mainContent_body {
     margin-top: 1rem;
+    overflow: hidden;
 }
 .mainContent_body h4 {
     margin-bottom: 0.5rem;

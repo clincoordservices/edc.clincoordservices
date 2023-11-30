@@ -43,7 +43,7 @@ const ManageUsers = () => {
             const response = await fetchWithParams('/api/all_users/', 'GET');
             const res = await response.json(); 
             const {users} = res
-            // setUser(users)
+            setUser(users);
         })();
 
         setRoles(rolesData);
@@ -53,13 +53,11 @@ const ManageUsers = () => {
 
 
      const submitHandler = async (data: FieldValues)=> {
-
-        alert()
          console.log(getValues())
-        // setUser([...user, getValues()])
-        // const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
-        // const res = await response.json();
-        console.log("res")
+        setUser([...user, getValues()])
+        const response = await fetchWithParams('/api/create_user/', 'POST', JSON.stringify(getValues()));
+        const res = await response.json();
+        console.log(res);
         await new Promise((resolve)=> setTimeout(resolve, 1000));
         reset();
     }

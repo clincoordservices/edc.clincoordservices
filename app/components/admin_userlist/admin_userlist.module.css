@@ -4,6 +4,7 @@
      margin: 0 auto;
      border-collapse: collapse;
      font-size: 10pt;
+     overflow: hidden;
    }
    
    .UserListContent   thead {
